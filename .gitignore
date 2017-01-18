@@ -1,0 +1,5 @@
+*.pyc
+*.swp
+*.swo
+.idea/
+dbs/
