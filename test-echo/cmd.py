@@ -1,9 +1,28 @@
 import base64
 import os
 import sys
-from datetime import datetime
+import functools
+from PIL import Image
 from dateutil import parser as dateutil_parser
 import simplejson as json
+
+
+def build_path(path):
+    if os.environ['MCCOY_DEV'] == 'true':
+        return functools.reduce(
+            lambda acc, v: acc + '\\' + v,
+            filter(lambda o: len(o) > 0, path.split('/')),
+            'C:\\Git\mccoy_examples\\test\\test-echo')
+    else:
+        return path
+
+
+test = build_path('/mccoy/input/bla')
+
+
+def open_path(path, mode):
+    return open(build_path(path), mode=mode)
+
 
 schema = {
     "name": "test_echo",
@@ -51,61 +70,60 @@ if len(sys.argv) > 1:
 
 # if no args were passed we read from /input and write to /output
 
-with open('/input/test-string', 'r') as file_in, \
-        open('/output/test-string', 'w') as file_out:
+with open_path('/mccoy/input/test-string', 'r') as file_in, \
+        open_path('/mccoy/output/test-string', 'w') as file_out:
     test_string = file_in.read()
     file_out.write(test_string)
 
-with open('/input/test-date', 'r') as file_in, \
-        open('/output/test-date', 'w') as file_out:
+with open_path('/mccoy/input/test-date', 'r') as file_in, \
+        open_path('/mccoy/output/test-date', 'w') as file_out:
     test_date_string = file_in.read()
     test_date = dateutil_parser.parse(test_date_string)
-    file_out.write(datetime.strptime(test_date))
+    file_out.write(str(test_date))
 
-with open('/input/test.jpg', 'r') as file_in, \
-        open('/output/test.jpg', 'w') as file_out:
-    test_jpg_string = file_in.read()
-    test_jpg = base64.b64decode(test_jpg_string)
-    file_out.write(base64.b64encode(test_jpg))
+with Image.open(build_path('/mccoy/input/test.jpg'), 'r') as file_in:
+    file_in.save(build_path('/mccoy/output/test.jpg'))
 
-with open('/input/test-integer', 'r') as file_in, \
-        open('/output/test-integer', 'w') as file_out:
+with open_path('/mccoy/input/test-integer', 'r') as file_in, \
+        open_path('/mccoy/output/test-integer', 'w') as file_out:
     test_integer_string = file_in.read()
     test_integer = int(test_integer_string)
     file_out.write(str(test_integer))
 
-with open('/input/test-float', 'r') as file_in, \
-        open('/output/test-float', 'w') as file_out:
+with open_path('/mccoy/input/test-float', 'r') as file_in, \
+        open_path('/mccoy/output/test-float', 'w') as file_out:
     test_float_string = file_in.read()
     test_float = float(test_float_string)
     file_out.write(str(test_float))
 
 # make the dir to hold test object
-os.mkdir('/output/test-object')
+os.mkdir(build_path('/mccoy/output/test-object'))
 
-with open('/input/test-object/test-object-bool', 'r') as file_in, \
-        open('/output/test-object/test-object-bool', 'w') as file_out:
+with open_path('/mccoy/input/test-object/test-object-bool', 'r') as file_in, \
+        open_path('/mccoy/output/test-object/test-object-bool', 'w') as file_out:
     test_bool_string = file_in.read()
     test_bool = test_bool_string == 'True'
     file_out.write(str(test_bool))
 
-with open('/input/test-object/test-object-enum', 'r') as file_in, \
-        open('/output/test-object/test-object-enum', 'w') as file_out:
+with open_path('/mccoy/input/test-object/test-object-enum', 'r') as file_in, \
+        open_path('/mccoy/output/test-object/test-object-enum', 'w') as file_out:
     test_enum = file_in.read()
     file_out.write(test_enum)
 
 # make the dir to hold test array
-os.mkdir('/output/test-object/test-array')
+os.mkdir(build_path('/mccoy/output/test-object/test-array'))
 
-with open('/input/test-object/test-array/0', 'r') as file_in_0, \
-        open('/input/test-object/test-array/1', 'r') as file_in_1, \
-        open('/input/test-object/test-array/2', 'r') as file_in_2, \
-        open('/output/test-object/test-array/0', 'w') as file_out_0, \
-        open('/output/test-object/test-array/1', 'w') as file_out_1, \
-        open('/output/test-object/test-array/2', 'w') as file_out_2:
+with open_path('/mccoy/input/test-object/test-array/0', 'r') as file_in_0, \
+        open_path('/mccoy/input/test-object/test-array/1', 'r') as file_in_1, \
+        open_path('/mccoy/input/test-object/test-array/2', 'r') as file_in_2, \
+        open_path('/mccoy/output/test-object/test-array/0', 'w') as file_out_0, \
+        open_path('/mccoy/output/test-object/test-array/1', 'w') as file_out_1, \
+        open_path('/mccoy/output/test-object/test-array/2', 'w') as file_out_2:
     test_uri_0 = file_in_0.read()
     test_uri_1 = file_in_1.read()
     test_uri_2 = file_in_2.read()
     file_out_0.write(test_uri_0)
     file_out_1.write(test_uri_1)
     file_out_2.write(test_uri_2)
+
+exit(0)
