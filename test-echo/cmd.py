@@ -23,23 +23,23 @@ def open_path(path, mode):
 
 
 schema = {
-    "name": "test_echo",
+    "title": "test_echo",
     "type": "object",
     "properties": {
-        "test-string": {"type": "string", "name": "test-string"},
-        "test-date": {"type": "string", "format": "date-time", "name": "test-date"},
-        "test.jpg": {"type": "string", "format": "image/jpg", "name": "test.jpg"},
-        "test-integer": {"type": "integer", "name": "test-integer"},
-        "test-float": {"type": "number", "name": "test-float"},
-        "test-bool": {"type": "boolean", "name": "test-bool"},
-        "test-enum": {"type": "string", "enum": ["A", "B", "C"], "name": "test-enum"},
-        # "test-array": {"type": "array", "items": {"type": "string", "format": "uri"}, "name": "test-array"},
+        "test-string": {"type": "string", "title": "test-string"},
+        "test-date": {"type": "string", "format": "date-time", "title": "test-date"},
+        "test.jpg": {"type": "string", "format": "image/jpg", "title": "test.jpg"},
+        "test-integer": {"type": "integer", "title": "test-integer"},
+        "test-float": {"type": "number", "title": "test-float"},
+        "test-bool": {"type": "boolean", "title": "test-bool"},
+        "test-enum": {"type": "string", "enum": ["A", "B", "C"], "title": "test-enum"},
+        # "test-array": {"type": "array", "items": {"type": "string", "format": "uri"}, "title": "test-array"},
         # "test-object": {
         #     "type": "object",
         #     "properties": {
-        #         "test-object-string": {"type": "string", "name": "test-object-string"},
+        #         "test-object-string": {"type": "string", "title": "test-object-string"},
         #     },
-        #     "name": "test-object"
+        #     "title": "test-object"
         # }
     }
 }
@@ -67,6 +67,10 @@ if len(sys.argv) == 2 and sys.argv[1] == '--metadata':
 if len(sys.argv) > 1:
     sys.stderr.write('bad arguments')
     sys.exit(1)
+
+print('debug')
+print(str(os.listdir('/mccoy/input')))
+print('/debug')
 
 # if no args were passed we read from /input and write to /output
 
@@ -98,7 +102,6 @@ with open_path('/mccoy/input/test-float', 'r') as file_in, \
     test_float = float(test_float_string)
     file_out.write(str(test_float))
 
-
 with open_path('/mccoy/input/test-object/test-object-bool', 'r') as file_in, \
         open_path('/mccoy/output/test-object/test-object-bool', 'w') as file_out:
     test_bool_string = file_in.read()
@@ -109,7 +112,6 @@ with open_path('/mccoy/input/test-object/test-object-enum', 'r') as file_in, \
         open_path('/mccoy/output/test-object/test-object-enum', 'w') as file_out:
     test_enum = file_in.read()
     file_out.write(test_enum)
-
 
 with open_path('/mccoy/input/test-object-bool', 'r') as file_in, \
         open_path('/mccoy/output/test-object-bool', 'w') as file_out:
