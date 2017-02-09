@@ -27,22 +27,17 @@ schema = {
     "title": "test_echo",
     "type": "object",
     "properties": {
-        "test-string": {"type": "string", "title": "test-string"},
-        "test-date": {"type": "string", "format": "date-time", "title": "test-date"},
-        "test.jpg": {"type": "string", "format": "base64", "title": "test.jpg", "_mime-type": "image/jpg"},
-        "test-integer": {"type": "integer", "title": "test-integer"},
-        "test-float": {"type": "number", "title": "test-float"},
-        "test-percentage": {"type": "number", "title": "test-percentage", "format": "percentage"},
-        "test-bool": {"type": "boolean", "title": "test-bool"},
-        "test-enum": {"type": "string", "enum": ["A", "B", "C"], "title": "test-enum"},
-        # "test-array": {"type": "array", "items": {"type": "string", "format": "uri"}, "title": "test-array"},
-        # "test-object": {
-        #     "type": "object",
-        #     "properties": {
-        #         "test-object-string": {"type": "string", "title": "test-object-string"},
-        #     },
-        #     "title": "test-object"
-        # }
+        "test-string": {"type": "string", "title": "test-string", "_order": 1},
+        "test-paragraph": {"type": "string", "title": "test-paragraph", "format": "paragraph", "_order": 2,
+                           "_control": "textarea"},
+        "test-date": {"type": "string", "format": "date-time", "title": "test-date", "_order": 3},
+        "test.jpg": {"type": "string", "format": "base64", "title": "test.jpg", "_mime-type": "image/jpg", "_order": 4,
+                     "_control": "file"},
+        "test-enum": {"type": "string", "enum": ["A", "B", "C"], "title": "test-enum", "_order": 5},
+        "test-integer": {"type": "integer", "title": "test-integer", "_order": 6},
+        "test-float": {"type": "number", "title": "test-float", "_order": 7},
+        "test-percentage": {"type": "number", "title": "test-percentage", "format": "percentage", "_order": 8},
+        "test-bool": {"type": "boolean", "title": "test-bool", "_order": 9},
     }
 }
 # respond to the metadata prompt by writing to stdout, with the id, schemas, and info
@@ -74,6 +69,12 @@ if len(sys.argv) > 1:
 if does_path_exist('/mccoy/input/test-string'):
     with open_path('/mccoy/input/test-string', 'r') as file_in, \
             open_path('/mccoy/output/test-string', 'w') as file_out:
+        test_string = file_in.read()
+        file_out.write(test_string)
+
+if does_path_exist('/mccoy/input/test-paragraph'):
+    with open_path('/mccoy/input/test-paragraph', 'r') as file_in, \
+            open_path('/mccoy/output/test-paragraph', 'w') as file_out:
         test_string = file_in.read()
         file_out.write(test_string)
 
