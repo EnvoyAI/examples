@@ -1,32 +1,10 @@
-import os
 import sys
-import simplejson as json
 
-# respond to the metadata prompt by writing to stdout, with the id, schemas, and info
-if len(sys.argv) == 2 and sys.argv[1] == '--metadata':
-    sys.stdout.write(json.dumps({
-        "model_id": "test/helloworld",
-        "schema_in": {},
-        "schema_out": {},
-        "info": {
-            "name": "Test Hello World",
-            "title": "Test machine for demonstration or testing purposes only",
-            "abstract": "N/a",
-            "date_trained": "N/a",
-            "data_source": "N/a",
-            "ground_truth": "N/a",
-            "algorithm": "N/a",
-            "performance": "N/a",
-            "fda_status": "N/a"
-        }
-    }))
-    sys.exit(0)
-
-# exit, writing error message to stderr and exiting with non-zero error status
+# --------MAIN--------
+# exit, writing error message to stderr and exiting with non-zero error status if any args are passed
 if len(sys.argv) > 1:
     sys.stderr.write('bad arguments')
     sys.exit(1)
-
 # if no args were passed we read from /input and write to /output
 
 with open('/input/hello', 'r') as file_in, \
