@@ -2,9 +2,9 @@ import os
 import sys
 import functools
 from dateutil import parser as dateutil_parser
-import simplejson as json
 
 
+# --------HELPER FUNCTIONS--------
 def build_path(path):
     if 'MCCOY_DEV' in os.environ and os.environ['MCCOY_DEV'] == 'true':
         return functools.reduce(
@@ -23,49 +23,13 @@ def does_path_exist(path):
     return os.path.exists(build_path(path))
 
 
-schema = {
-    "title": "test_echo",
-    "type": "object",
-    "properties": {
-        "test-string": {"type": "string", "title": "test-string", "_order": 1},
-        "test-paragraph": {"type": "string", "title": "test-paragraph", "format": "paragraph", "_order": 2,
-                           "_control": "textarea"},
-        "test-date": {"type": "string", "format": "date-time", "title": "test-date", "_order": 3},
-        "test.jpg": {"type": "string", "format": "base64", "title": "test.jpg", "_mime-type": "image/jpg", "_order": 4,
-                     "_control": "file"},
-        "test-enum": {"type": "string", "enum": ["A", "B", "C"], "title": "test-enum", "_order": 5},
-        "test-integer": {"type": "integer", "title": "test-integer", "_order": 6},
-        "test-float": {"type": "number", "title": "test-float", "_order": 7},
-        "test-percentage": {"type": "number", "title": "test-percentage", "format": "percentage", "_order": 8},
-        "test-bool": {"type": "boolean", "title": "test-bool", "_order": 9},
-    }
-}
-# respond to the metadata prompt by writing to stdout, with the id, schemas, and info
-if len(sys.argv) == 2 and sys.argv[1] == '--metadata':
-    sys.stdout.write(json.dumps({
-        "model_id": "test/echo",
-        "schema_in": schema,
-        "schema_out": schema,
-        "info": {
-            "name": "Test Echo Machine",
-            "title": "Test machine for demonstration or testing purposes only",
-            "abstract": "N/a",
-            "date_trained": "N/a",
-            "data_source": "N/a",
-            "ground_truth": "N/a",
-            "algorithm": "N/a",
-            "performance": "N/a",
-            "fda_status": "N/a"
-        }
-    }))
-    sys.exit(0)
-
-# exit, writing error message to stderr and exiting with non-zero error status
+# --------MAIN--------
+# exit, writing error message to stderr and exiting with non-zero error status if any args are passed
 if len(sys.argv) > 1:
     sys.stderr.write('bad arguments')
     sys.exit(1)
 
-# if no args were passed we read from /input and write to /output
+# if no args were passed we read from /mccoy/input and write to /mccoy/output
 if does_path_exist('/mccoy/input/test-string'):
     with open_path('/mccoy/input/test-string', 'r') as file_in, \
             open_path('/mccoy/output/test-string', 'w') as file_out:
