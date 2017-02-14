@@ -7,8 +7,8 @@ if len(sys.argv) > 1:
     sys.exit(1)
 # if no args were passed we read from /input and write to /output
 
-with open('/input/hello', 'r') as file_in, \
-        open('/output/hello', 'w') as file_out:
+with open('/mccoy/input/hello', 'r') as file_in, \
+        open('/mccoy/output/hello', 'w') as file_out:
     test_string = file_in.read()
     file_out.write('hello ' + test_string)
 
