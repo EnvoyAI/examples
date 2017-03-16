@@ -50,3 +50,5 @@ LABEL mccoy.info "{ \
     \"performance\": \"N/a\", \
     \"fda_status\": \"N/a\" \
 }"
+LABEL mccoy.var.url-1 "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/SMPTE_Color_Bars.svg/329px-SMPTE_Color_Bars.svg.png"
+LABEL mccoy.var.url-2 "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/PM5544_with_non-PAL_signals.png/320px-PM5544_with_non-PAL_signals.png"
