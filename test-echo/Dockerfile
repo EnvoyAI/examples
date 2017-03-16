@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 RUN apt-get update
 RUN apt-get install -y python python-dev python-distribute python-pip
 RUN pip install --upgrade pip
@@ -12,16 +12,15 @@ LABEL mccoy.schema_in "{ \
     \"type\": \"object\", \
     \"properties\": { \
         \"test-string\": {\"type\": \"string\", \"title\": \"test-string\", \"_order\": 1}, \
-        \"test-paragraph\": {\"type\": \"string\", \"title\": \"test-paragraph\", \"format\": \"paragraph\", \"_order\": 2, \
-                           \"_control\": \"textarea\"}, \
+        \"test-paragraph\": {\"type\": \"string\", \"title\": \"test-paragraph\", \"format\": \"paragraph\", \"_order\": 2, \"_control\": \"textarea\"}, \
         \"test-date\": {\"type\": \"string\", \"format\": \"date-time\", \"title\": \"test-date\", \"_order\": 3}, \
-        \"test.jpg\": {\"type\": \"string\", \"format\": \"base64\", \"title\": \"test.jpg\", \"_mime-type\": \"image/jpg\", \"_order\": 4, \
-                     \"_control\": \"file\"}, \
+        \"test.jpg\": {\"type\": \"string\", \"format\": \"base64\", \"title\": \"test.jpg\", \"_mime-type\": \"image/jpg\", \"_order\": 4, \"_control\": \"file\"}, \
         \"test-enum\": {\"type\": \"string\", \"enum\": [\"A\", \"B\", \"C\"], \"title\": \"test-enum\", \"_order\": 5}, \
         \"test-integer\": {\"type\": \"integer\", \"title\": \"test-integer\", \"_order\": 6}, \
         \"test-float\": {\"type\": \"number\", \"title\": \"test-float\", \"_order\": 7}, \
         \"test-percentage\": {\"type\": \"number\", \"title\": \"test-percentage\", \"format\": \"percentage\", \"_order\": 8}, \
-        \"test-bool\": {\"type\": \"boolean\", \"title\": \"test-bool\", \"_order\": 9} \
+        \"test-bool\": {\"type\": \"boolean\", \"title\": \"test-bool\", \"_order\": 9}, \
+        \"test-img-url\": {\"type\": \"string\", \"title\": \"test-img-url\", \"_order\": 10} \
     } \
 }"
 LABEL mccoy.schema_out "{ \
@@ -29,16 +28,15 @@ LABEL mccoy.schema_out "{ \
     \"type\": \"object\", \
     \"properties\": { \
         \"test-string\": {\"type\": \"string\", \"title\": \"test-string\", \"_order\": 1}, \
-        \"test-paragraph\": {\"type\": \"string\", \"title\": \"test-paragraph\", \"format\": \"paragraph\", \"_order\": 2, \
-                           \"_control\": \"textarea\"}, \
+        \"test-paragraph\": {\"type\": \"string\", \"title\": \"test-paragraph\", \"format\": \"paragraph\", \"_order\": 2, \"_control\": \"textarea\"}, \
         \"test-date\": {\"type\": \"string\", \"format\": \"date-time\", \"title\": \"test-date\", \"_order\": 3}, \
-        \"test.jpg\": {\"type\": \"string\", \"format\": \"base64\", \"title\": \"test.jpg\", \"_mime-type\": \"image/jpg\", \"_order\": 4, \
-                     \"_control\": \"file\"}, \
+        \"test.jpg\": {\"type\": \"string\", \"format\": \"base64\", \"title\": \"test.jpg\", \"_mime-type\": \"image/jpg\", \"_order\": 4, \"_control\": \"file\"}, \
         \"test-enum\": {\"type\": \"string\", \"enum\": [\"A\", \"B\", \"C\"], \"title\": \"test-enum\", \"_order\": 5}, \
         \"test-integer\": {\"type\": \"integer\", \"title\": \"test-integer\", \"_order\": 6}, \
         \"test-float\": {\"type\": \"number\", \"title\": \"test-float\", \"_order\": 7}, \
         \"test-percentage\": {\"type\": \"number\", \"title\": \"test-percentage\", \"format\": \"percentage\", \"_order\": 8}, \
-        \"test-bool\": {\"type\": \"boolean\", \"title\": \"test-bool\", \"_order\": 9} \
+        \"test-bool\": {\"type\": \"boolean\", \"title\": \"test-bool\", \"_order\": 9}, \
+        \"test-img-url\": {\"type\": \"string\", \"format\": \"imageSrc\", \"title\": \"test-img-url\", \"_mime-type\": \"image/jpg\", \"_order\": 10 } \
     } \
 }"
 LABEL mccoy.info "{ \

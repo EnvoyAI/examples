@@ -89,6 +89,12 @@ if does_path_exist('/mccoy/input/test-enum'):
         test_enum = file_in.read()
         file_out.write(test_enum)
 
+if does_path_exist('/mccoy/input/test-img-url'):
+    with open_path('/mccoy/input/test-img-url', 'r') as file_in, \
+            open_path('/mccoy/output/test-img-url', 'w') as file_out:
+        test_img_url = file_in.read()
+        file_out.write(test_img_url)
+
 # # make the dir to hold test array
 # os.mkdir(build_path('/mccoy/output/test-array'))
 #
