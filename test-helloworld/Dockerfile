@@ -11,14 +11,14 @@ LABEL mccoy.schema_in "{ \
     \"title\": \"test_hello\", \
     \"type\": \"object\", \
     \"properties\": { \
-        \"hello\": {\"type\": \"string\", \"title\": \"hello\", \"_order\": 1}, \
+        \"hello\": {\"type\": \"string\", \"title\": \"hello\", \"_order\": 1} \
     } \
 }"
 LABEL mccoy.schema_out "{ \
     \"title\": \"test_hello\", \
     \"type\": \"object\", \
     \"properties\": { \
-        \"hello\": {\"type\": \"string\", \"title\": \"hello\", \"_order\": 1}, \
+        \"hello\": {\"type\": \"string\", \"title\": \"hello\", \"_order\": 1} \
     } \
 }"
 LABEL mccoy.info "{ \
