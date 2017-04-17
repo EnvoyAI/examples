@@ -55,6 +55,12 @@ if does_path_exist('/mccoy/input/test.jpg'):
         data = file_in.read()
         file_out.write(data)
 
+if does_path_exist('/mccoy/input/test.zip'):
+    with open_path('/mccoy/input/test.zip', 'rb') as file_in, \
+            open_path('/mccoy/output/test.zip', 'wb') as file_out:
+        data = file_in.read()
+        file_out.write(data)
+
 if does_path_exist('/mccoy/input/test-integer'):
     with open_path('/mccoy/input/test-integer', 'r') as file_in, \
             open_path('/mccoy/output/test-integer', 'w') as file_out:
