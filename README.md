@@ -111,5 +111,6 @@ To see an example that uses a trained network to do image recognition, see the c
 To learn more about debugging and error handling on the McCoy platform please see the [test-err](test-err/) example.
 
 To download and install Docker please visit [www.docker.com](https://www.docker.com/get-docker)
-To learn more about docker we reccomend reading the [docs](https://docs.docker.com/) or viewing 
+
+To learn more about Docker we reccomend reading the [docs](https://docs.docker.com/) or viewing 
 [this great pluralsight video](https://www.pluralsight.com/courses/docker-deep-dive).
