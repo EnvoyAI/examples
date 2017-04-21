@@ -6,7 +6,7 @@ Partner with McCoy to distribute your algorithm.
 
 Read this documentation and explore our examples to learn how to integrate your algorithm into the McCoy Platform.
 
-## 1. Getting Started
+## 1.0 Getting Started
 Developing for the McCoy Platform requires you to:
 * [Build a Docker Image containing all runtime dependencies of your algorithm](#21-docker)
 * [Provide schemas describing the inputs and outputs of your algorithm](#22-schemas)
@@ -102,7 +102,7 @@ You will likely want to base your Docker image off of an nvidia example.
 FROM nvidia/cuda:8.0-cudnn5-runtime-ubuntu14.04
 ```
 
-## 3 More
+## 3.0 More
 To learn more about advanced input and output types, please see the [test-echo](test-echo/) example.
 
 To see an example that uses a trained network to do image recognition, see the caffe example we adapated for our platform 
