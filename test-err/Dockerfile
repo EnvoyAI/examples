@@ -22,6 +22,8 @@ LABEL mccoy.schema_out "{ \
 LABEL mccoy.info "{ \
     \"name\": \"Test Err Machine\", \
     \"title\": \"Test machine for demonstration or error handling purposes only\", \
+    \"author\": \"Staff\", \
+    \"organization\": \"McCoy Medical Technologies\", \
     \"abstract\": \"N/a\", \
     \"date_trained\": \"N/a\", \
     \"data_source\": \"N/a\", \

@@ -44,11 +44,14 @@ LABEL mccoy.schema_out "{ \
 LABEL mccoy.info "{ \
     \"name\": \"Test Echo Machine\", \
     \"title\": \"Test machine for demonstration or testing purposes only\", \
+    \"author\": \"Staff\", \
+    \"organization\": \"McCoy Medical Technologies\", \
     \"abstract\": \"N/a\", \
     \"date_trained\": \"N/a\", \
     \"data_source\": \"N/a\", \
     \"ground_truth\": \"N/a\", \
     \"algorithm\": \"N/a\", \
     \"performance\": \"N/a\", \
-    \"fda_status\": \"N/a\" \
+    \"fda_status\": \"N/a\", \
+    \"links\": \"N/a\" \
 }"
