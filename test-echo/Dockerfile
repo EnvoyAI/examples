@@ -38,9 +38,7 @@ LABEL mccoy.schema_out "{ \
         \"test-float\": {\"type\": \"number\", \"title\": \"test-float\", \"_order\": 8}, \
         \"test-percentage\": {\"type\": \"number\", \"title\": \"test-percentage\", \"format\": \"percentage\", \"_order\": 9}, \
         \"test-bool\": {\"type\": \"boolean\", \"title\": \"test-bool\", \"_order\": 10}, \
-        \"test-img-url\": {\"type\": \"string\", \"format\": \"imageSrc\", \"title\": \"test-img-url\", \"_mime-type\": \"image/jpg\", \"_order\": 11 }, \
-        \"test-img-bars\": {\"type\": \"string\", \"format\": \"imageSrc\", \"title\": \"test-img-bars\", \"_mime-type\": \"image/jpg\", \"_order\": 12 }, \
-        \"test-integer-plus-one\": {\"type\": \"integer\", \"title\": \"test-integer\", \"_order\": 13} \
+        \"test-img-url\": {\"type\": \"string\", \"format\": \"imageSrc\", \"title\": \"test-img-url\", \"_mime-type\": \"image/jpg\", \"_order\": 11 } \
     } \
 }"
 LABEL mccoy.info "{ \
@@ -54,8 +52,3 @@ LABEL mccoy.info "{ \
     \"performance\": \"N/a\", \
     \"fda_status\": \"N/a\" \
 }"
-LABEL mccoy.var.url-1 "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/SMPTE_Color_Bars.svg/329px-SMPTE_Color_Bars.svg.png"
-LABEL mccoy.var.url-2 "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/PM5544_with_non-PAL_signals.png/320px-PM5544_with_non-PAL_signals.png"
-
-LABEL mccoy.postprocess.test-img-bars "vars['url-1']"
-LABEL mccoy.postprocess.test-integer-plus-one "output['test-integer'] && output['test-integer']+1"
