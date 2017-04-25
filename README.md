@@ -23,11 +23,9 @@ First we will show extracts from the helloworld project's [Dockerfile](test-hell
 
 Notice the __FROM__, and __RUN__ commands that include all the runtime dependencies.
 ```Dockerfile
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 RUN apt-get update
 RUN apt-get install -y python python-dev python-distribute python-pip
-RUN pip install --upgrade pip
-RUN pip install simplejson
 ```
 
 The __ADD__ command includes the executable [cmd.py](test-helloworld/cmd.py).
