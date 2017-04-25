@@ -9,7 +9,7 @@ LABEL mccoy.schema_in "{ \
     \"title\": \"test_err\", \
     \"type\": \"object\", \
     \"properties\": { \
-        \"err\": {\"type\": \"string\", \"enum\": [\"timeout\", \"invalid_output\", \"uncaught_exception\", \"exit_code\"], \"title\": \"err\" \
+        \"err\": {\"type\": \"string\", \"enum\": [\"timeout\", \"invalid_output\", \"uncaught_exception\", \"exit_code\", \"large_output\" ], \"title\": \"err\"} \
     } \
 }"
 LABEL mccoy.schema_out "{ \
