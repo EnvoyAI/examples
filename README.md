@@ -14,8 +14,12 @@ Developing for the McCoy Platform requires you to:
 * [Provide metadata about your algorithm](#24-metadata)
 * [(optional) Toggle CUDA support](#25-cuda)
 
-## 2.1 Docker
-The first place to look is the [Dockerfile](test-helloworld/Dockerfile).
+## 2 Learn By Example
+
+We will use our [helloworld](test-helloworld) project as an example to demonstrate.
+
+### 2.1 Docker
+First we will show extracts from the helloworld project's [Dockerfile](test-helloworld/Dockerfile).
 
 Notice the __FROM__, and __RUN__ commands that include all the runtime dependencies.
 ```Dockerfile
@@ -40,8 +44,8 @@ CMD []
 ```
 The McCoy Platform will be able to execute your algorithm as if it were running `$ python cmd.py` from a shell.
 
-## 2.2 Schemas
-The __LABEL__s define the required schemas and the optional metadata.
+### 2.2 Schemas
+The __LABELs__ define the required schemas and the optional metadata.
 
 Use the __LABEL__ `mccoy.schema_in` to specify the [JSON Schema](http://json-schema.org/) describing 
 the inputs to your algorithm.
@@ -63,32 +67,47 @@ Because this is a simple example, the __LABEL__ `mccoy.schema_out` specified an 
 Normally the input and output schemas would differ, for example the input schema might describe a DICOM image input, 
 and the output schema might describe a certain diagnosis string with a confidence percentage.
 
-## 2.3 Executable
-Next look at [cmd.py](test-helloworld/cmd.py) to see the interaction betweeen the schemas and your algorithm.
+### 2.3 Executable
+Next we will show extracts from helloworld project's [cmd.py](test-helloworld/cmd.py) to demonstrate the interaction 
+between the schemas and your algorithm.
 
 The input schema specified a single string input with the key `hello`. The executable must read from the file
-`/mccoy/input/hello` and it can expect the format to be a simple string (as opposed to, for example, an integer or image file).
+`/mccoy/input/hello` and it can expect the format to be a simple string 
+(as opposed to, for example, an integer or image file).
 ```python
-with open('/mccoy/input/hello', 'r') as file_in
-...
-test_string = file_in.read()
+with open('/mccoy/input/hello', 'r') as file_in:
+    test_string = file_in.read()
 ```
 
 The output schema also specified a single string output with the key `hello`. Therefore the executable must 
 write to the file `/mccoy/output/hello`.
 ```python
-open('/mccoy/output/hello', 'w') as file_out
-...
-file_out.write('hello ' + test_string)
+with open('/mccoy/output/hello', 'w') as file_out:
+    file_out.write('hello ' + test_string)
 ```
-## 2.4 Metadata
+### 2.4 Metadata
 Use the __LABEL__ `mccoy.info` to provide information about your algorithm. 
 
 This is where you name the algorithm and list it's author(s). 
+```Dockerfile
+LABEL mccoy.info "{ \
+    \"name\": \"Test Hello World\", \
+    \"title\": \"Test machine for demonstration or testing purposes only\", \
+    \"author\": \"Staff\", \
+    \"organization\": \"McCoy Medical Technologies\", \
+    \"abstract\": \"N/a\", \
+    \"date_trained\": \"N/a\", \
+    \"data_source\": \"N/a\", \
+    \"ground_truth\": \"N/a\", \
+    \"algorithm\": \"N/a\", \
+    \"performance\": \"N/a\", \
+    \"fda_status\": \"N/a\" \
+}"
+```
 
 In the future this metadata will be searchable if you agree to make the algorithm publicly available.
 
-## 2.5 CUDA
+### 2.5 CUDA
 The McCoy Platform supports CUDA 8 and CudNN 5. If you require a different version, please contact us and we will 
 find a way to set it up for you.
 

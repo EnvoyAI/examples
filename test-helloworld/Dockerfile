@@ -1,8 +1,6 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 RUN apt-get update
 RUN apt-get install -y python python-dev python-distribute python-pip
-RUN pip install --upgrade pip
-RUN pip install simplejson
 ADD . /prog
 WORKDIR /prog
 ENTRYPOINT ["python","cmd.py"]
@@ -24,6 +22,8 @@ LABEL mccoy.schema_out "{ \
 LABEL mccoy.info "{ \
     \"name\": \"Test Hello World\", \
     \"title\": \"Test machine for demonstration or testing purposes only\", \
+    \"author\": \"Staff\", \
+    \"organization\": \"McCoy Medical Technologies\", \
     \"abstract\": \"N/a\", \
     \"date_trained\": \"N/a\", \
     \"data_source\": \"N/a\", \

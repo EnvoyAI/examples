@@ -26,6 +26,8 @@ LABEL mccoy.schema_out "{ \
 LABEL mccoy.info "{ \
     \"name\": \"Test Post-Processing Machine\", \
     \"title\": \"Test machine for demonstration or testing purposes only\", \
+    \"author\": \"Staff\", \
+    \"organization\": \"McCoy Medical Technologies\", \
     \"abstract\": \"N/a\", \
     \"date_trained\": \"N/a\", \
     \"data_source\": \"N/a\", \
