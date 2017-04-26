@@ -100,6 +100,8 @@ LABEL mccoy.schema_out "{ \
 LABEL mccoy.info "{ \
     \"name\": \"Caffe Example C++ Classification\", \
     \"title\": \"Caffe C++ Classification Example adapted for the mccoy platform.\", \
+    \"author\": \"Caffe adapted by McCoy Staff\", \
+    \"organization\": \"McCoy Medical Technologies\", \
     \"abstract\": \"N/a\", \
     \"date_trained\": \"N/a\", \
     \"data_source\": \"ilsvrc training set\", \
