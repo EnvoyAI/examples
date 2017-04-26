@@ -1,2 +1,3 @@
 # Echo Example
-For a walk-through of this example, please see the repo's top level [README.md](../README.md)
+This example demonstrates each type of input and output parameter.
+Coming soon ...
