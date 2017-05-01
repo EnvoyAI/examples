@@ -43,7 +43,7 @@ CMD []
 The McCoy Platform will be able to execute your algorithm as if it were running `$ python cmd.py` from a shell.
 
 ### 2.2 Schemas
-The __LABELs__ define the required schemas and the optional metadata.
+The __LABELs__ define the required schemas and metadata with JSON or YAML.
 
 Use the __LABEL__ `mccoy.schema_in` to specify the [JSON Schema](http://json-schema.org/) describing 
 the inputs to your algorithm.
