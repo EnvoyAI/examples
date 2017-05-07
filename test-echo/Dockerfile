@@ -21,7 +21,16 @@ properties:\n\
   test-float: {type: 'number', title: 'test-float', _order: 8}\n\
   test-percentage: {type: 'number', title: 'test-percentage', format: 'percentage', _order: 9}\n\
   test-bool: {type: 'boolean', title: 'test-bool', _order: 10}\n\
-  test-img-url: {type: 'string', title: 'test-img-url', _order: 11}"
+  test-img-url: {type: 'string', title: 'test-img-url', _order: 11}\n\
+  test-img-url-array:\n\
+    type: 'array'\n\
+    items:\n\
+      type: 'object'\n\
+      properties:\n\
+        title: {type: 'string', title: 'Title', _order:1}\n\
+        image: {type: 'string', title: 'Image', _order:2}\n\
+    title: 'test-img-url-array'\n\
+    '_order': 12\n\"
 
 LABEL mccoy.schema_out "\
 title: 'test_echo'\n\
@@ -37,7 +46,17 @@ properties:\n\
   test-float: {type: 'number', title: 'test-float', _order: 8}\n\
   test-percentage: {type: 'number', title: 'test-percentage', format: 'percentage', _order: 9}\n\
   test-bool: {type: 'boolean', title: 'test-bool', _order: 10}\n\
-  test-img-url: {type: 'string', format: 'imageSrc', title: 'test-img-url', _mime-type: 'image/jpg', _order: 11}"
+  test-img-url: {type: 'string', format: 'imageSrc', title: 'test-img-url', _mime-type: 'image/jpg', _order: 11}\n\
+  test-img-url-array:\n\
+    type: 'array'\n\
+    items:\n\
+      type: 'object'\n\
+      properties:\n\
+        title: {type: 'string', title: 'Title'}\n\
+        image: {type: 'string', title: 'Image', format: 'imageSrc', _mime-type: 'image/jpg'}\n\
+    title: 'test-img-url-array'\n\
+    '_order': 12\n\
+    '_control': 'carosel'"
 
 LABEL mccoy.info "\
 name: 'Test Echo Machine'\n\
