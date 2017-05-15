@@ -123,7 +123,7 @@ if does_dir_exist('/mccoy/input/test-img-url-array'):
         with open_path(subpath_in + '/title', 'r') as file_title_in, \
                 open_path(subpath_in + '/image', 'r') as file_image_in, \
                 open_path(subpath_out + '/title', 'w') as file_title_out, \
-                open_path(subpath_out + '/' + str(n) + '/image', 'w') as file_image_out:
+                open_path(subpath_out + '/image', 'w') as file_image_out:
             test_title = file_title_in.read()
             test_img_url = file_image_in.read()
             file_title_out.write(test_title)

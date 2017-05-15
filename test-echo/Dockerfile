@@ -30,7 +30,7 @@ properties:\n\
         title: {type: 'string', title: 'Title', _order:1}\n\
         image: {type: 'string', title: 'Image', _order:2}\n\
     title: 'test-img-url-array'\n\
-    '_order': 12\n\"
+    '_order': 12"
 
 LABEL mccoy.schema_out "\
 title: 'test_echo'\n\
