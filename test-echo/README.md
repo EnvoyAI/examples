@@ -16,10 +16,10 @@ how they can be used to gather and display a rich set of data
     * [Nested Object](#23-nested-object-outputs)
     * [Arrays](#24-array-outputs)
 
-###### yaml
+##### yaml
 First an aside about YAML - Each of the JSON metadata fields (`mccoy.schema_in`,`mccoy.schema_out`,`mccoy.info`)
 can be specified with JSON, as they have been in each precceding example, or with YAML (a superset of JSON that 
-allows us to drop alot of the cumbersome symbols). This is useful for this example because our schemas become 
+allows us to drop a lot of the cumbersome symbols). This is useful for this example because our schemas become 
 quite lengthy, and the additional readability goes a long way. See test/echo's [Dockerfile](Dockerfile) for examples. 
 
 ## 1 Input
