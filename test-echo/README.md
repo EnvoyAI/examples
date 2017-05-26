@@ -16,7 +16,8 @@ how they can be used to gather and display a rich set of data
     * [Nested Object](#23-nested-object-outputs)
     * [Arrays](#24-array-outputs)
 
-##### yaml
+##### YAML
+
 First an aside about YAML - Each of the JSON metadata fields (`mccoy.schema_in`,`mccoy.schema_out`,`mccoy.info`)
 can be specified with JSON, as they have been in each precceding example, or with YAML (a superset of JSON that 
 allows us to drop a lot of the cumbersome symbols). This is useful for this example because our schemas become 
