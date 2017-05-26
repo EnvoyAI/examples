@@ -33,8 +33,8 @@ we dynamically render input controls for any input type.
 
 To gather a typical string input, your schema would have the following property
 
-|Type       |In Code|JSON Schema Property                                                               |Screenshot                               |
-|-----------|---------------|-----------------------------------------------------------------------------------|-----------------------------------------|
+|Type       |In Code              |JSON Schema Property                                                               |Screenshot                               |
+|-----------|---------------------|-----------------------------------------------------------------------------------|-----------------------------------------|
 |String     |`string`             |`test-string: {type: 'string', title: 'test-string'}`                              |![String](screenshots/string.gif)        |
 |Paragraph  |`string`             |`test-paragraph: {type: 'string', title: 'test-paragraph','_control': 'textarea'}` |![Paragraph](screenshots/paragraph.gif)  |
 |Enum       |`string`             |`test-enum: {type: 'string', 'enum': ['A', 'B', 'C'], title: 'test-enum'}`         |![Enum](screenshots/enum.gif)            |
@@ -42,7 +42,7 @@ To gather a typical string input, your schema would have the following property
 |Boolean    |`True` &#124; `False`|`test-bool: {type: 'boolean', title: 'test-bool'}`                                 |![Boolean](screenshots/boolean.gif)      |
 |Integer    |`string`             |`test-integer: {type: 'integer', title: 'test-integer'}`                           |![Integer](screenshots/integer.gif)      |
 |Float      |`string`             |`test-float: {type: 'number', title: 'test-float'}`                                |![Float](screenshots/float.gif)          |
-|Percentage |`12%`                |`test-percentage: {type: 'number', format: 'percentage', title: 'test-percentage'}`|![Percentage](screenshots/percentage.gif)|
+|Percentage |ex. `12%`            |`test-percentage: {type: 'number', format: 'percentage', title: 'test-percentage'}`|![Percentage](screenshots/percentage.gif)|
 
 TODO a few code for date enum and maybe percentage
 
