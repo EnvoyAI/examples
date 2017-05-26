@@ -54,45 +54,18 @@ if does_file_exist('/mccoy/input/test-paragraph'):
         test_string = file_in.read()
         file_out.write(test_string)
 
+if does_file_exist('/mccoy/input/test-enum'):
+    with open_path('/mccoy/input/test-enum', 'r') as file_in, \
+            open_path('/mccoy/output/test-enum', 'w') as file_out:
+        test_enum = file_in.read()
+        file_out.write(test_enum)
+
 if does_file_exist('/mccoy/input/test-date'):
     with open_path('/mccoy/input/test-date', 'r') as file_in, \
             open_path('/mccoy/output/test-date', 'w') as file_out:
         test_date_string = file_in.read()
         test_date = dateutil_parser.parse(test_date_string)
         file_out.write(str(test_date))
-
-if does_file_exist('/mccoy/input/test.jpg'):
-    with open_path('/mccoy/input/test.jpg', 'rb') as file_in, \
-            open_path('/mccoy/output/test.jpg', 'wb') as file_out:
-        data = file_in.read()
-        file_out.write(data)
-
-if does_file_exist('/mccoy/input/test.zip'):
-    with open_path('/mccoy/input/test.zip', 'rb') as file_in, \
-            open_path('/mccoy/output/test.zip', 'wb') as file_out:
-        data = file_in.read()
-        file_out.write(data)
-
-if does_file_exist('/mccoy/input/test-integer'):
-    with open_path('/mccoy/input/test-integer', 'r') as file_in, \
-            open_path('/mccoy/output/test-integer', 'w') as file_out:
-        test_integer_string = file_in.read()
-        test_integer = int(test_integer_string)
-        file_out.write(str(test_integer))
-
-if does_file_exist('/mccoy/input/test-float'):
-    with open_path('/mccoy/input/test-float', 'r') as file_in, \
-            open_path('/mccoy/output/test-float', 'w') as file_out:
-        test_float_string = file_in.read()
-        test_float = float(test_float_string)
-        file_out.write(str(test_float))
-
-if does_file_exist('/mccoy/input/test-percentage'):
-    with open_path('/mccoy/input/test-percentage', 'r') as file_in, \
-            open_path('/mccoy/output/test-percentage', 'w') as file_out:
-        test_percentage_string = file_in.read()
-        test_float = float(test_percentage_string.replace('%', ''))
-        file_out.write(str(test_float) + '%')
 
 if does_file_exist('/mccoy/input/test-bool'):
     with open_path('/mccoy/input/test-bool', 'r') as file_in, \
@@ -101,17 +74,40 @@ if does_file_exist('/mccoy/input/test-bool'):
         test_bool = test_bool_string == 'True'
         file_out.write(str(test_bool))
 
-if does_file_exist('/mccoy/input/test-enum'):
-    with open_path('/mccoy/input/test-enum', 'r') as file_in, \
-            open_path('/mccoy/output/test-enum', 'w') as file_out:
-        test_enum = file_in.read()
-        file_out.write(test_enum)
+if does_file_exist('/mccoy/input/test.zip'):
+    with open_path('/mccoy/input/test.zip', 'rb') as file_in, \
+            open_path('/mccoy/output/test.zip', 'wb') as file_out:
+        data = file_in.read()
+        file_out.write(data)
 
-if does_file_exist('/mccoy/input/test-img-url'):
-    with open_path('/mccoy/input/test-img-url', 'r') as file_in, \
-            open_path('/mccoy/output/test-img-url', 'w') as file_out:
-        test_img_url = file_in.read()
-        file_out.write(test_img_url)
+if does_file_exist('/mccoy/input/test.jpg'):
+    with open_path('/mccoy/input/test.jpg', 'rb') as file_in, \
+            open_path('/mccoy/output/test.jpg', 'wb') as file_out:
+        data = file_in.read()
+        file_out.write(data)
+
+if does_dir_exist('/mccoy/input/test-object'):
+    mkdir('/mccoy/output/test-object')
+    if does_file_exist('/mccoy/input/test-object/test-integer'):
+        with open_path('/mccoy/input/test-object/test-integer', 'r') as file_in, \
+                open_path('/mccoy/output/test-object/test-integer', 'w') as file_out:
+            test_integer_string = file_in.read()
+            test_integer = int(test_integer_string)
+            file_out.write(str(test_integer))
+
+    if does_file_exist('/mccoy/input/test-object/test-float'):
+        with open_path('/mccoy/input/test-object/test-float', 'r') as file_in, \
+                open_path('/mccoy/output/test-object/test-float', 'w') as file_out:
+            test_float_string = file_in.read()
+            test_float = float(test_float_string)
+            file_out.write(str(test_float))
+
+    if does_file_exist('/mccoy/input/test-object/test-percentage'):
+        with open_path('/mccoy/input/test-object/test-percentage', 'r') as file_in, \
+                open_path('/mccoy/output/test-object/test-percentage', 'w') as file_out:
+            test_percentage_string = file_in.read()
+            test_float = float(test_percentage_string.replace('%', ''))
+            file_out.write(str(test_float) + '%')
 
 if does_dir_exist('/mccoy/input/test-img-url-array'):
     mkdir('/mccoy/output/test-img-url-array')
