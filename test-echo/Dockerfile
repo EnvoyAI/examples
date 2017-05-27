@@ -48,7 +48,7 @@ properties:\n\
   test.zip: {type: 'string', format: 'base64', title: 'test.zip', _mime-type: 'application/octet-stream', _order: 6, '_control': 'file'}\n\
   test.jpg: {type: 'string', format: 'base64', title: 'test.jpg', _mime-type: 'image/jpg', _order: 7, '_control': 'file'}\n\
   test-object:\n\
-    typeL 'object'\n\
+    type: 'object'\n\
     properties:\n\
       test-integer: {type: 'integer', title: 'test-integer', _order: 1}\n\
       test-float: {type: 'number', title: 'test-float', _order: 2}\n\
