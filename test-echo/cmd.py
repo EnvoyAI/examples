@@ -126,4 +126,28 @@ if does_dir_exist('/mccoy/input/test-img-url-array'):
             file_image_out.write(test_img_url)
         n = n + 1
 
+if does_dir_exist('/mccoy/input/test-keywords-array'):
+    mkdir('/mccoy/output/test-keywords-array')
+    n = 0  # each entry in an array is a file named by it's index
+    while does_file_exist('/mccoy/input/test-keywords-array' + '/' + str(n)):
+        subpath_in = '/mccoy/input/test-keywords-array' + '/' + str(n)
+        subpath_out = '/mccoy/output/test-keywords-array' + '/' + str(n)
+        with open_path(subpath_in, 'r') as file_string_in, \
+                open_path(subpath_out, 'w') as file_string_out:
+            test_string = file_string_in.read()
+            file_string_out.write(test_string)
+        n = n + 1
+
+if does_dir_exist('/mccoy/input/test-file-array'):
+    mkdir('/mccoy/output/test-file-array')
+    n = 0  # each entry in an array is a file named by it's index
+    while does_file_exist('/mccoy/input/test-file-array' + '/' + str(n)):
+        subpath_in = '/mccoy/input/test-file-array' + '/' + str(n)
+        subpath_out = '/mccoy/output/test-file-array' + '/' + str(n)
+        with open_path(subpath_in, 'rb') as file_bytes_in, \
+                open_path(subpath_out, 'wb') as file_bytes_out:
+            test_bytes = file_bytes_in.read()
+            file_bytes_out.write(test_bytes)
+        n = n + 1
+
 exit(0)

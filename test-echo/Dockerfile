@@ -29,12 +29,29 @@ properties:\n\
   test-img-url-array:\n\
     type: 'array'\n\
     items:\n\
+      title: 'img-url-record'\n\
       type: 'object'\n\
       properties:\n\
         title: {type: 'string', title: 'Title', _order:1}\n\
         image: {type: 'string', title: 'Image', _order:2}\n\
     title: 'test-img-url-array'\n\
-    '_order': 9"
+    '_order': 9\n\
+  test-keywords-array:\n\
+    type: 'array'\n\
+    items:\n\
+      title: 'keyword'\n\
+      type: 'string'\n\
+    title: 'test-keywords-array'\n\
+    '_order': 10\n\
+  test-file-array:\n\
+    type: 'array'\n\
+    items:\n\
+      type: 'string'\n\
+      format: 'base64'\n\
+      '_mime-type': 'application/octet-stream'\n\
+    title: 'test-file-array'\n\
+    '_order': 11\n\
+    '_control': 'directory'"
 
 LABEL mccoy.schema_out "\
 title: 'test_echo'\n\
@@ -58,13 +75,29 @@ properties:\n\
   test-img-url-array:\n\
     type: 'array'\n\
     items:\n\
+      title: 'img-url-record'\n\
       type: 'object'\n\
       properties:\n\
         title: {type: 'string', title: 'Title'}\n\
         image: {type: 'string', title: 'Image', format: 'imageSrc', _mime-type: 'image/jpg'}\n\
     title: 'test-img-url-array'\n\
     '_order': 9\n\
-    '_control': 'carosel'"
+    '_control': 'carosel'\n\
+  test-keywords-array:\n\
+    type: 'array'\n\
+    items:\n\
+      title: 'str'\n\
+      type: 'string'\n\
+    title: 'test-keywords-array'\n\
+    '_order': 10\n\
+  test-file-array:\n\
+    type: 'array'\n\
+    items:\n\
+      type: 'string'\n\
+      format: 'base64'\n\
+      '_mime-type': 'application/octet-stream'\n\
+    title: 'test-file-array'\n\
+    '_order': 11"
 
 LABEL mccoy.info "\
 name: 'Test Echo Machine'\n\
