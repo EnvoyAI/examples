@@ -82,7 +82,7 @@ properties:\n\
         image: {type: 'string', title: 'Image', format: 'imageSrc', _mime-type: 'image/jpg'}\n\
     title: 'test-img-url-array'\n\
     '_order': 9\n\
-    '_control': 'carosel'\n\
+    '_control': 'carousel'\n\
   test-keywords-array:\n\
     type: 'array'\n\
     items:\n\
