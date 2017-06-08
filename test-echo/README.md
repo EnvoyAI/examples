@@ -129,4 +129,4 @@ properties:
     title: 'test-file-array'
     '_control': 'directory'
 ```
-![Array-dir](screenshots/array-dir.gif) #TODO
+![Array-dir](screenshots/array-dir.gif)
