@@ -49,6 +49,7 @@ properties:\n\
       type: 'string'\n\
       format: 'base64'\n\
       '_mime-type': 'application/octet-stream'\n\
+      title: 'download.jpg'\n\
     title: 'test-file-array'\n\
     '_order': 11\n\
     '_control': 'directory'"
@@ -96,6 +97,7 @@ properties:\n\
       type: 'string'\n\
       format: 'base64'\n\
       '_mime-type': 'application/octet-stream'\n\
+      title: 'download.jpg'\n\
     title: 'test-file-array'\n\
     '_order': 11"
 
