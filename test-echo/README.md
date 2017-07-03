@@ -133,7 +133,7 @@ example uses an image url and associated title.
 properties:
   test-keywords-array:
     type: 'array'
-    items: //TODO
+    items:
       title: 'keyword'
       type: 'object'
     title: 'test-keywords-array'
@@ -224,8 +224,13 @@ with open('/mccoy/output/test-date','w') as date_out, \
 
 ### 2.2 Nested Object Outputs
 
-TODO
+Nested object output follows all of the conventions outlined in [Nested Object Input](#22-nested-object-inputs); 
+simply create a directory in `/mccoy/output` and put files with property values in the directory.
 
 ### 3.3 Array Inputs
 
-TODO
+[Arrays](#23-array-inputs)
+
+Nested object output follows all of the conventions outlined in [Array Input](#23-array-inputs); 
+simply create a directory in `/mccoy/output` and put files or directories named by index with 
+property values in the directory.
