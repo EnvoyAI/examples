@@ -111,16 +111,3 @@ You will likely want to base your Docker image off of an nvidia example.
 ```Dockerfile
 FROM nvidia/cuda:8.0-cudnn5-runtime-ubuntu14.04
 ```
-
-## 3 More
-To learn more about advanced input and output types, please see the [test-echo](../test-echo/) example.
-
-To see an example that uses a trained network to do image recognition, see the caffe example we adapated for our platform 
-[caffe-cpp_classification](../caffe-cpp_classification/).
-
-To learn more about debugging and error handling on the McCoy platform please see the [test-err](../test-err/) example.
-
-To download and install Docker please visit [www.docker.com](https://www.docker.com/get-docker)
-
-To learn more about Docker we reccomend reading the [docs](https://docs.docker.com/) or viewing 
-[this great pluralsight video](https://www.pluralsight.com/courses/docker-deep-dive).
