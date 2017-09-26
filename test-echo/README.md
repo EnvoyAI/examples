@@ -61,6 +61,7 @@ we dynamically render input controls for any input type.
 |Percentage |ex. `12%`            |`test-percentage: {type: 'number', format: 'percentage', title: 'test-percentage'}`                                          |![Percentage](screenshots/input/percentage.gif)|
 |File       |`bytes`              |`test.zip: {type: 'string', format: 'base64', title: 'test.zip', _mime-type: 'application/octet-stream', '_control': 'file'}`|![File](screenshots/input/file.gif)            |
 |Image      |`bytes`              |`test.jpg: {type: 'string', format: 'base64', title: 'test.jpg', _mime-type: 'image/jpg', '_control': 'file'}`               |![File](screenshots/input/image.gif)           |
+|Dicom      |`bytes`              |`test.jpg: {type: 'string', format: 'base64', title: 'test.dcm', _mime-type: 'image/dcm', '_control': 'file'}`               |![File](screenshots/input/dicom.gif)           |
 
 #### 2.1.2 Reading values
 Reading any of the above inputs from the provided files in the `/mccoy/input/` directory is strait forward. For example:
