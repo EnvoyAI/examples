@@ -18,6 +18,7 @@ properties:\n\
   test-bool: {type: 'boolean', title: 'test-bool', _order: 5}\n\
   test.zip: {type: 'string', format: 'base64', title: 'test.zip', _mime-type: 'application/octet-stream', _order: 6, '_control': 'file'}\n\
   test.jpg: {type: 'string', format: 'base64', title: 'test.jpg', _mime-type: 'image/jpg', _order: 7, '_control': 'file'}\n\
+  test.dcm: {type: 'string', format: 'base64', title: 'test.dcm', _mime-type: 'image/dcm', _order: 8, '_control': 'file'}\n\
   test-object:\n\
     type: 'object'\n\
     properties:\n\
@@ -65,6 +66,7 @@ properties:\n\
   test-bool: {type: 'boolean', title: 'test-bool', _order: 5}\n\
   test.zip: {type: 'string', format: 'base64', title: 'test.zip', _mime-type: 'application/octet-stream', _order: 6, '_control': 'file'}\n\
   test.jpg: {type: 'string', format: 'base64', title: 'test.jpg', _mime-type: 'image/jpg', _order: 7, '_control': 'file'}\n\
+  test.dcm: {type: 'string', format: 'base64', title: 'test.dcm', _mime-type: 'image/dcm', _order: 8, '_control': 'file'}\n\
   test-object:\n\
     type: 'object'\n\
     properties:\n\

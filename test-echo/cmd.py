@@ -86,6 +86,12 @@ if does_file_exist('/mccoy/input/test.jpg'):
         data = file_in.read()
         file_out.write(data)
 
+if does_file_exist('/mccoy/input/test.dcm'):
+    with open_path('/mccoy/input/test.dcm', 'rb') as file_in, \
+            open_path('/mccoy/output/test.dcm', 'wb') as file_out:
+        data = file_in.read()
+        file_out.write(data)
+
 if does_dir_exist('/mccoy/input/test-object'):
     mkdir('/mccoy/output/test-object')
     if does_file_exist('/mccoy/input/test-object/test-integer'):
