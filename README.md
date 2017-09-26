@@ -21,7 +21,7 @@ Both input and outputs must have well defined data type definitions called a _sc
 The McCoy Platform uses an Json-Schema and some custom extensions to describe the Machine inputs and outputs as well as 
 some display information. 
 
-### Accounts, Organizations and Sharing
+### Accounts, Organizations, and Sharing
 If you are the first person from your organization to use the McCoy Platform, you can create an account and organization
 and log in using your email address as your username. If your organization already exists, you must be invited to join
 by one of your coworkers.
@@ -39,9 +39,9 @@ To see an example that uses a trained network to do image recognition, see the c
 
 To learn more about debugging and error handling on the McCoy platform please see the [test-err](../test-err/) example.
 
-To download and install Docker please visit [www.docker.com](https://www.docker.com/get-docker)
+To download and install Docker please visit [www.docker.com](https://www.docker.com/get-docker).
 
 To learn more about Docker we recommend reading the [docs](https://docs.docker.com/) or viewing 
 [this great pluralsight video](https://www.pluralsight.com/courses/docker-deep-dive).
 
-To log into the site and try it out visit [secure.mccoymed.com](https://secure.mccoymed.com)
+To log into the site and try it out visit [secure.mccoymed.com](https://secure.mccoymed.com).
