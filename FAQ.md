@@ -9,6 +9,9 @@ The best way to learn about how to create a machine on the McCoy Platform is to 
 #### How do I create a machine that take a Dicom file as input?
 To learn more about advanced input and output types, please see the [test-echo](/test-echo/README.md) example.
 
+#### How do I provide test or sample data for my machine?
+We reccomend using Google Drive, or Amazon S3 to publicly host sample images and data. You can then publish a link to that data in your Machine description.
+
 #### How do I quickly adapt an already working dockerfile?
 To see an example that uses a trained network to do image recognition, see the caffe example we adapated for our platform 
 [caffe-cpp_classification](../caffe-cpp_classification/).
