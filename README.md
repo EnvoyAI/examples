@@ -18,7 +18,7 @@ We call this packaged container a _machine_.
 ### Schema
 The data that your algorithm evaluates is called its _inputs_, the data your algorithm produces is called its _outputs_.
 Both input and outputs must have well defined data type definitions called a _schema_.
-The McCoy Platform uses an Json-Schema and some custom extensions to describe the Machine inputs and outputs as well as 
+The McCoy Platform uses an YAML-Schema and some custom extensions to describe the Machine inputs and outputs as well as 
 some display information. 
 
 ### Accounts, Organizations, and Sharing
