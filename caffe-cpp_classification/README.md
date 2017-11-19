@@ -1,5 +1,5 @@
 # Caffe Classification Example
-This example exists to demonstrate how to convert an existing project into one that can be used on the McCoy Platform.
+This example exists to demonstrate how to convert an existing project into one that can be used on the EnvoyAI Platform.
 
 The first step is to build the [Dockerfile](Dockerfile). This project already had a Dockerfile that we could work off of, so getting the runtime dependencies was trivial. 
 We just needed to specify an __ENTRYPOINT__ that would provide the path for the image input, and write the metadata __LABELs__.

@@ -40,13 +40,13 @@ if len(sys.argv) > 1:
     sys.stderr.write('bad arguments')
     sys.exit(1)
 
-# if no args were passed we read from /mccoy/input and write to /mccoy/output
-if does_dir_exist('/mccoy/input/test-dicom'):
-    mkdir('/mccoy/output/test-dicom')
+# if no args were passed we read from /envoyai/input and write to /envoyai/output
+if does_dir_exist('/envoyai/input/test-dicom'):
+    mkdir('/envoyai/output/test-dicom')
     n = 0  # each entry in an array is a file named by it's index
-    while does_file_exist('/mccoy/input/test-dicom' + '/' + str(n)):
-        subpath_in = '/mccoy/input/test-dicom' + '/' + str(n)
-        subpath_out = '/mccoy/output/test-dicom' + '/' + str(n)
+    while does_file_exist('/envoyai/input/test-dicom' + '/' + str(n)):
+        subpath_in = '/envoyai/input/test-dicom' + '/' + str(n)
+        subpath_out = '/envoyai/output/test-dicom' + '/' + str(n)
         with open_path(subpath_in, 'rb') as file_bytes_in, \
                 open_path(subpath_out, 'wb') as file_bytes_out:
             test_bytes = file_bytes_in.read()
