@@ -38,10 +38,10 @@ The McCoy Platform will be able to execute your algorithm as if it were running 
 ### 2 Schemas
 The __LABELs__ define the required schemas and metadata with JSON or YAML.
 
-Use the __LABEL__ `mccoy.schema_in` to specify the [JSON Schema](http://json-schema.org/) describing 
+Use the __LABEL__ `com.envoyai.schema-in` to specify the [JSON Schema](http://json-schema.org/) describing 
 the inputs to your algorithm.
 ```Dockerfile
-LABEL mccoy.schema_in "{ \
+LABEL com.envoyai.schema-in "{ \
     \"title\": \"test_hello\", \
     \"type\": \"object\", \
     \"properties\": { \
@@ -54,7 +54,7 @@ Also, it be titled 'hello' and appear first on the testing website.
 
 Don't forget to escape quotes and newlines with a backslash.
 
-Because this is a simple example, the __LABEL__ `mccoy.schema_out` specified an identical schema as `mccoy.schema_in`. 
+Because this is a simple example, the __LABEL__ `com.envoyai.schema-out` specified an identical schema as `com.envoyai.schema-in`. 
 Normally the input and output schemas would differ, for example the input schema might describe a DICOM image input, 
 and the output schema might describe a certain diagnosis string with a confidence percentage.
 
@@ -63,25 +63,25 @@ Next we will show extracts from helloworld project's [cmd.py](./cmd.py) to demon
 between the schemas and your algorithm.
 
 The input schema specified a single string input with the key `hello`. The executable must read from the file
-`/mccoy/input/hello` and it can expect the format to be a simple string 
+`/envoyai/input/hello` and it can expect the format to be a simple string 
 (as opposed to, for example, an integer or image file).
 ```python
-with open('/mccoy/input/hello', 'r') as file_in:
+with open('/envoyai/input/hello', 'r') as file_in:
     test_string = file_in.read()
 ```
 
 The output schema also specified a single string output with the key `hello`. Therefore the executable must 
-write to the file `/mccoy/output/hello`.
+write to the file `/envoyai/output/hello`.
 ```python
-with open('/mccoy/output/hello', 'w') as file_out:
+with open('/envoyai/output/hello', 'w') as file_out:
     file_out.write('hello ' + test_string)
 ```
 ### 4 Metadata
-Use the __LABEL__ `mccoy.info` to provide information about your algorithm. 
+Use the __LABEL__ `com.envoyai.info` to provide information about your algorithm. 
 
 This is where you name the algorithm and list it's author(s). 
 ```Dockerfile
-LABEL mccoy.info "{ \
+LABEL com.envoyai.info "{ \
     \"name\": \"Test Hello World\", \
     \"title\": \"Test machine for demonstration or testing purposes only\", \
     \"author\": \"Staff\", \

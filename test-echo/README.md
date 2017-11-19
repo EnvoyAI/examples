@@ -14,8 +14,8 @@ how they can be used to gather and display a rich set of data
 
 ##### YAML
 
-First an aside about YAML - Each of the JSON metadata fields (`mccoy.schema_in`,`mccoy.schema_out`,`mccoy.info`)
-can be specified with JSON, as they have been in each precceding example, or with YAML (a superset of JSON that 
+First an aside about YAML - Each of the JSON metadata fields (`com.envoyai.schema-in`,`com.envoyai.schema-out`,`com.envoyai.info`)
+can be specified with JSON, as they have been in each preceding example, or with YAML (a superset of JSON that 
 allows us to drop a lot of the cumbersome symbols). This is useful for this example because our schemas become 
 quite lengthy, and the additional readability goes a long way. The one catch is because the way Dockerfile labels
 capture strings, one must explicitly insert newlines `\n`. See test/echo's [Dockerfile](Dockerfile) for examples. 
@@ -23,26 +23,26 @@ capture strings, one must explicitly insert newlines `\n`. See test/echo's [Dock
 ## 1 Files
 
 About working with files - Accepting files as input and writing files as output is very simple.
-Despite the fact that the 'McCoy Integration API' can run over Web API where files need to be transcoded to and from
+Despite the fact that the 'EnvoyAI Integration API' can run over Web API where files need to be transcoded to and from
 strings, files can be read and written normally, and any concern about transmission can be safely left up to the 
-'McCoy Platform'. As a simple demonstration, the code below reads an image and modifies it by adding text. 
-The input file `/mccoy/input/image.png` can be read normally, and the `image.png` property of the output will 
-automatically assume the value of the file written to `/mccoy/input/image.png`.
+'EnvoyAI Platform'. As a simple demonstration, the code below reads an image and modifies it by adding text. 
+The input file `/envoyai/input/image.png` can be read normally, and the `image.png` property of the output will 
+automatically assume the value of the file written to `/envoyai/input/image.png`.
 ```python
 from PIL import Image, ImageDraw, ImageFont
 
-image = Image.open('/mccoy/input/image.png')
+image = Image.open('/envoyai/input/image.png')
 draw  = ImageDraw.Draw(image)
 font  = ImageFont.truetype('arial.ttf', 20, encoding='unic')
 draw.text( (10,10), 'Your Text', fill='#a00000', font=font)
-image.save('/mccoy/output/image.png','PNG')
+image.save('/envoyai/output/image.png','PNG')
 ```
 
 ## 2 Input
 
-In practice, all inputs defined by your algorithms `mccoy.schema_in` will be supplied via JSON over WebAPI via the 
-'McCoy Integration API', and one should not be too concerned with the exact user interface, as it may need to vary 
-system to system, or client to client. However for testing and demonstration purposes, at https://secure.mccoymed.com 
+In practice, all inputs defined by your algorithms `com.envoyai.schema-in` will be supplied via JSON over WebAPI via the 
+'EnvoyAI Integration API', and one should not be too concerned with the exact user interface, as it may need to vary 
+system to system, or client to client. However for testing and demonstration purposes, at https://portal.envoyai.com 
 we dynamically render input controls for any input type.
 
 ### 2.1 Simple Inputs
@@ -64,9 +64,9 @@ we dynamically render input controls for any input type.
 |Dicom      |`bytes`              |`test.jpg: {type: 'string', format: 'base64', title: 'test.dcm', _mime-type: 'image/dcm', '_control': 'file'}`               |![File](screenshots/input/dicom.gif)           |
 
 #### 2.1.2 Reading values
-Reading any of the above inputs from the provided files in the `/mccoy/input/` directory is strait forward. For example:
+Reading any of the above inputs from the provided files in the `/envoyai/input/` directory is strait forward. For example:
 ```python
-with open('/mccoy/input/test-string','r') as file_in:
+with open('/envoyai/input/test-string','r') as file_in:
     test_string = file_in.read()
 ```
 when using DateTime, Boolean, Integer, Float or Percentage the transformation step to convert the string into the
@@ -98,9 +98,9 @@ Data from a nested object input is available in a sub-directory. The values of t
 * `test-percentage`
 
 can be read from the files: 
-* `/mccoy/input/test-object/test-integer`
-* `/mccoy/input/test-object/test-float`
-* `/mccoy/input/test-object/test-percentage`
+* `/envoyai/input/test-object/test-integer`
+* `/envoyai/input/test-object/test-float`
+* `/envoyai/input/test-object/test-percentage`
 
 ### 2.3 Array Inputs
 
@@ -166,10 +166,10 @@ for example `array-name/0/test-int` would contain the value of the `test-int` pr
 array named `array-name`.
 ## 3 Output
 
-Similar to what has been stated above about inputs, all outputs defined by your algorithms `mccoy.schema_out` 
-will be supplied via JSON over WebAPI via the 'McCoy Integration API', and one should not be too concerned with the
+Similar to what has been stated above about inputs, all outputs defined by your algorithms `com.envoyai.schema-out` 
+will be supplied via JSON over WebAPI via the 'EnvoyAI Integration API', and one should not be too concerned with the
 exact user interface, as it may need to vary  system to system, or client to client. However for testing and 
-demonstration purposes, at https://secure.mccoymed.com we dynamically render outputs controls for any output type.
+demonstration purposes, at https://portal.envoyai.com we dynamically render outputs controls for any output type.
 
 ### 3.1 Simple Outputs
 
@@ -185,10 +185,10 @@ demonstration purposes, at https://secure.mccoymed.com we dynamically render out
 |Percentage |ex. `12%` &#124; .12 |`test-percentage: {type: 'number', format: 'percentage', title: 'test-percentage'}`                     |![Percentage](screenshots/output/percentage.gif)|
 |File       |`bytes`              |`test.zip: {type: 'string', format: 'base64', title: 'test.zip', _mime-type: 'application/octet-stream'`|![File](screenshots/output/file.gif)            |
 |Image      |`bytes`              |`test.jpg: {type: 'string', format: 'base64', title: 'test.jpg', _mime-type: 'image/jpg'}`              |![File](screenshots/output/image.gif)           |
-Writing any of the above inputs to the output directory `/mccoy/output/` directory is strait forward. For example:
+Writing any of the above inputs to the output directory `/envoyai/output/` directory is strait forward. For example:
 ```python
 test_string = "hello world"
-with open('/mccoy/output/test-string','w') as file_out:
+with open('/envoyai/output/test-string','w') as file_out:
     file_out.write(test_string)
 ```
 when using DateTime, Boolean, Integer, Float or Percentage the transformation step to convert from your programming language's data type
@@ -211,11 +211,11 @@ float_string = str(float_value)
 percentage_string = float(percentage_value*100)+'%'
 
 # writing to files
-with open('/mccoy/output/test-date','w') as date_out, \
-    open('/mccoy/output/test-bool','w') as bool_out, \
-    open('/mccoy/output/int-bool','w') as int_out, \
-    open('/mccoy/output/float-bool','w') as float_out, \
-    open('/mccoy/output/percentage-bool','w') as percentage_out:
+with open('/envoyai/output/test-date','w') as date_out, \
+    open('/envoyai/output/test-bool','w') as bool_out, \
+    open('/envoyai/output/int-bool','w') as int_out, \
+    open('/envoyai/output/float-bool','w') as float_out, \
+    open('/envoyai/output/percentage-bool','w') as percentage_out:
     date_out.write(date_string)
     bool_out.write(bool_string)
     int_out.write(int_string)
@@ -226,12 +226,12 @@ with open('/mccoy/output/test-date','w') as date_out, \
 ### 2.2 Nested Object Outputs
 
 Nested object output follows all of the conventions outlined in [Nested Object Input](#22-nested-object-inputs); 
-simply create a directory in `/mccoy/output` and put files with property values in the directory.
+simply create a directory in `/envoyai/output` and put files with property values in the directory.
 
 ### 3.3 Array Inputs
 
 [Arrays](#23-array-inputs)
 
 Nested object output follows all of the conventions outlined in [Array Input](#23-array-inputs); 
-simply create a directory in `/mccoy/output` and put files or directories named by index with 
+simply create a directory in `/envoyai/output` and put files or directories named by index with 
 property values in the directory.

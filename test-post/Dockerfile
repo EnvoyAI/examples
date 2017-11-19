@@ -6,38 +6,34 @@ RUN pip install python-dateutil
 ADD . /prog
 WORKDIR /prog
 ENTRYPOINT ["python","cmd.py"]
-CMD []
-LABEL mccoy.schema_in "{ \
-    \"title\": \"test_post\", \
-    \"type\": \"object\", \
-    \"properties\": { \
-        \"test-integer\": {\"type\": \"integer\", \"title\": \"test-integer\", \"_order\": 1} \
-    } \
-}"
-LABEL mccoy.schema_out "{ \
-    \"title\": \"test_post\", \
-    \"type\": \"object\", \
-    \"properties\": { \
-        \"test-integer\": {\"type\": \"integer\", \"title\": \"test-integer\", \"_order\": 1}, \
-        \"test-img-bars\": {\"type\": \"string\", \"format\": \"imageSrc\", \"title\": \"test-img-bars\", \"_mime-type\": \"image/jpg\", \"_order\": 2 }, \
-        \"test-integer-plus-one\": {\"type\": \"integer\", \"title\": \"test-integer\", \"_order\": 3} \
-    } \
-}"
-LABEL mccoy.info "{ \
-    \"name\": \"Test Post-Processing Machine\", \
-    \"title\": \"Test machine for demonstration or testing purposes only\", \
-    \"author\": \"Staff\", \
-    \"organization\": \"McCoy Medical Technologies\", \
-    \"abstract\": \"N/a\", \
-    \"date_trained\": \"N/a\", \
-    \"data_source\": \"N/a\", \
-    \"ground_truth\": \"N/a\", \
-    \"algorithm\": \"N/a\", \
-    \"performance\": \"N/a\", \
-    \"fda_status\": \"N/a\" \
-}"
-LABEL mccoy.var.url-1 "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/SMPTE_Color_Bars.svg/329px-SMPTE_Color_Bars.svg.png"
-LABEL mccoy.var.url-2 "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/PM5544_with_non-PAL_signals.png/320px-PM5544_with_non-PAL_signals.png"
 
-LABEL mccoy.postprocess.test-img-bars "vars['url-1']"
-LABEL mccoy.postprocess.test-integer-plus-one "output['test-integer'] && output['test-integer']+1"
+LABEL com.envoyai.schema-in="\
+test-integer:\n\
+  type: integer\n\
+  title: test-integer" \
+    com.envoyai.schema-out="\
+test-integer:\n\
+  type: integer\n\
+  title: test-integer\n\
+test-img-bars:\n\
+  mime-type: image/png\n\
+  title: test-img-bars\n\
+test-integer-plus-one:\n\
+  type: integer\n\
+  title: test-integer" \
+    com.envoyai.info="\
+name: Test Post-Processing Machine\n\
+title: Test machine for demonstration or testing purposes only\n\
+author: Staff\n\
+organization: McCoy Medical Technologies\n\
+abstract: N/a\n\
+date_trained: N/a\n\
+data_source: N/a\n\
+ground_truth: N/a\n\
+algorithm: N/a\n\
+performance: N/a\n\
+fda_status: N/a" \
+    com.envoyai.var.url-1="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/SMPTE_Color_Bars.svg/329px-SMPTE_Color_Bars.svg.png" \
+    com.envoyai.var.url-2="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/PM5544_with_non-PAL_signals.png/320px-PM5544_with_non-PAL_signals.png" \
+    com.envoyai.postprocess.test-img-bars="vars['url-1']" \
+    com.envoyai.postprocess.test-integer-plus-one="output['test-integer'] && output['test-integer']+1"

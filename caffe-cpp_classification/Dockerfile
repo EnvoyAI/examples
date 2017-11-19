@@ -44,69 +44,102 @@ ENV PYTHONPATH $PYCAFFE_ROOT:$PYTHONPATH
 ENV PATH $CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH
 RUN echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 
-ENTRYPOINT ["./build/examples/cpp_classification/classification.bin","models/bvlc_reference_caffenet/deploy.prototxt","models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel","data/ilsvrc12/imagenet_mean.binaryproto","data/ilsvrc12/synset_words.txt","/mccoy/input/image.jpg"]
-CMD []
+ENTRYPOINT ["./build/examples/cpp_classification/classification.bin","models/bvlc_reference_caffenet/deploy.prototxt","models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel","data/ilsvrc12/imagenet_mean.binaryproto","data/ilsvrc12/synset_words.txt","/envoyai/input/image.jpg"]
 
-LABEL mccoy.schema_in "{ \
-    \"type\": \"object\", \
-    \"properties\": { \
-        \"image.jpg\": { \
-            \"type\": \"string\", \
-            \"format\":\"base64\", \
-            \"title\":\"test.jpg\", \
-            \"_mime-type\":\"image/jpg\", \
-            \"_control\":\"file\" \
-        } \
-    } \
-}"
-LABEL mccoy.schema_out "{ \
-    \"type\": \"object\", \
-    \"properties\": { \
-        \"guess0\": { \
-            \"type\": \"string\", \
-            \"title\": \"First Guess\", \
-            \"_order\": 1 \
-        }, \
-        \"conf0\": { \
-            \"type\": \"number\", \
-            \"format\": \"percentage\", \
-            \"title\": \"First Guess Confidence\", \
-            \"_order\": 2 \
-        }, \
-        \"guess1\": { \
-            \"type\": \"string\", \
-            \"title\": \"Second Guess\", \
-            \"_order\": 3 \
-        }, \
-        \"conf1\": { \
-            \"type\": \"number\", \
-            \"format\": \"percentage\", \
-            \"title\": \"Second Guess Confidence\", \
-            \"_order\": 4 \
-        }, \
-        \"guess2\": { \
-            \"type\": \"string\", \
-            \"title\": \"Third Guess\", \
-            \"_order\": 5 \
-        }, \
-        \"conf2\": { \
-            \"type\": \"number\", \
-            \"format\": \"percentage\", \
-            \"title\": \"Third Guess Confidence\", \
-            \"_order\": 6 \
-        } \
-    } \
-}"
-LABEL mccoy.info "{ \
-    \"name\": \"Caffe Example C++ Classification\", \
-    \"title\": \"Caffe C++ Classification Example adapted for the mccoy platform.\", \
-    \"author\": \"Caffe adapted by McCoy Staff\", \
-    \"organization\": \"McCoy Medical Technologies\", \
-    \"abstract\": \"N/a\", \
-    \"date_trained\": \"N/a\", \
-    \"data_source\": \"ilsvrc training set\", \
-    \"ground_truth\": \"N/a\", \
-    \"algorithm\": \"Neural Net\", \
-    \"performance\": \"N/a\", \
-    \"fda_status\": \"N/a\" \
-}"
+LABEL \
+    com.envoyai.metadata-version="2" \
+    com.envoyai.nvidia="false" \
+    com.envoyai.schema-in="\
+image.jpg:\n\
+  title: Input Image\n\
+  mime-type: image/jpeg" \
+    com.envoyai.schema-out="\
+guess0:\n\
+  title: First Guess\n\
+  type: string \n\
+conf0:\n\
+  title: First Guess Confidence\n\
+  type: percentage\n\
+guess1:\n\
+  title: Second Guess\n\
+  type: string \n\
+conf1:\n\
+  title: Second Guess Confidence\n\
+  type: percentage\n\
+guess3:\n\
+  title: Third Guess\n\
+  type: string \n\
+conf3:\n\
+  title: Third Guess Confidence\n\
+  type: percentage" \
+    com.envoyai.info="\
+name: Caffe Example C++ Classification\n\
+title: Caffe C++ Classification Example adapted for the EnvoyAI platform.\n\
+author: Caffe adapted by EnvoyAI Staff\n\
+organization: Caffe and EnvoyAI\n\
+abstract: N/a\n\
+date-traned: N/a\n\
+data-source: ilsvrc training set\n\
+ground-truth: N/a\n\
+algorithm: Neural Net\n\
+performance: N/a\n\
+fda-status: N/a" \
+    com.envoyai.display="\
+source-display-group:\n\
+  display-elements:\n\
+    - title: Input Image\n\
+      id: input-image\n\
+      content:\n\
+        pointer:\n\
+          source: input\n\
+          property: image.jpg\n\
+results-display-group:\n\
+  presentation: tile\n\
+  display-elements:\n\
+    - title: First Guess\n\
+      id: guess-0\n\
+      content:\n\
+        pointer:\n\
+          source: output\n\
+          property: guess0\n\
+      associated-values:\n\
+        value:\n\
+          pointer:\n\
+            source: output\n\
+            property: conf0\n\
+        unit: percentage\n\
+        label: Confidence\n\
+    - title: Second Guess\n\
+      id: guess-1\n\
+      content:\n\
+        pointer:\n\
+          source: output\n\
+          property: guess1\n\
+      associated-values:\n\
+        value:\n\
+          pointer:\n\
+            source: output\n\
+            property: conf1\n\
+        unit: percentage\n\
+        label: Confidence\n\
+    - title: Third Guess\n\
+      id: guess-2\n\
+      content:\n\
+        pointer:\n\
+          source: output\n\
+          property: guess2\n\
+      associated-values:\n\
+        value:\n\
+          pointer:\n\
+            source: output\n\
+            property: conf2\n\
+        unit: percentage\n\
+        label: Confidence" \
+    com.envoyai.selector="\
+selector-type: choose-one-display-element\n\
+selector-config:\n\
+  choose-options:\n\
+    - guess-0\n\
+    - guess-1\n\
+    - guess-2\n\
+  default-option: guess-0"
