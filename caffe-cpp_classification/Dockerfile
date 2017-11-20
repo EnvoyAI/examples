@@ -49,6 +49,19 @@ ENTRYPOINT ["./build/examples/cpp_classification/classification.bin","models/bvl
 LABEL \
     com.envoyai.metadata-version="2" \
     com.envoyai.nvidia="false" \
+    com.envoyai.info="\
+name: Caffe Example C++ Classification\n\
+title: Caffe C++ Classification Example adapted for the EnvoyAI platform.\n\
+author: Caffe adapted by EnvoyAI Staff\n\
+organization: Caffe and EnvoyAI\n\
+abstract: N/a\n\
+date-traned: N/a\n\
+data-source: ilsvrc training set\n\
+ground-truth: N/a\n\
+algorithm: Neural Net\n\
+performance: N/a\n\
+fda-status: N/a\n\
+links: you can download a frog picture <a href='http://zso3597.cias.rit.edu/256/week4/project1/images/frog.jpg'>here</a>" \
     com.envoyai.schema-in="\
 image.jpg:\n\
   title: Input Image\n\
@@ -72,18 +85,6 @@ guess3:\n\
 conf3:\n\
   title: Third Guess Confidence\n\
   type: percentage" \
-    com.envoyai.info="\
-name: Caffe Example C++ Classification\n\
-title: Caffe C++ Classification Example adapted for the EnvoyAI platform.\n\
-author: Caffe adapted by EnvoyAI Staff\n\
-organization: Caffe and EnvoyAI\n\
-abstract: N/a\n\
-date-traned: N/a\n\
-data-source: ilsvrc training set\n\
-ground-truth: N/a\n\
-algorithm: Neural Net\n\
-performance: N/a\n\
-fda-status: N/a" \
     com.envoyai.display="\
 source-display-group:\n\
   display-elements:\n\
