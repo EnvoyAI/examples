@@ -15,7 +15,7 @@ how they can be used to gather and display a rich set of data
 ##### YAML
 
 First an aside about YAML - Each of the JSON metadata fields (`com.envoyai.schema-in`,`com.envoyai.schema-out`,`com.envoyai.info`)
-can be specified with JSON, as they have been in each preceding example, or with YAML (a superset of JSON that 
+can be specified with JSON, as they have been in each preceding example, or with YAML (a superset of JSON that
 allows us to drop a lot of the cumbersome symbols). This is useful for this example because our schemas become 
 quite lengthy, and the additional readability goes a long way. The one catch is because the way Dockerfile labels
 capture strings, one must explicitly insert newlines `\n`. See test/echo's [Dockerfile](Dockerfile) for examples. 
@@ -166,10 +166,10 @@ for example `array-name/0/test-int` would contain the value of the `test-int` pr
 array named `array-name`.
 ## 3 Output
 
-Similar to what has been stated above about inputs, all outputs defined by your algorithms `com.envoyai.schema-out` 
+Similar to what has been stated above regarding inputs, all outputs defined by your algorithms `com.envoyai.schema-out`
 will be supplied via JSON over WebAPI via the 'EnvoyAI Integration API', and one should not be too concerned with the
-exact user interface, as it may need to vary  system to system, or client to client. However for testing and 
-demonstration purposes, at https://portal.envoyai.com we dynamically render outputs controls for any output type.
+exact user interface, as it may need to vary system to system, or client to client. However for testing and
+demonstration purposes, you can use https://portal.envoyai.com which will dynamically render input and outputs controls for any types.
 
 ### 3.1 Simple Outputs
 
@@ -206,7 +206,7 @@ percentage_value= 0.85
 # example strings
 date_string = date_value.isoformat()
 bool_string = str(bool_value)
-int_string = int(int_value)
+int_string = str(int_value)
 float_string = str(float_value)
 percentage_string = float(percentage_value*100)+'%'
 

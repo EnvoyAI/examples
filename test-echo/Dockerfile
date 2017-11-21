@@ -6,7 +6,8 @@ RUN pip install python-dateutil
 ADD . /prog
 WORKDIR /prog
 ENTRYPOINT ["python","cmd.py"]
-LABEL com.envoyai.schema-in="\
+LABEL com.envoyai.nvidia=true \
+    com.envoyai.schema-in="\
 test-string: {type: 'string', title: 'test-string'}\n\
 test-paragraph: {type: 'string', title: 'test-paragraph'}\n\
 test-enum: {'enum': ['A', 'B', 'C'], title: 'test-enum'}\n\

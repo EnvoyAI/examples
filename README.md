@@ -9,7 +9,7 @@ Read this documentation and explore our examples to learn how to integrate your 
 ## Basics and Terminology
 
 ### Machine
-Yor algorithm can be any combination of trained statistical model, neural net, explicit procedure, decision tree or 
+Your algorithm can be any combination of trained statistical model, neural net, explicit procedure, decision tree or
 anything else you can imagine.
 In order for an algorithm to be used on the EnvoyAI Platform, it must be packaged into a container along with its runtime 
 requirements, schema information, and other metadata.
@@ -23,11 +23,11 @@ features to describe files and DICOM studies. Additionally the platform uses a s
 and outputs are to be displayed. Either JSON or YAML formatted schemas are accepted.
 
 ### Accounts, Organizations, and Sharing
-If you are the first person from your organization to use the EnvoyAI Platform, you can create an account and organization
-and log in using your email address as your username. If your organization already exists, you must be invited to join
-by one of your coworkers.
+If you are the first person from your organization to sign up with the EnvoyAI Platform, you can create an account and organization.
+Your email address will be your username. If your organization is already signed up, you must be invited to join
+by one of your coworkers to gain access.
 Each new organization will be given access to some example machines, the source code of which can be found in this repository.
-If you or someone else in your organization creates a new machine, your organization is now considered the _author_ of that machine.
+If you or others in your organization creates a new machine, your organization is now considered the _author_ of that machine.
 
 
 ## Examples and References
