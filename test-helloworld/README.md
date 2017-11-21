@@ -102,12 +102,12 @@ In the future this metadata will be searchable if you agree to make the algorith
 The McCoy Platform supports CUDA 8 and CudNN 5. If you require a different version, please contact us and we will 
 find a way to set it up for you.
 
-Use the __LABEL__ `mccoy.nvidia` to toggle on CUDA support.
+Use the __LABEL__ `com.envoyai.nvidia` to toggle on CUDA support.
 ```Dockerfile
-LABEL mccoy.nvidia True
+LABEL com.envoyai.nvidia=true
 ```
 
-You will likely want to base your Docker image off of an nvidia example.
+You will likely want to base your Docker image off of an NVidia example.
 ```Dockerfile
 FROM nvidia/cuda:8.0-cudnn5-runtime-ubuntu14.04
 ```
