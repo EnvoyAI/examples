@@ -16,7 +16,7 @@ out:\n\
 name: Test Err Machine\n\
 title: Test machine for demonstration or error handling purposes only\n\
 author: Staff\n\
-organization: McCoy Medical Technologies\n\
+organization: EnvoyAI\n\
 abstract: N/a\n\
 date_trained: N/a\n\
 data_source: N/a\n\
