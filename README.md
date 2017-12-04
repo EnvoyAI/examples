@@ -6,6 +6,17 @@ Partner with EnvoyAI to distribute your algorithm.
 
 Read this documentation and explore our examples to learn how to integrate your algorithm into the EnvoyAI Platform.
 
+# EnvoyAI Machine API Version 2
+
+We are almost done implementing a new version of the EnvoyAI Machine API. Version 1 Machines will continue to work
+on the dev portal, Version 2 Machines will being working on the dev portal very soon. Upgrading to version 2 Machines
+will be as simple as modifying a few Docker LABELs. In order for a Machine to be used with the EnvoyAI Liaison
+(in a clinical workflow) it must use Machine API Version 2.
+
+All examples and documentation will now refer to version 2, but if you want to refer back to the version 1 documentation
+please check the v1 branch of this repository.
+
+
 ## Basics and Terminology
 
 ### Machine

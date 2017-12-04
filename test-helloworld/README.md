@@ -41,13 +41,10 @@ The __LABELs__ define the required schemas and metadata with JSON or YAML.
 Use the __LABEL__ `com.envoyai.schema-in` to specify the [JSON Schema](http://json-schema.org/) describing 
 the inputs to your algorithm.
 ```Dockerfile
-LABEL com.envoyai.schema-in "{ \
-    \"title\": \"test_hello\", \
-    \"type\": \"object\", \
-    \"properties\": { \
-        \"hello\": {\"type\": \"string\", \"title\": \"hello\", \"_order\": 1} \
-    } \
-}"
+LABEL com.envoyai.schema-in="\
+hello:\n\
+ type: string\n\
+ title: hello"
 ```
 Such an input schema as above declares that there will be exactly one input to the algorithm of the datatype 'string'.
 Also, it be titled 'hello' and appear first on the testing website.
@@ -81,19 +78,18 @@ Use the __LABEL__ `com.envoyai.info` to provide information about your algorithm
 
 This is where you name the algorithm and list it's author(s). 
 ```Dockerfile
-LABEL com.envoyai.info "{ \
-    \"name\": \"Test Hello World\", \
-    \"title\": \"Test machine for demonstration or testing purposes only\", \
-    \"author\": \"Staff\", \
-    \"organization\": \"McCoy Medical Technologies\", \
-    \"abstract\": \"N/a\", \
-    \"date_trained\": \"N/a\", \
-    \"data_source\": \"N/a\", \
-    \"ground_truth\": \"N/a\", \
-    \"algorithm\": \"N/a\", \
-    \"performance\": \"N/a\", \
-    \"fda_status\": \"N/a\" \
-}"
+LABEL com.envoyai.info="\
+name: Test Hello World\n\
+title: Test machine for demonstration or testing purposes only\n\
+author: Staff\n\
+organization: McCoy Medical Technologies\n\
+abstract: N/a\n\
+date_trained: N/a\n\
+data_source: N/a\n\
+ground_truth: N/a\n\
+algorithm: N/a\n\
+performance: N/a\n\
+fda_status: N/\n"
 ```
 
 In the future this metadata will be searchable if you agree to make the algorithm publicly available.

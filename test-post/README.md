@@ -6,26 +6,27 @@ In addition to providing output parameters by writing files in your Docker image
 
 You'll notice that despite the fact that [cmd.py](cmd.py) only writes a single file to provide the value for `test-integer`, the [Dockerfile](Dockerfile) supplies three output parameters: `test-integer`, `test-img-bars`, and `test-integer-plus-one`
 ```Dockerfile
-LABEL com.envoyai.schema-out "{ \
-    \"title\": \"test_post\", \
-    \"type\": \"object\", \
-    \"properties\": { \
-        \"test-integer\": {\"type\": \"integer\", \"title\": \"test-integer\", \"_order\": 1}, \
-        \"test-img-bars\": {\"type\": \"string\", \"format\": \"imageSrc\", \"title\": \"test-img-bars\", \"_mime-type\": \"image/jpg\", \"_order\": 2 }, \
-        \"test-integer-plus-one\": {\"type\": \"integer\", \"title\": \"test-integer\", \"_order\": 3} \
-    } \
-}"
+LABEL com.envoyai.schema-out="\
+test-integer:\n\
+  type: integer\n\
+  title: test-integer\n\
+test-img-bars:\n\
+  mime-type: image/png\n\
+  title: test-img-bars\n\
+test-integer-plus-one:\n\
+  type: integer\n\
+  title: test-integer" \
 ```
 
 ---
 
 The [Dockerfile](Dockerfile) defines `com.envoyai.vars.*` `com.envoyai.postprocess.*` __LABELs__ to provide the values for `test-img-bars` and `test-integer-plus-one`.
 ```Dockerfile
-LABEL com.envoyai.var.url-1 "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/SMPTE_Color_Bars.svg/329px-SMPTE_Color_Bars.svg.png"
-LABEL com.envoyai.var.url-2 "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/PM5544_with_non-PAL_signals.png/320px-PM5544_with_non-PAL_signals.png"
+LABEL com.envoyai.var.url-1="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/SMPTE_Color_Bars.svg/329px-SMPTE_Color_Bars.svg.png" \
+com.envoyai.var.url-2="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/PM5544_with_non-PAL_signals.png/320px-PM5544_with_non-PAL_signals.png" \
 
-LABEL com.envoyai.postprocess.test-img-bars "vars['url-1']"
-LABEL com.envoyai.postprocess.test-integer-plus-one "output['test-integer'] && output['test-integer']+1"
+com.envoyai.postprocess.test-img-bars="vars['url-1']" \
+com.envoyai.postprocess.test-integer-plus-one="output['test-integer'] && output['test-integer']+1"
 ```
 
 Each `com.envoyai.postprocess.*` is a javascript expression. Each expression will be evaluated and its value set to the output parameter of the same name. Post-process expressions have access to three variables. _Note: a post-process step may change an output value originally provided by the executable._
