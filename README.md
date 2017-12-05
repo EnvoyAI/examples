@@ -31,7 +31,7 @@ The data that your algorithm evaluates is called its _inputs_, the data your alg
 Both input and outputs must have well defined data type definitions called a _schema_.
 The EnvoyAI Platform is based on [JSON-Schema](http://json-schema.org) but uses different defaults, and has additional 
 features to describe files and DICOM studies. Additionally the platform uses a similar schema to define how the inputs 
-and outputs are to be displayed. Both JSON and YAML formatted schemas are accepted.
+and outputs are to be displayed. Either JSON or YAML formatted schemas are accepted.
 
 ### Accounts, Organizations, and Sharing
 If you are the first individual from your organization to sign up with the EnvoyAI Platform, you can create an account and your organization's profile.

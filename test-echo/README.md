@@ -23,7 +23,7 @@ Dockerfile labels capture strings, one must explicitly insert newlines `\n`. See
 ## 1 Files
 
 About working with files - Accepting files as input and writing files as output is very simple on our platform.
-Despite the fact that the 'EnvoyAI Integration API' can run over HTTP/HTTPS where files need to be transcoded to and from
+Despite the fact that the 'EnvoyAI Integration API' can run over WebApi where files need to be transcoded to and from
 strings. Files, however can be read and written normally, and any concern about transmission overhead is managed by 
 the 'EnvoyAI Platform'. As a simple demonstration, the code below reads an image and modifies it by adding text. 
 The input file `/envoyai/input/image.png` can be read normally, and the `image.png` property of the output will 
@@ -40,8 +40,8 @@ image.save('/envoyai/output/image.png','PNG')
 
 ## 2 Input
 
-In practice, all inputs defined by your algorithm `com.envoyai.schema-in` will be supplied via JSON over HTTP/HTTPS via the 
-'EnvoyAI Integration API'.  One should not be concerned with the exact user interface presentation/experience, as it may need to vary 
+In practice, all inputs defined by your algorithm `com.envoyai.schema-in` will be supplied via JSON over WebApi via the 
+'EnvoyAI Integration API'.  One should not be concerned with the exact user interface presentation, as it may need to vary 
 system-to-system, or client-to-client. However for testing and demonstration purposes we dynamically render input controls for any input type (see 
 https://portal.envoyai.com).
 
