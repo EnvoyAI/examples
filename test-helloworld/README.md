@@ -5,7 +5,7 @@ Developing for the EnvoyAI Platform requires you to:
 * [Provide schemas describing the inputs and outputs of your algorithm](#2-schemas)
 * [Write an executable script that will run your algorithm reading and writing files as specified in the schemas](#3-executable)
 * [Provide metadata about your algorithm](#4-metadata)
-* [(optional) Toggle Nvidia CUDA support](#5-cuda)
+* [(optional) Toggle nVidia CUDA support](#5-cuda)
 
 ## Learn By Example
 
@@ -95,14 +95,14 @@ fda_status: N/\n"
 In the future this metadata will be searchable if you agree to make the algorithm publicly available.
 
 ### 5 CUDA
-The EnvoyAI Platform supports Nvidia CUDA 8 and CuDNN 5. If your algorithm require a different version, please contact us and we will try to make it available.
+The EnvoyAI Platform supports nVidia CUDA 8 and CuDNN 5. If your algorithm require a different version, please contact us and we will try to make it available.
 
 Use the __LABEL__ `com.envoyai.nvidia` to enable CUDA support.
 ```Dockerfile
 LABEL com.envoyai.nvidia=true
 ```
 
-You will likely want to base your Docker image off of an Nvidia example.
+You will likely want to base your Docker image off of an nVidia example.
 ```Dockerfile
 FROM nvidia/cuda:8.0-cudnn5-runtime-ubuntu14.04
 ```
