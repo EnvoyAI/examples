@@ -13,7 +13,7 @@ To learn more about advanced input and output types, please see the [test-echo](
 We reccomend using Google Drive, or Amazon S3 to publicly host sample images and data. You can then publish a link to that data in your Machine description.
 
 #### How do I quickly adapt an already working dockerfile?
-To see an example that uses a trained network to do image recognition, see the caffe example we adapated for our platform 
+To see an example that uses a trained network to do image recognition, see the caffe example we adapted for our platform 
 [caffe-cpp_classification](./caffe-cpp_classification/).
 
 #### How do I view debugging information about my machine when its running on the platform?
