@@ -1,15 +1,15 @@
 # Getting Started - Learn By Example
 
-Developing for the McCoy Platform requires you to:
+Developing for the EnvoyAI Platform requires you to:
 * [Build a Docker image containing all runtime dependencies of your algorithm](#1-docker)
 * [Provide schemas describing the inputs and outputs of your algorithm](#2-schemas)
 * [Write an executable script that will run your algorithm reading and writing files as specified in the schemas](#3-executable)
 * [Provide metadata about your algorithm](#4-metadata)
-* [(optional) Toggle CUDA support](#5-cuda)
+* [(optional) Toggle nVidia CUDA support](#5-cuda)
 
 ## Learn By Example
 
-We will use our [helloworld](.) example project to demonstrate.
+We will use our [helloworld](.) example project to demonstrate the development process.
 
 ### 1 Docker
 First we will show extracts from the helloworld project's [Dockerfile](./Dockerfile).
@@ -27,13 +27,13 @@ ADD . /prog
 ```
 If the executable had any supporting files (more source code or trained networks) those would also be included as well.
 
-The __WORKDIR__, __ENTRYPOINT__ and __CMD__ commands all work together to allow the McCoy Platform to run the executable.
+The __WORKDIR__, __ENTRYPOINT__ and __CMD__ commands all work together to allow the EnvoyAI Platform to run the executable.
 ```Dockerfile
 WORKDIR /prog
 ENTRYPOINT ["python","cmd.py"]
 CMD []
 ```
-The McCoy Platform will be able to execute your algorithm as if it were running `$ python cmd.py` from a shell.
+The EnvoyAI Platform will be able to execute your algorithm as if it were running `$ python cmd.py` from a shell.
 
 ### 2 Schemas
 The __LABELs__ define the required schemas and metadata with JSON or YAML.
@@ -76,13 +76,13 @@ with open('/envoyai/output/hello', 'w') as file_out:
 ### 4 Metadata
 Use the __LABEL__ `com.envoyai.info` to provide information about your algorithm. 
 
-This is where you name the algorithm and list it's author(s). 
+This is where you name the algorithm and list its author(s). 
 ```Dockerfile
 LABEL com.envoyai.info="\
 name: Test Hello World\n\
 title: Test machine for demonstration or testing purposes only\n\
 author: Staff\n\
-organization: McCoy Medical Technologies\n\
+organization: EnvoyAI\n\
 abstract: N/a\n\
 date_trained: N/a\n\
 data_source: N/a\n\
@@ -95,15 +95,14 @@ fda_status: N/\n"
 In the future this metadata will be searchable if you agree to make the algorithm publicly available.
 
 ### 5 CUDA
-The McCoy Platform supports CUDA 8 and CudNN 5. If you require a different version, please contact us and we will 
-find a way to set it up for you.
+The EnvoyAI Platform supports nVidia CUDA 8 and CuDNN 5. If your algorithm require a different version, please contact us and we will try to make it available.
 
-Use the __LABEL__ `com.envoyai.nvidia` to toggle on CUDA support.
+Use the __LABEL__ `com.envoyai.nvidia` to enable CUDA support.
 ```Dockerfile
 LABEL com.envoyai.nvidia=true
 ```
 
-You will likely want to base your Docker image off of an NVidia example.
+You will likely want to base your Docker image off of an nVidia example.
 ```Dockerfile
 FROM nvidia/cuda:8.0-cudnn5-runtime-ubuntu14.04
 ```

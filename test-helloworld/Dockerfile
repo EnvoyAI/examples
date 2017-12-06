@@ -20,7 +20,7 @@ com.envoyai.info="\
 name: Test Hello World\n\
 title: Test machine for demonstration or testing purposes only\n\
 author: Staff\n\
-organization: McCoy Medical Technologies\n\
+organization: EnvoyAI\n\
 abstract: N/a\n\
 date_trained: N/a\n\
 data_source: N/a\n\
