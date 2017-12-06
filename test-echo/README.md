@@ -48,14 +48,14 @@ system-to-system, or client-to-client. However for testing and demonstration pur
 
 #### 2.1.1 Reference Table
 
-|Type       |In Code              |JSON Schema Property                                                                                                         |Screenshot                                     |
-|-----------|---------------------|-----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
+|Type       |In Code              |JSON Schema Property                               |Screenshot                                     |
+|-----------|---------------------|---------------------------------------------------|-----------------------------------------------|
 |String     |`string`             |`test-string: {type: 'string'}`                    |![String](screenshots/input/string.gif)        |
 |Enum       |`string`             |`test-enum: {'enum': ['A', 'B', 'C']}`             |![Enum](screenshots/input/enum.gif)            |
 |DateTime   |`string` in ISO-8601 |`test-date: {type: 'date-time'}`                   |![DateTime](screenshots/input/datetime.gif)    |
 |Boolean    |`True` &#124; `False`|`test-bool: {type: 'boolean'}`                     |![Boolean](screenshots/input/boolean.gif)      |
-|Integer    |`string`             |`test-integer: {type: 'integer'}`                  |![Integer](screenshots/input/integer.gif)      |
-|Float      |`string`             |`test-float: {type: 'number'}`                     |![Float](screenshots/input/float.gif)          |
+|Integer    |`string` (must parse)|`test-integer: {type: 'integer'}`                  |![Integer](screenshots/input/integer.gif)      |
+|Float      |`string` (must parse)|`test-float: {type: 'number'}`                     |![Float](screenshots/input/float.gif)          |
 |Percentage |`string` ex. `12%`   |`test-percentage: {type: 'percentage'}`            |![Percentage](screenshots/input/percentage.gif)|
 |File       |`byte[]`             |`test.zip: {mime-type: 'application/octet-stream'}`|![File](screenshots/input/file.gif)            |
 |Image      |`byte[]`             |`test.jpg: {mime-type: 'image/jpg'}`               |![Image](screenshots/input/image.gif)          |
@@ -108,13 +108,12 @@ An array of strings, or any other json-schema primitive, can be defined in the s
 `type` in the `items` sub-property.
 
 ```yaml
-properties:
-  test-keywords-array:
-    type: 'array'
-    items:
-      title: 'keyword'
-      type: 'string'
-    title: 'test-keywords-array'
+test-keywords-array:
+  title: 'test-keywords-array'
+  type: 'array'
+  items:
+    title: 'keyword'
+    type: 'string'
 ```
 
 Arrays will render multiple inputs very similarly to the named inputs in the [Simple Inputs Table](#21-simple-inputs). 
@@ -125,17 +124,20 @@ Notice that the array input control requires the user to specify the length of t
 #### 2.3.2 Array of Nested Objects
 
 Using array inputs is especially powerful when used with a defined schema to produce a list of nested objects. This 
-example uses an image url and associated title. 
+example uses an image url and associated name.
 
 
 ```yaml
-properties:
-  test-keywords-array:
-    type: 'array'
-    items:
-      title: 'keyword'
-      type: 'object'
-    title: 'test-keywords-array'
+test-keywords-array:
+  title: 'test-keywords-array'
+  type: 'array'
+  items:
+    title: 'keyword'
+    type: 'object'
+      properties:
+        url: {type: string, title: Image}
+        title: {type: string, title: Title}
+
 ```
 
 The input controls follow the same conventions already defined.
@@ -145,15 +147,11 @@ The input controls follow the same conventions already defined.
 Array inputs are also useful to accept a number of files for instance in the case of multiple slices of the same image.
 In this case the input control is a directory upload form.
 ```yaml
-properties:
-  test-file-array:
-    type: 'array'
-    items:
-      type: 'string'
-      format: 'base64'
-      '_mime-type': 'application/octet-stream'
-    title: 'test-file-array'
-    '_control': 'directory'
+test-file-array:
+  title: 'test-file-array'
+  type: 'array'
+  items:
+    mime-type: 'application/octet-stream'
 ```
 ![Array-dir](screenshots/input/array-dir.gif)
 
@@ -171,18 +169,17 @@ demonstration purposes, you can use https://portal.envoyai.com which will dynami
 
 ### 3.1 Simple Outputs
 
-|Type       |In Code              |JSON Schema Property                                                                                    |Screenshot                                      |
-|-----------|---------------------|--------------------------------------------------------------------------------------------------------|------------------------------------------------|
-|String     |`string`             |`test-string: {type: 'string', title: 'test-string'}`                                                   |![String](screenshots/output/string.gif)        |
-|String     |URL &#124; Data URI  |`test-string: {type: 'string', title: 'test-string', format: 'imageSrc'}`                               |![String](screenshots/output/image.gif)        |
-|Enum       |`string`             |`test-enum: {type: 'string', 'enum': ['A', 'B', 'C'], title: 'test-enum'}`                              |![Enum](screenshots/output/enum.gif)            |
-|DateTime   |ISO-8601             |`test-date: {type: 'string', format: 'date-time', title: 'test-date'}`                                  |![DateTime](screenshots/output/datetime.gif)    |
-|Boolean    |`True` &#124; `False`|`test-bool: {type: 'boolean', title: 'test-bool'}`                                                      |![Boolean](screenshots/output/boolean.gif)      |
-|Integer    |`string`             |`test-integer: {type: 'integer', title: 'test-integer'}`                                                |![Integer](screenshots/output/integer.gif)      |
-|Float      |`string`             |`test-float: {type: 'number', title: 'test-float'}`                                                     |![Float](screenshots/output/float.gif)          |
-|Percentage |ex. `12%` &#124; .12 |`test-percentage: {type: 'number', format: 'percentage', title: 'test-percentage'}`                     |![Percentage](screenshots/output/percentage.gif)|
-|File       |`bytes`              |`test.zip: {type: 'string', format: 'base64', title: 'test.zip', _mime-type: 'application/octet-stream'`|![File](screenshots/output/file.gif)            |
-|Image      |`bytes`              |`test.jpg: {type: 'string', format: 'base64', title: 'test.jpg', _mime-type: 'image/jpg'}`              |![File](screenshots/output/image.gif)           |
+|Type       |In Code              |JSON Schema Property                               |Screenshot                                      |
+|-----------|---------------------|---------------------------------------------------|------------------------------------------------|
+|String     |`string`             |`test-string: {type: 'string'}`                    |![String](screenshots/output/string.gif)        |
+|Enum       |`string`             |`test-enum: {'enum': ['A', 'B', 'C']'}`            |![Enum](screenshots/output/enum.gif)            |
+|DateTime   |`string` in ISO-8601 |`test-date: {type: 'date-time'}`                   |![DateTime](screenshots/output/datetime.gif)    |
+|Boolean    |`True` &#124; `False`|`test-bool: {type: 'boolean'}`                     |![Boolean](screenshots/output/boolean.gif)      |
+|Integer    |`string` (must parse)|`test-integer: {type: 'integer'}`                  |![Integer](screenshots/output/integer.gif)      |
+|Float      |`string` (must parse)|`test-float: {type: 'number'}`                     |![Float](screenshots/output/float.gif)          |
+|Percentage |`string` ex. `12%`   |`test-percentage: {type: 'percentage'}`            |![Percentage](screenshots/output/percentage.gif)|
+|File       |`byte[]`             |`test.zip: {mime-type: 'application/octet-stream'}`|![File](screenshots/output/file.gif)            |
+|Image      |`byte[]`             |`test.jpg: {mime-type: 'image/jpeg'}`              |![File](screenshots/output/image.gif)           |
 Writing any of the above inputs to the output directory `/envoyai/output/` directory is straightforward. For example:
 ```python
 test_string = "hello world"
