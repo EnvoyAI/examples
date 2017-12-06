@@ -44,7 +44,7 @@ If you or others in your organization creates a new machine, your organization i
 ## Examples and References
 The best way to learn about how to create a machine on the EnvoyAI Platform is to read the [helloworld walk-through](./test-helloworld/README.md).
 
-To learn more about advanced input and output types, please see the [test-echo](/test-echo/README.md) example.
+To learn more about advanced input and output types, please see the [test-echo](./test-echo/README.md) example.
 
 To see an example that uses a trained network to do image recognition, see the caffe example we adapted for our platform 
 [caffe-cpp_classification](./caffe-cpp_classification/).
