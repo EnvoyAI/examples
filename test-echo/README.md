@@ -15,10 +15,9 @@ how they can be used to gather and display a rich set of data
 ##### YAML
 
 First an aside about YAML - Each of the JSON metadata fields (`com.envoyai.schema-in`,`com.envoyai.schema-out`,`com.envoyai.info`)
-can be specified with JSON, or with YAML (a superset of JSON that
-allows us to avoid much of the heavy tagging). This becomes a huge benefit as your schemas grow in sophistication.     
-An important "gotcha" about your Dockerfile definition relates to the manner in which 
-Dockerfile labels capture strings, one must explicitly insert newlines `\n`. See test/echo's [Dockerfile](Dockerfile) for examples. 
+can be specified with JSON, or with YAML (a superset of JSON that allows us to drop a lot of the cumbersome symbols).
+An important "gotcha" when using YAML in a Dockerfile LABEL is that, because the way they caputre strings, each LABEL must have
+explicit newline characters using `\n` at the end of each line. See test/echo's [Dockerfile](Dockerfile) for examples.
 
 ## 1 Files
 
@@ -42,8 +41,8 @@ image.save('/envoyai/output/image.png','PNG')
 
 In practice, all inputs defined by your algorithm `com.envoyai.schema-in` will be supplied via JSON over WebApi via the 
 'EnvoyAI Integration API'.  One should not be concerned with the exact user interface presentation, as it may need to vary 
-system-to-system, or client-to-client. However for testing and demonstration purposes we dynamically render input controls for any input type (see 
-https://portal.envoyai.com).
+system-to-system, or client-to-client. However for testing and demonstration purposes use
+[portal.envoyai.com](https://portal.envoyai.com), where we dynamically render input controls for any input type.
 
 ### 2.1 Simple Inputs
 
@@ -51,17 +50,16 @@ https://portal.envoyai.com).
 
 |Type       |In Code              |JSON Schema Property                                                                                                         |Screenshot                                     |
 |-----------|---------------------|-----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
-|String     |`string`             |`test-string: {type: 'string', title: 'test-string'}`                                                                        |![String](screenshots/input/string.gif)        |
-|Paragraph  |`string`             |`test-paragraph: {type: 'string', title: 'test-paragraph','_control': 'textarea'}`                                           |![Paragraph](screenshots/input/paragraph.gif)  |
-|Enum       |`string`             |`test-enum: {type: 'string', 'enum': ['A', 'B', 'C'], title: 'test-enum'}`                                                   |![Enum](screenshots/input/enum.gif)            |
-|DateTime   |ISO-8601             |`test-date: {type: 'string', format: 'date-time', title: 'test-date'}`                                                       |![DateTime](screenshots/input/datetime.gif)    |
-|Boolean    |`True` &#124; `False`|`test-bool: {type: 'boolean', title: 'test-bool'}`                                                                           |![Boolean](screenshots/input/boolean.gif)      |
-|Integer    |`string`             |`test-integer: {type: 'integer', title: 'test-integer'}`                                                                     |![Integer](screenshots/input/integer.gif)      |
-|Float      |`string`             |`test-float: {type: 'number', title: 'test-float'}`                                                                          |![Float](screenshots/input/float.gif)          |
-|Percentage |ex. `12%`            |`test-percentage: {type: 'number', format: 'percentage', title: 'test-percentage'}`                                          |![Percentage](screenshots/input/percentage.gif)|
-|File       |`bytes`              |`test.zip: {type: 'string', format: 'base64', title: 'test.zip', _mime-type: 'application/octet-stream', '_control': 'file'}`|![File](screenshots/input/file.gif)            |
-|Image      |`bytes`              |`test.jpg: {type: 'string', format: 'base64', title: 'test.jpg', _mime-type: 'image/jpg', '_control': 'file'}`               |![Image](screenshots/input/image.gif)           |
-|Dicom      |`bytes`              |`test.jpg: {type: 'string', format: 'base64', title: 'test.dcm', _mime-type: 'image/dcm', '_control': 'file'}`               |![Dicom](screenshots/input/dicom.gif)           |
+|String     |`string`             |`test-string: {type: 'string'}`                    |![String](screenshots/input/string.gif)        |
+|Enum       |`string`             |`test-enum: {'enum': ['A', 'B', 'C']}`             |![Enum](screenshots/input/enum.gif)            |
+|DateTime   |`string` in ISO-8601 |`test-date: {type: 'date-time'}`                   |![DateTime](screenshots/input/datetime.gif)    |
+|Boolean    |`True` &#124; `False`|`test-bool: {type: 'boolean'}`                     |![Boolean](screenshots/input/boolean.gif)      |
+|Integer    |`string`             |`test-integer: {type: 'integer'}`                  |![Integer](screenshots/input/integer.gif)      |
+|Float      |`string`             |`test-float: {type: 'number'}`                     |![Float](screenshots/input/float.gif)          |
+|Percentage |`string` ex. `12%`   |`test-percentage: {type: 'percentage'}`            |![Percentage](screenshots/input/percentage.gif)|
+|File       |`byte[]`             |`test.zip: {mime-type: 'application/octet-stream'}`|![File](screenshots/input/file.gif)            |
+|Image      |`byte[]`             |`test.jpg: {mime-type: 'image/jpg'}`               |![Image](screenshots/input/image.gif)          |
+|Dicom      |`byte[]`             |`test.jpg: {mime-type: 'image/dcm'}`               |![Dicom](screenshots/input/dicom.gif)          |
 
 #### 2.1.2 Reading values
 Reading any of the above inputs from the provided files in the `/envoyai/input/` directory is straightforward. For example:

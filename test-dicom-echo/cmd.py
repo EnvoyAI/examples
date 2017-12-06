@@ -5,11 +5,11 @@ import functools
 
 # --------HELPER FUNCTIONS--------
 def build_path(path):
-    if 'MCCOY_DEV' in os.environ and os.environ['MCCOY_DEV'] == 'true':
+    if 'ENVOYAI_DEV' in os.environ and os.environ['ENVOYAI_DEV'] == 'true':
         return functools.reduce(
             lambda acc, v: acc + '\\' + v,
             filter(lambda o: len(o) > 0, path.split('/')),
-            'C:\\Git\mccoy_examples\\test\\test-dicom-echo')
+            'C:\\Git\envoyai_examples\\test\\test-dicom-echo')
     else:
         return path
 

@@ -10,8 +10,8 @@ Read this documentation and explore our examples to learn how to integrate your 
 
 We are almost done implementing a new version of the EnvoyAI Machine API. Version 1 Machines will continue to work
 on the dev portal.  Version 2 Machines are planned to be working on the dev portal very soon. Upgrading to version 2 Machines
-will be as simple as modifying a few Docker LABELs. In order for a Machine to be used (in a clinical workflow) with the EnvoyAI Liaison integration appliance
-it must use Machine API Version 2.
+will be as simple as modifying a few Docker LABELs. In order for a Machine to be used with the EnvoyAI Liaison integration
+appliance, a requirement for use in a clinical workflow, it must use Machine API Version 2.
 
 All examples and documentation will now refer to version 2, but if you want to refer back to the version 1 documentation
 please check the v1 branch of this repository.
@@ -34,15 +34,15 @@ features to describe files and DICOM studies. Additionally the platform uses a s
 and outputs are to be displayed. Either JSON or YAML formatted schemas are accepted.
 
 ### Accounts, Organizations, and Sharing
-If you are the first individual from your organization to sign up with the EnvoyAI Platform, you can create an account and your organization's profile.
+If you are the first person from your organization to sign up with the EnvoyAI Platform, you can create an account and organization.
 Your email address will be your username. If, however, your organization is already signed up, you must be invited to join
-by one of your colleagues to gain access.
+by one of your coworkers to gain access.
 Each new organization will be given access to some example machines, the source code of which can be found in this repository.
 If you or others in your organization creates a new machine, your organization is now considered the _author_ of that machine.
 
 
 ## Examples and References
-The best way to learn about how to create a machine on the EnvoyAI Platform is to explore the [helloworld walk-through](./test-helloworld/README.md).
+The best way to learn about how to create a machine on the EnvoyAI Platform is to read the [helloworld walk-through](./test-helloworld/README.md).
 
 To learn more about advanced input and output types, please see the [test-echo](/test-echo/README.md) example.
 
