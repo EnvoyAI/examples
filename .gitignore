@@ -3,4 +3,4 @@
 *.swo
 .idea/
 dbs/
-test/**/output
+test/
