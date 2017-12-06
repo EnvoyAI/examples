@@ -4,7 +4,7 @@ In addition to providing output parameters by writing files in your Docker image
 
 ---
 
-You'll notice that despite the fact that [cmd.py](cmd.py) only writes a single file to provide the value for `test-integer`, the [Dockerfile](Dockerfile) supplies three output parameters: `test-integer`, `test-img-bars`, and `test-integer-plus-one`
+You will notice that despite the fact that [cmd.py](cmd.py) only writes a single file to provide the value for `test-integer`, the [Dockerfile](Dockerfile) supplies three output parameters: `test-integer`, `test-img-bars`, and `test-integer-plus-one`
 ```Dockerfile
 LABEL com.envoyai.schema-out="\
 test-integer:\n\
@@ -29,7 +29,7 @@ com.envoyai.postprocess.test-img-bars="vars['url-1']" \
 com.envoyai.postprocess.test-integer-plus-one="output['test-integer'] && output['test-integer']+1"
 ```
 
-Each `com.envoyai.postprocess.*` is a javascript expression. Each expression will be evaluated and its value set to the output parameter of the same name. Post-process expressions have access to three variables. _Note: a post-process step may change an output value originally provided by the executable._
+Each `com.envoyai.postprocess.*` is a JavaScript expression. Each expression will be evaluated and its value set to the output parameter of the same name. Post-process expressions have access to three variables. _Note: a post-process step may change an output value originally provided by the executable._
   * `input` A json object containing a mapping of all input parameters names to their respective value.
   * `output`A json object containing a mapping of all output parameters names to their respective value. _Note: a post-process step may reference a value set by a previous post-process step; post-process steps are evaluated in lexographical order._  
   * `vars` A json object containing a mapping of all `com.envoyai.var.*` __LABEL__ names to their string values.

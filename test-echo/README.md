@@ -15,17 +15,16 @@ how they can be used to gather and display a rich set of data
 ##### YAML
 
 First an aside about YAML - Each of the JSON metadata fields (`com.envoyai.schema-in`,`com.envoyai.schema-out`,`com.envoyai.info`)
-can be specified with JSON, as they have been in each preceding example, or with YAML (a superset of JSON that
-allows us to drop a lot of the cumbersome symbols). This is useful for this example because our schemas become 
-quite lengthy, and the additional readability goes a long way. The one catch is because the way Dockerfile labels
-capture strings, one must explicitly insert newlines `\n`. See test/echo's [Dockerfile](Dockerfile) for examples. 
+can be specified with JSON, or with YAML (a superset of JSON that allows us to drop a lot of the cumbersome symbols).
+An important "gotcha" when using YAML in a Dockerfile LABEL is that, because the way they caputre strings, each LABEL must have
+explicit newline characters using `\n` at the end of each line. See test/echo's [Dockerfile](Dockerfile) for examples.
 
 ## 1 Files
 
-About working with files - Accepting files as input and writing files as output is very simple.
-Despite the fact that the 'EnvoyAI Integration API' can run over Web API where files need to be transcoded to and from
-strings, files can be read and written normally, and any concern about transmission can be safely left up to the 
-'EnvoyAI Platform'. As a simple demonstration, the code below reads an image and modifies it by adding text. 
+About working with files - Accepting files as input and writing files as output is very simple on our platform.
+Despite the fact that the 'EnvoyAI Integration API' can run over WebApi where files need to be transcoded to and from
+strings. Files, however can be read and written normally, and any concern about transmission overhead is managed by 
+the 'EnvoyAI Platform'. As a simple demonstration, the code below reads an image and modifies it by adding text. 
 The input file `/envoyai/input/image.png` can be read normally, and the `image.png` property of the output will 
 automatically assume the value of the file written to `/envoyai/input/image.png`.
 ```python
@@ -40,10 +39,10 @@ image.save('/envoyai/output/image.png','PNG')
 
 ## 2 Input
 
-In practice, all inputs defined by your algorithms `com.envoyai.schema-in` will be supplied via JSON over WebAPI via the 
-'EnvoyAI Integration API', and one should not be too concerned with the exact user interface, as it may need to vary 
-system to system, or client to client. However for testing and demonstration purposes, at https://portal.envoyai.com 
-we dynamically render input controls for any input type.
+In practice, all inputs defined by your algorithm `com.envoyai.schema-in` will be supplied via JSON over WebApi via the 
+'EnvoyAI Integration API'.  One should not be concerned with the exact user interface presentation, as it may need to vary 
+system-to-system, or client-to-client. However for testing and demonstration purposes use
+[portal.envoyai.com](https://portal.envoyai.com), where we dynamically render input controls for any input type.
 
 ### 2.1 Simple Inputs
 
@@ -51,20 +50,19 @@ we dynamically render input controls for any input type.
 
 |Type       |In Code              |JSON Schema Property                                                                                                         |Screenshot                                     |
 |-----------|---------------------|-----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
-|String     |`string`             |`test-string: {type: 'string', title: 'test-string'}`                                                                        |![String](screenshots/input/string.gif)        |
-|Paragraph  |`string`             |`test-paragraph: {type: 'string', title: 'test-paragraph','_control': 'textarea'}`                                           |![Paragraph](screenshots/input/paragraph.gif)  |
-|Enum       |`string`             |`test-enum: {type: 'string', 'enum': ['A', 'B', 'C'], title: 'test-enum'}`                                                   |![Enum](screenshots/input/enum.gif)            |
-|DateTime   |ISO-8601             |`test-date: {type: 'string', format: 'date-time', title: 'test-date'}`                                                       |![DateTime](screenshots/input/datetime.gif)    |
-|Boolean    |`True` &#124; `False`|`test-bool: {type: 'boolean', title: 'test-bool'}`                                                                           |![Boolean](screenshots/input/boolean.gif)      |
-|Integer    |`string`             |`test-integer: {type: 'integer', title: 'test-integer'}`                                                                     |![Integer](screenshots/input/integer.gif)      |
-|Float      |`string`             |`test-float: {type: 'number', title: 'test-float'}`                                                                          |![Float](screenshots/input/float.gif)          |
-|Percentage |ex. `12%`            |`test-percentage: {type: 'number', format: 'percentage', title: 'test-percentage'}`                                          |![Percentage](screenshots/input/percentage.gif)|
-|File       |`bytes`              |`test.zip: {type: 'string', format: 'base64', title: 'test.zip', _mime-type: 'application/octet-stream', '_control': 'file'}`|![File](screenshots/input/file.gif)            |
-|Image      |`bytes`              |`test.jpg: {type: 'string', format: 'base64', title: 'test.jpg', _mime-type: 'image/jpg', '_control': 'file'}`               |![File](screenshots/input/image.gif)           |
-|Dicom      |`bytes`              |`test.jpg: {type: 'string', format: 'base64', title: 'test.dcm', _mime-type: 'image/dcm', '_control': 'file'}`               |![File](screenshots/input/dicom.gif)           |
+|String     |`string`             |`test-string: {type: 'string'}`                    |![String](screenshots/input/string.gif)        |
+|Enum       |`string`             |`test-enum: {'enum': ['A', 'B', 'C']}`             |![Enum](screenshots/input/enum.gif)            |
+|DateTime   |`string` in ISO-8601 |`test-date: {type: 'date-time'}`                   |![DateTime](screenshots/input/datetime.gif)    |
+|Boolean    |`True` &#124; `False`|`test-bool: {type: 'boolean'}`                     |![Boolean](screenshots/input/boolean.gif)      |
+|Integer    |`string`             |`test-integer: {type: 'integer'}`                  |![Integer](screenshots/input/integer.gif)      |
+|Float      |`string`             |`test-float: {type: 'number'}`                     |![Float](screenshots/input/float.gif)          |
+|Percentage |`string` ex. `12%`   |`test-percentage: {type: 'percentage'}`            |![Percentage](screenshots/input/percentage.gif)|
+|File       |`byte[]`             |`test.zip: {mime-type: 'application/octet-stream'}`|![File](screenshots/input/file.gif)            |
+|Image      |`byte[]`             |`test.jpg: {mime-type: 'image/jpg'}`               |![Image](screenshots/input/image.gif)          |
+|Dicom      |`byte[]`             |`test.jpg: {mime-type: 'image/dcm'}`               |![Dicom](screenshots/input/dicom.gif)          |
 
 #### 2.1.2 Reading values
-Reading any of the above inputs from the provided files in the `/envoyai/input/` directory is strait forward. For example:
+Reading any of the above inputs from the provided files in the `/envoyai/input/` directory is straightforward. For example:
 ```python
 with open('/envoyai/input/test-string','r') as file_in:
     test_string = file_in.read()
@@ -185,7 +183,7 @@ demonstration purposes, you can use https://portal.envoyai.com which will dynami
 |Percentage |ex. `12%` &#124; .12 |`test-percentage: {type: 'number', format: 'percentage', title: 'test-percentage'}`                     |![Percentage](screenshots/output/percentage.gif)|
 |File       |`bytes`              |`test.zip: {type: 'string', format: 'base64', title: 'test.zip', _mime-type: 'application/octet-stream'`|![File](screenshots/output/file.gif)            |
 |Image      |`bytes`              |`test.jpg: {type: 'string', format: 'base64', title: 'test.jpg', _mime-type: 'image/jpg'}`              |![File](screenshots/output/image.gif)           |
-Writing any of the above inputs to the output directory `/envoyai/output/` directory is strait forward. For example:
+Writing any of the above inputs to the output directory `/envoyai/output/` directory is straightforward. For example:
 ```python
 test_string = "hello world"
 with open('/envoyai/output/test-string','w') as file_out:
@@ -223,15 +221,13 @@ with open('/envoyai/output/test-date','w') as date_out, \
     percentage_out.write(percentage_string)
 ```
 
-### 2.2 Nested Object Outputs
+### 3.2 Nested Object Outputs
 
 Nested object output follows all of the conventions outlined in [Nested Object Input](#22-nested-object-inputs); 
-simply create a directory in `/envoyai/output` and put files with property values in the directory.
+simply create a directory in `/envoyai/output` and put files as property values in the directory.
 
 ### 3.3 Array Inputs
 
-[Arrays](#23-array-inputs)
-
 Nested object output follows all of the conventions outlined in [Array Input](#23-array-inputs); 
-simply create a directory in `/envoyai/output` and put files or directories named by index with 
-property values in the directory.
+simply create a directory in `/envoyai/output` and put files or directories named by (integer) index with 
+files as property values in the directory.

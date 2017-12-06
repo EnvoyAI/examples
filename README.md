@@ -9,9 +9,9 @@ Read this documentation and explore our examples to learn how to integrate your 
 # EnvoyAI Machine API Version 2
 
 We are almost done implementing a new version of the EnvoyAI Machine API. Version 1 Machines will continue to work
-on the dev portal, Version 2 Machines will being working on the dev portal very soon. Upgrading to version 2 Machines
-will be as simple as modifying a few Docker LABELs. In order for a Machine to be used with the EnvoyAI Liaison
-(in a clinical workflow) it must use Machine API Version 2.
+on the dev portal.  Version 2 Machines are planned to be working on the dev portal very soon. Upgrading to version 2 Machines
+will be as simple as modifying a few Docker LABELs. In order for a Machine to be used with the EnvoyAI Liaison integration
+appliance, a requirement for use in a clinical workflow, it must use Machine API Version 2.
 
 All examples and documentation will now refer to version 2, but if you want to refer back to the version 1 documentation
 please check the v1 branch of this repository.
@@ -35,7 +35,7 @@ and outputs are to be displayed. Either JSON or YAML formatted schemas are accep
 
 ### Accounts, Organizations, and Sharing
 If you are the first person from your organization to sign up with the EnvoyAI Platform, you can create an account and organization.
-Your email address will be your username. If your organization is already signed up, you must be invited to join
+Your email address will be your username. If, however, your organization is already signed up, you must be invited to join
 by one of your coworkers to gain access.
 Each new organization will be given access to some example machines, the source code of which can be found in this repository.
 If you or others in your organization creates a new machine, your organization is now considered the _author_ of that machine.
@@ -46,7 +46,7 @@ The best way to learn about how to create a machine on the EnvoyAI Platform is t
 
 To learn more about advanced input and output types, please see the [test-echo](/test-echo/README.md) example.
 
-To see an example that uses a trained network to do image recognition, see the caffe example we adapated for our platform 
+To see an example that uses a trained network to do image recognition, see the caffe example we adapted for our platform 
 [caffe-cpp_classification](../caffe-cpp_classification/).
 
 To learn more about debugging and error handling on the EnvoyAI platform please see the [test-err](../test-err/) example.
@@ -56,4 +56,4 @@ To download and install Docker please visit [www.docker.com](https://www.docker.
 To learn more about Docker we recommend reading the [docs](https://docs.docker.com/) or viewing 
 [this great pluralsight video](https://www.pluralsight.com/courses/docker-deep-dive).
 
-To log into the site and try it out visit [portal.EnvoyAI.com](https://portal.envoyai.com).
+To log into our site and try it out, visit [portal.EnvoyAI.com](https://portal.envoyai.com).
