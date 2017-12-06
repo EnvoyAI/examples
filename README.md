@@ -47,9 +47,9 @@ The best way to learn about how to create a machine on the EnvoyAI Platform is t
 To learn more about advanced input and output types, please see the [test-echo](/test-echo/README.md) example.
 
 To see an example that uses a trained network to do image recognition, see the caffe example we adapted for our platform 
-[caffe-cpp_classification](../caffe-cpp_classification/).
+[caffe-cpp_classification](./caffe-cpp_classification/).
 
-To learn more about debugging and error handling on the EnvoyAI platform please see the [test-err](../test-err/) example.
+To learn more about debugging and error handling on the EnvoyAI platform please see the [test-err](./test-err/) example.
 
 To download and install Docker please visit [www.docker.com](https://www.docker.com/get-docker).
 
