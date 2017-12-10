@@ -6,12 +6,9 @@ RUN pip install python-dateutil
 ADD . /prog
 WORKDIR /prog
 ENTRYPOINT ["python","cmd.py"]
-LABEL \
-com.envoyai.metadata-version=2 \
-\
-com.envoyai.nvidia=true \
-\
-com.envoyai.schema-in="\
+LABEL com.envoyai.metadata-version=2
+LABEL com.envoyai.nvidia=true
+LABEL com.envoyai.schema-in="\
 test-object:\n\
   type: 'object'\n\
   properties:\n\
@@ -33,9 +30,8 @@ test-object-array:\n\
 test-file-array:\n\
   type: 'array'\n\
   items:\n\
-    mime-type: application/octet-stream" \
-\
-com.envoyai.schema-out="\
+    mime-type: application/octet-stream"
+LABEL com.envoyai.schema-out="\
 test-object:\n\
  type: 'object'\n\
  properties:\n\
@@ -57,9 +53,8 @@ test-object-array:\n\
 test-file-array:\n\
  type: 'array'\n\
  items:\n\
-   mime-type: application/octet-stream" \
-\
-com.envoyai.info="\
+   mime-type: application/octet-stream"
+LABEL com.envoyai.info="\
 name: Echo Machine\n\
 title: Test machine for demonstration or testing purposes only\n\
 author: Staff\n\
