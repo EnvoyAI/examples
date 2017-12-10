@@ -3,19 +3,19 @@
 
 ## Reference Table
 
-|Type        |In Code              |JSON Schema Property                               |Single File|Directory|Notes                        |
-|------------|---------------------|---------------------------------------------------|-----------|---------|-----------------------------------|
-|String      |`string`             |`test-string: {type: 'string'}`                    |✓          |         |File name will match property name.|
-|Enum        |`string`             |`test-enum: {'enum': ['A', 'B', 'C']}`             |✓          |         |"                                  |
-|DateTime    |`string` in ISO-8601 |`test-date: {type: 'date-time'}`                   |✓          |         |"                                  |
-|Boolean     |`True` &#124; `False`|`test-bool: {type: 'boolean'}`                     |✓          |         |"                                  |
-|Integer     |`string` (must parse)|`test-integer: {type: 'integer'}`                  |✓          |         |"                                  |
-|Float       |`string` (must parse)|`test-float: {type: 'number'}`                     |✓          |         |"                                  |
-|Percentage  |`string` ex. `12%`   |`test-percentage: {type: 'percentage'}`            |✓          |         |"                                  |
-|File        |`byte[]`             |`test.zip: {mime-type: 'application/octet-stream'}`|✓          |         |"                                  |
-|Image       |`byte[]`             |`test.jpg: {mime-type: 'image/jpeg'}`              |✓          |         |"                                  |
-|PDF         |`byte[]`             |`test.pdf: {mime-type: 'application/pdf'}`         |✓          |         |"                                  |
-|DICOM Image |`byte[]`             |`test-dicom-image: {dicom-type: 'dicom-image'}`    |✓          |         |"                                  |
+|Type        |In Code              |JSON Schema Property                               |Single File|Directory|Notes|
+|------------|---------------------|---------------------------------------------------|-----------|---------|-----|
+|String      |`string`             |`test-string: {type: 'string'}`                    |✓          |         ||
+|Enum        |`string`             |`test-enum: {'enum': ['A', 'B', 'C']}`             |✓          |         ||
+|DateTime    |`string` in ISO-8601 |`test-date: {type: 'date-time'}`                   |✓          |         ||
+|Boolean     |`True` &#124; `False`|`test-bool: {type: 'boolean'}`                     |✓          |         ||
+|Integer     |`string` (must parse)|`test-integer: {type: 'integer'}`                  |✓          |         ||
+|Float       |`string` (must parse)|`test-float: {type: 'number'}`                     |✓          |         ||
+|Percentage  |`string` ex. `12%`   |`test-percentage: {type: 'percentage'}`            |✓          |         ||
+|File        |`byte[]`             |`test.zip: {mime-type: 'application/octet-stream'}`|✓          |         ||
+|Image       |`byte[]`             |`test.jpg: {mime-type: 'image/jpeg'}`              |✓          |         ||
+|PDF         |`byte[]`             |`test.pdf: {mime-type: 'application/pdf'}`         |✓          |         ||
+|DICOM Image |`byte[]`             |`test-dicom-image: {dicom-type: 'dicom-image'}`    |✓          |         ||
 |DICOM Series|`byte[]`             |`test-dicom-series: {dicom-type: 'dicom-series'}`  |           |✓        |Directory name will match property name. Each image in the series will be a separate file named by SOPInstanceId with .dcm file extension|
 |DICOM Study |`byte[]`             |`test-dicom-study: {dicom-type: 'dicom-study'}`    |           |✓        |Directory name will match property name. Each series in the study will be a separate directroy named by SeriesInstanceId. Each image in each series will be a separate file named by SOPInstanceId with .dcm file extension|
 |Object      |                     |`test-object: {type: 'object', properties:{...}}`  |           |✓        |Directory name will match property name. Each defined properties will appear as a separate file, named by the property name, in the parent directy. Note the ... can be any number a property definitions including file, object, or array types.|
