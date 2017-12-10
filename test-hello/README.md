@@ -78,7 +78,7 @@ with open('/envoyai/output/hello', 'w') as file_out:
 To suggest how consumers of your algorithm should display, you use the __LABEL__ `com.envoyai.display`
 
 `com.envoyai.display` must contain two ordered lists of _display-elements_, `source-display-group` generally
-representing the inputs, and `result-display-group` generally representing the outputs, as well as a `result-summary`
+representing the inputs, and `results-display-group` generally representing the outputs, as well as a `result-summary`
 which provides the consumer with a
 
 Each _display-element_ must have a title, id, and content. Title simply suggests how the viewer should label the value,
@@ -99,7 +99,7 @@ source-display-group:\n\
         pointer:\n\
           source: input\n\
           property: hello\n\
-result-display-group:\n\
+results-display-group:\n\
   display-elements:\n\
     - title: Machine Output String\n\
       id: out_str\n\
