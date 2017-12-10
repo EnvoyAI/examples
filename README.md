@@ -29,7 +29,7 @@ We call this packaged container a _machine_.
 ### Schema
 The data that your algorithm evaluates is called its _inputs_, the data your algorithm produces is called its _outputs_.
 Both input and outputs must have well defined data type definitions called a _schema_.
-The EnvoyAI Platform is based on [JSON-Schema](http://json-schema.org) but uses different defaults, and has additional 
+The EnvoyAI Platform is based on JSON-Schema but uses different defaults, and has additional
 features to describe files and DICOM studies. Additionally the platform uses a similar schema to define how the inputs 
 and outputs are to be displayed. Either JSON or YAML formatted schemas are accepted.
 
@@ -44,16 +44,13 @@ If you or others in your organization creates a new machine, your organization i
 ## Examples and References
 The best way to learn about how to create a machine on the EnvoyAI Platform is to read the [helloworld walk-through](./test-hello/README.md).
 
-To learn more about input and output types, please see the [test-echo](./test-echo/README.md) example.
+To learn more about input and output types, please see the [types reference](TYPES.md).
+
+It is also helpful to read through the [FAQ](FAQ.md)
 
 To see an example that uses a trained network to do image recognition, see the caffe example we adapted for our platform 
 [caffe-cpp_classification](./caffe-cpp_classification/).
 
-To learn more about debugging and error handling on the EnvoyAI platform please see the [test-err](./test-err/) example.
+## Get Started
 
-To download and install Docker please visit [www.docker.com](https://www.docker.com/get-docker).
-
-To learn more about Docker we recommend reading the [docs](https://docs.docker.com/) or viewing 
-[this great pluralsight video](https://www.pluralsight.com/courses/docker-deep-dive).
-
-To log into our site and try it out, visit [portal.EnvoyAI.com](https://portal.envoyai.com).
+To log into our site and try it out, visit [portal.envoyai.com](https://portal.envoyai.com).
