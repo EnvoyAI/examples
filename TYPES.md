@@ -115,22 +115,21 @@ An array of strings, or any other type, can be defined in the schema by specifyi
 `type` in the `items` sub-property.
 ```yaml
 test-keywords-array:
-  title: 'test-keywords-array'
-  type: 'array'
+  title: test-keywords-array
+  type: array
   items:
-    title: 'keyword'
-    type: 'string'
+    title: keyword
+    type: string
 ```
 #### Array of Nested Object
 Using array inputs is especially powerful when used with a defined schema to produce a list of nested objects. This
 example uses an image url and associated name.
 ```yaml
 test-keywords-array:
-  title: 'test-keywords-array'
-  type: 'array'
+  type: array
   items:
-    title: 'keyword'
-    type: 'object'
+    title: keyword
+    type: object
       properties:
         url: {type: string, title: Image}
         title: {type: string, title: Title}
@@ -141,10 +140,9 @@ Array inputs are also useful to accept a number of files for instance in the cas
 In this case the input control is a directory upload form.
 ```yaml
 test-file-array:
-  title: 'test-file-array'
-  type: 'array'
+  type: array
   items:
-    mime-type: 'application/octet-stream'
+    mime-type: application/octet-stream
 ```
 ## Dicom Values
 The EnvoyAI Platform has special support for DICOM Studies, Series, and Instances
@@ -195,3 +193,13 @@ but these won't be used in any automated or programmatic way.
 |study-description        |`upper extremities`           |✓    |✓     |✓    |An example value that may appear in `(0008,1030)`|
 |series-description       |`hand AP`                     |     |✓     |✓    |An example value that may appear in `(0008,103e)`|
 |series-descriptions-array|`['hand AP']`                 |✓    |      |     |An example value, per series that may appear in `(0008,103e)`|
+
+## Optional Properties
+All properties are mandatory by default, however if you want to make
+them optional or `nullable`, you simply need to add the `nullable: true`
+property in the prop definition
+```yaml
+optional-string:
+  type: string
+  nullable: true
+```
