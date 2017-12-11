@@ -178,19 +178,20 @@ this may make reading input easier, and may improve performance.
 
 |Property                |Example                      |Study|Series|Image|Description|
 |------------------------|-----------------------------|-----|------|-----|-----------|
-|TransferSyntaxUID       |['1.2.840.10008.1.2']        |✓    |✓     |✓    |Related to `(0002,0010)`, the EnvoyAI Platform will convert the DICOM Study to the specified transfer syntax before providing it to your Machine, when found in an output property, your Machine will be expected to only output DICOM data with the specified syntax.|
-|Series-Related-Instances|1                            |     |✓     |     |Similar to Dicom Query Attribute `(0020,1209)`, the number of instances expected in the series.|
-|Study-Related-Series    |[1]                          |✓    |      |     |Inspired by `(0020,1206)` and `(0020,1209)`, this is a list, with one entry per series, containing the number of instances in that series.|
-|Study-Related-Instances |1                            |✓    |      |     |Inspired by `(0020,1206)` and `(0020,1209)`, this is a list, with one entry per series, containing the number of instances in that series.|
-|SOP-Classes             |['1.2.840.10008.5.1.4.1.1.1']|✓    |✓     |✓    |Similar to `(0008,0062)`, a list of all SOP Classes contained in the study.|
-|Modalities              |['CR']                       |✓    |✓     |✓    |Similar to `(0008,0061)`, a list of all Modalities contained in the study.|
+|transfer-syntax-uid     |['1.2.840.10008.1.2']        |✓    |✓     |✓    |Related to `(0002,0010)`, the EnvoyAI Platform will convert the DICOM Study to the specified transfer syntax before providing it to your Machine, when found in an output property, your Machine will be expected to only output DICOM data with the specified syntax.|
+|series-related-instances|1                            |     |✓     |     |Similar to Dicom Query Attribute `(0020,1209)`, the number of instances expected in the series.|
+|study-related-series    |[1]                          |✓    |      |     |Inspired by `(0020,1206)` and `(0020,1209)`, this is a list, with one entry per series, containing the number of instances in that series.|
+|study-related-instances |1                            |✓    |      |     |Inspired by `(0020,1206)` and `(0020,1209)`, this is a list, with one entry per series, containing the number of instances in that series.|
+|sop-classes             |['1.2.840.10008.5.1.4.1.1.1']|✓    |✓     |✓    |Similar to `(0008,0062)`, a list of all SOP Classes contained in the study.|
+|modalities              |['CR']                       |✓    |✓     |✓    |Similar to `(0008,0061)`, a list of all Modalities contained in the study.|
 
 
 #### Descriptive Properties
 You may choose to describe the study in various ways to help describe,
 but these won't be used in any automated or programmatic way.
-|Property                |Example                      |Study|Series|Image|Description|
-|------------------------|-----------------------------|-----|------|-----|-----------|
-|StudyDescription        |upper extremities            |✓    |✓     |✓    |An example value that may appear in `(0008,1030)`|
-|SeriesDescription       |hand AP                      |     |✓     |✓    |An example value that may appear in `(0008,103e)`|
-|SeriesDescriptions      |['hand AP']                  |✓    |      |     |An example value, per series that may appear in `(0008,103e)`|
+
+|Property                 |Example                      |Study|Series|Image|Description|
+|-------------------------|-----------------------------|-----|------|-----|-----------|
+|study-description        |upper extremities            |✓    |✓     |✓    |An example value that may appear in `(0008,1030)`|
+|series-description       |hand AP                      |     |✓     |✓    |An example value that may appear in `(0008,103e)`|
+|series-descriptions-array|['hand AP']                  |✓    |      |     |An example value, per series that may appear in `(0008,103e)`|
