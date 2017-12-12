@@ -7,7 +7,7 @@ ADD . /prog
 WORKDIR /prog
 ENTRYPOINT ["python","cmd.py"]
 LABEL com.envoyai.metadata-version=2
-LABEL com.envoyai.nvidia=true
+LABEL com.envoyai.nvidia=false
 LABEL com.envoyai.schema-in="\
 test-object:\n\
   type: 'object'\n\
