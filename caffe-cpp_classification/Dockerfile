@@ -46,26 +46,21 @@ RUN echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 
 ENTRYPOINT ["./build/examples/cpp_classification/classification.bin","models/bvlc_reference_caffenet/deploy.prototxt","models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel","data/ilsvrc12/imagenet_mean.binaryproto","data/ilsvrc12/synset_words.txt","/envoyai/input/image.jpg"]
 
-LABEL \
-com.envoyai.metadata-version="2" \
-\
-com.envoyai.nvidia="false" \
-\
-com.envoyai.info="\
+LABEL com.envoyai.metadata-version=2
+LABEL com.envoyai.nvidia=false
+LABEL com.envoyai.info="\
 name: Caffe Example C++ Classification\n\
 title: Caffe C++ Classification Example adapted for the EnvoyAI platform.\n\
 author: Caffe adapted by EnvoyAI Staff\n\
 organization: Caffe and EnvoyAI\n\
 data-source: ilsvrc training set\n\
 algorithm: Neural Net\n\
-links: you can download a frog picture <a href='http://zso3597.cias.rit.edu/256/week4/project1/images/frog.jpg'>here</a>" \
-\
-com.envoyai.schema-in="\
+links: you can download a frog picture <a href='http://zso3597.cias.rit.edu/256/week4/project1/images/frog.jpg'>here</a>"
+LABEL com.envoyai.schema-in="\
 image.jpg:\n\
   title: Input Image\n\
-  mime-type: image/jpeg" \
-\
-com.envoyai.schema-out="\
+  mime-type: image/jpeg"
+LABEL com.envoyai.schema-out="\
 guess0:\n\
   title: First Guess\n\
   type: string \n\
@@ -83,9 +78,8 @@ guess3:\n\
   type: string \n\
 conf3:\n\
   title: Third Guess Confidence\n\
-  type: percentage" \
-\
-com.envoyai.display="\
+  type: percentage"
+LABEL com.envoyai.display="\
 source-display-group:\n\
   display-elements:\n\
     - title: Input Image\n\
@@ -135,8 +129,8 @@ results-display-group:\n\
             source: output\n\
             property: conf2\n\
         unit: percentage\n\
-        label: Confidence" \
-com.envoyai.selector="\
+        label: Confidence"
+LABEL com.envoyai.selector="\
 selector-type: choose-one-display-element\n\
 selector-config:\n\
   choose-options:\n\
