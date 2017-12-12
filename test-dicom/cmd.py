@@ -4,6 +4,9 @@ import functools
 
 
 # --------HELPER FUNCTIONS--------
+import shutil
+
+
 def build_path(path):
     if 'ENVOYAI_DEV' in os.environ and os.environ['ENVOYAI_DEV'] == 'true':
         return functools.reduce(
@@ -41,15 +44,9 @@ if len(sys.argv) > 1:
     sys.exit(1)
 
 # if no args were passed we read from /envoyai/input and write to /envoyai/output
-if does_dir_exist('/envoyai/input/test-dicom'):
-    mkdir('/envoyai/output/test-dicom')
-    n = 0  # each entry in an array is a file named by it's index
-    while does_file_exist('/envoyai/input/test-dicom' + '/' + str(n)):
-        subpath_in = '/envoyai/input/test-dicom' + '/' + str(n)
-        subpath_out = '/envoyai/output/test-dicom' + '/' + str(n)
-        with open_path(subpath_in, 'rb') as file_bytes_in, \
-                open_path(subpath_out, 'wb') as file_bytes_out:
-            test_bytes = file_bytes_in.read()
-            file_bytes_out.write(test_bytes)
-        n = n + 1
+if does_dir_exist('/envoyai/input/dicom-study-in'):
+    # mkdir('/envoyai/output/dicom-study-out')
+    # TODO iterate through series and instances
+    print("copying whole dicom study to output")
+    shutil.copytree('/envoyai/input/dicom-study-in','/envoyai/output/dicom-study-out')
 exit(0)
