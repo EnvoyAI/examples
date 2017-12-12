@@ -98,12 +98,12 @@ results-display-group:\n\
           source: output\n\
           property: guess0\n\
       associated-values:\n\
-        value:\n\
-          pointer:\n\
-            source: output\n\
-            property: conf0\n\
-        unit: percentage\n\
-        label: Confidence\n\
+        - value:\n\
+            pointer:\n\
+              source: output\n\
+              property: conf0\n\
+          unit: percentage\n\
+          label: Confidence\n\
     - title: Second Guess\n\
       id: guess-1\n\
       content:\n\
@@ -111,12 +111,12 @@ results-display-group:\n\
           source: output\n\
           property: guess1\n\
       associated-values:\n\
-        value:\n\
-          pointer:\n\
-            source: output\n\
-            property: conf1\n\
-        unit: percentage\n\
-        label: Confidence\n\
+        - value:\n\
+            pointer:\n\
+              source: output\n\
+              property: conf1\n\
+          unit: percentage\n\
+          label: Confidence\n\
     - title: Third Guess\n\
       id: guess-2\n\
       content:\n\
@@ -124,12 +124,12 @@ results-display-group:\n\
           source: output\n\
           property: guess2\n\
       associated-values:\n\
-        value:\n\
-          pointer:\n\
-            source: output\n\
-            property: conf2\n\
-        unit: percentage\n\
-        label: Confidence"
+        - value:\n\
+            pointer:\n\
+              source: output\n\
+              property: conf2\n\
+          unit: percentage\n\
+          label: Confidence"
 LABEL com.envoyai.selector="\
 selector-type: choose-one-display-element\n\
 selector-config:\n\
