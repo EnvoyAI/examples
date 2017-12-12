@@ -78,6 +78,13 @@ if does_file_exist('/envoyai/input/test-float'):
         test_float = float(test_float_string)
         file_out.write(str(test_float))
 
+if does_file_exist('/envoyai/input/test-percentage'):
+    with open_path('/envoyai/input/test-percentage', 'r') as file_in, \
+            open_path('/envoyai/output/test-percentage', 'w') as file_out:
+        test_percentage_string = file_in.read()
+        test_float = float(test_percentage_string.replace('%', '')) / 100
+        file_out.write(str(test_float * 100) + "%")
+
 if does_file_exist('/envoyai/input/test.zip'):
     with open_path('/envoyai/input/test.zip', 'rb') as file_in, \
             open_path('/envoyai/output/test.zip', 'wb') as file_out:
