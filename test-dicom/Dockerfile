@@ -4,13 +4,13 @@ RUN apt-get install -y python python-dev python-distribute python-pip
 ADD . /prog
 WORKDIR /prog
 ENTRYPOINT ["python","cmd.py"]
-
+LABEL com.envoyai.metadata-version=2
 LABEL com.envoyai.schema-in="\
-test-dicom:\n\
+dicom-study-in:\n\
   dicom-type: dicom-study"
 LABEL com.envoyai.schema-out="\
-test-dicom:\n\
-  dicom-type: dicom-study" \
+dicom-study-out:\n\
+  dicom-type: dicom-study"
 LABEL com.envoyai.display="\
 source-display-group:\n\
   display-elements:\n\
@@ -19,7 +19,7 @@ source-display-group:\n\
       content:\n\
         pointer:\n\
           source: input\n\
-          property: test-dicom\n\
+          property: dicom-study-in\n\
 results-display-group:\n\
   display-elements:\n\
     - title: Input DICOM\n\
@@ -27,9 +27,7 @@ results-display-group:\n\
       content:\n\
         pointer:\n\
           source: input\n\
-          property: test-dicom"
-LABEL com.envoyai.selector="\
-selector-type: accept-reject"
+          property: dicom-study-out"
 LABEL com.envoyai.info="\
 name: Test Dicom Machine\n\
 title: Test machine for demonstration or testing purposes only\n\
