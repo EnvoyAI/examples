@@ -14,8 +14,7 @@ Yes, to see a simple example that takes a dicom study as input and returns a dic
 We recommend using Google Drive, or Amazon S3 to publicly host sample images and data. You can then publish a link to that data in your Machine description.
 
 #### How do I quickly adapt an already working dockerfile?
-See our caffe example that uses a trained network to do image recognition that has been adapted for our platform. 
-[caffe-cpp_classification](./caffe-cpp_classification/Dockerfile).
+See our [caffe-cpp_classification](./caffe-cpp_classification/Dockerfile) example. It is an adaption of a caffe image recognition sample.
 
 For this example we just needed to specify an __ENTRYPOINT__ that would provide the path for the image input, and write the metadata __LABELs__.
 The only other required work was to modify the existing project to write the appropriate output files.
@@ -31,7 +30,7 @@ To learn more about Docker we recommend reading the [docs](https://docs.docker.c
 [this great pluralsight video](https://www.pluralsight.com/courses/docker-deep-dive).
 
 #### Does EnvoyAI Support CUDA?
-The EnvoyAI Platform supports nVidia CUDA 8 and CuDNN 5. If your algorithm require a different version, please contact us and we will try to make it available.
+The EnvoyAI Platform supports nVidia CUDA 9 and CuDNN 6. If your algorithm require a different version, please contact us and we will try to make it available.
 
 Use the __LABEL__ `com.envoyai.nvidia` to enable CUDA support.
 ```Dockerfile
@@ -40,7 +39,7 @@ LABEL com.envoyai.nvidia=true
 
 You will likely want to base your Docker image off of an nVidia example.
 ```Dockerfile
-FROM nvidia/cuda:8.0-cudnn5-runtime-ubuntu14.04
+FROM nvidia/cuda:9.0-runtime-ubuntu16.04
 ```
 
 #### YAML or JSON
