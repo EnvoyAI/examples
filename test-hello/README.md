@@ -83,7 +83,7 @@ which provides the consumer with a
 
 Each _display-element_ must have a title, id, and content. Title simply suggests how the viewer should label the value,
 the id allows you to reference the display element in feedback, the content tells the viewer what to actually show,
-usually with a _pointer_ object. A _pointer_ object contains a single property, `pointer`, which in tern has a `source` prop
+usually with a _pointer_ object. A _pointer_ object contains a single property, `pointer`, which in turn has a `source` prop
 describing if the value comes from the input or the output of the algorithm, and a `property` prop which will match the name
 of the property from either input or output.
 
@@ -122,9 +122,9 @@ selector-type: accept-reject"
 ```
 
 This feedback is used to drive the clinical workflow, and will be configurable by the hospital to react differently to each
-Machine's feedback
+Machine's feedback.
 
-In the future, you will beable to see the feedback from participating sites to provide you with further labled data.
+In the future, you will be able to see the feedback from participating sites to provide you with further labled data.
 ### 6 Metadata
 Use the __LABEL__ `com.envoyai.info` to provide information about your algorithm. 
 
