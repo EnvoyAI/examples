@@ -17,9 +17,9 @@
 |PDF         |`byte[]`             |`test.pdf: {mime-type: 'application/pdf'}`         |✓          |         ||
 |DICOM Image |`byte[]`             |`test-dicom-image: {dicom-type: 'dicom-image'}`    |✓          |         ||
 |DICOM Series|                     |`test-dicom-series: {dicom-type: 'dicom-series'}`  |           |✓        |Directory name will match property name. Each image in the series will be a separate file named by SOPInstanceId with .dcm file extension.|
-|DICOM Study |                     |`test-dicom-study: {dicom-type: 'dicom-study'}`    |           |✓        |Directory name will match property name. Each series in the study will be a separate directroy named by SeriesInstanceId. Each image in each series will be a separate file named by SOPInstanceId with .dcm file extension.|
-|Object      |                     |`test-object: {type: 'object', properties:{...}}`  |           |✓        |Directory name will match property name. Each defined properties will appear as a separate file, named by the property name, in the parent directy. Note this can be any number a property definitions including file, object, or array types.|
-|Array       |                     |`test-array: {type: 'array', items: ...}`          |           |✓        |Directory name will match property name. Each element in the array will be named by its 0-based index. Note this can be any property definition, including file, object, or array types.|
+|DICOM Study |                     |`test-dicom-study: {dicom-type: 'dicom-study'}`    |           |✓        |Directory name will match property name. Each series in the study will be a separate directory named by SeriesInstanceId. Each image in each series will be a separate file named by SOPInstanceId with .dcm file extension.|
+|Object      |                     |`test-object: {type: 'object', properties:{...}}`  |           |✓        |Directory name will match property name. Each defined properties will appear as a separate file, named by the property name, in the parent directy. Note the `...` can be any number a property definitions including file, object, or array types.|
+|Array       |                     |`test-array: {type: 'array', items: ...}`          |           |✓        |Directory name will match property name. Each element in the array will be named by its 0-based index. Note the `...` can be any property definition, including file, object, or array types.|
 ## Primitive Values
 #### Reading primitive values
 Reading any of the above primitive inputs from the provided files in the `/envoyai/input/` directory is simple. For example:
@@ -136,8 +136,7 @@ test-keywords-array:
 
 ```
 #### File Directory
-Array inputs are also useful to accept a number of files as in the case of multiple slices of the same image.
-In this case the input control is a directory upload form.
+Array inputs are also useful to accept a number of files; on the developer portal the input control will be a directory chooser.
 ```yaml
 test-file-array:
   type: array
