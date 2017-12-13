@@ -114,17 +114,16 @@ result-summary:\n\
       property: hello"
 ```
 ### 5 Feedback
-To optionally describe feedback that an end user should provide, you may use the __LABEL__ `com.envoyai.selector`, currently
-only the simplest feedback is supported: `accept-reject` will prompt the user to either agree or disagree with the results.
-```
-LABEL com.envoyai.selector="\
-selector-type: accept-reject"
-```
+Each machine may optionally request input from the end user when they are being presented with the results. To describe this input you may use the __LABEL__ `com.envoyai.selector`. Currently
+only the simplest feedback is supported:
 
-This feedback is used to drive the clinical workflow, and will be configurable by the hospital to react differently to each
-Machine's feedback.
+|Name           |Key                         |LABEL value|Description|
+|---------------|----------------------------|-----------|-----------|
+|Accept / Reject|`accept-reject`             |`selector-type: accept-reject`| will prompt the user to either agree or disagree with the results.
+|Choose One     |`choose-one-display-element`|`selector-type: choose-one-display-element`<br />`selector-config:`<br />&nbsp;&nbsp;`  choose-options:`<br />&nbsp;&nbsp;&nbsp;&nbsp;`- display-element-id-1`<br />&nbsp;&nbsp;&nbsp;&nbsp;`- display-element-id-2`<br />&nbsp;&nbsp;&nbsp;&nbsp;`- display-element-id-3`| will prompt the user to either agree or disagree with the results.
 
-In the future, you will be able to see the feedback from participating sites to provide you with further labled data.
+
+This feedback can configured to drive the clinical workflow. In the future, developers will have access to bulk feedback data from participating Customers.
 ### 6 Metadata
 Use the __LABEL__ `com.envoyai.info` to provide information about your algorithm. 
 
