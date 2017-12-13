@@ -1,4 +1,4 @@
-# EnvoyAI Machine API - Data types reference
+# EnvoyAI Machine API - Data Types Reference
 
 
 ## Reference Table
@@ -16,13 +16,13 @@
 |Image       |`byte[]`             |`test.jpg: {mime-type: 'image/jpeg'}`              |✓          |         ||
 |PDF         |`byte[]`             |`test.pdf: {mime-type: 'application/pdf'}`         |✓          |         ||
 |DICOM Image |`byte[]`             |`test-dicom-image: {dicom-type: 'dicom-image'}`    |✓          |         ||
-|DICOM Series|                     |`test-dicom-series: {dicom-type: 'dicom-series'}`  |           |✓        |Directory name will match property name. Each image in the series will be a separate file named by SOPInstanceId with .dcm file extension|
-|DICOM Study |                     |`test-dicom-study: {dicom-type: 'dicom-study'}`    |           |✓        |Directory name will match property name. Each series in the study will be a separate directroy named by SeriesInstanceId. Each image in each series will be a separate file named by SOPInstanceId with .dcm file extension|
-|Object      |                     |`test-object: {type: 'object', properties:{...}}`  |           |✓        |Directory name will match property name. Each defined properties will appear as a separate file, named by the property name, in the parent directy. Note the ... can be any number a property definitions including file, object, or array types.|
-|Array       |                     |`test-array: {type: 'array', items: ...}`          |           |✓        |Directory name will match property name. Each each element in the array will be named by its 0-based index. Note the ... can be any property definition, including file, object, or array types.|
+|DICOM Series|                     |`test-dicom-series: {dicom-type: 'dicom-series'}`  |           |✓        |Directory name will match property name. Each image in the series will be a separate file named by SOPInstanceId with .dcm file extension.|
+|DICOM Study |                     |`test-dicom-study: {dicom-type: 'dicom-study'}`    |           |✓        |Directory name will match property name. Each series in the study will be a separate directroy named by SeriesInstanceId. Each image in each series will be a separate file named by SOPInstanceId with .dcm file extension.|
+|Object      |                     |`test-object: {type: 'object', properties:{...}}`  |           |✓        |Directory name will match property name. Each defined properties will appear as a separate file, named by the property name, in the parent directy. Note this can be any number a property definitions including file, object, or array types.|
+|Array       |                     |`test-array: {type: 'array', items: ...}`          |           |✓        |Directory name will match property name. Each element in the array will be named by its 0-based index. Note this can be any property definition, including file, object, or array types.|
 ## Primitive Values
 #### Reading primitive values
-Reading any of the above primative inputs from the provided files in the `/envoyai/input/` directory is very simple. For example:
+Reading any of the above primitive inputs from the provided files in the `/envoyai/input/` directory is simple. For example:
 ```python
 with open('/envoyai/input/test-string','r') as file_in:
     test_string = file_in.read()
@@ -95,7 +95,7 @@ draw.text( (10,10), 'Your Text', fill='#a00000', font=font)
 image.save('/envoyai/output/image.png','PNG')
 ```
 ## Nested Objects
-Data from a nested object input is available in a sub-directory. For example, if the nested properties specified like so:
+Data from a nested object input is available in a sub-directory. For example, if the nested properties specified as:
 ```yaml
 test-object:
   type: object
@@ -136,7 +136,7 @@ test-keywords-array:
 
 ```
 #### File Directory
-Array inputs are also useful to accept a number of files for instance in the case of multiple slices of the same image.
+Array inputs are also useful to accept a number of files as in the case of multiple slices of the same image.
 In this case the input control is a directory upload form.
 ```yaml
 test-file-array:
@@ -152,8 +152,8 @@ For input properties with `dicom-type: dicom-study`,
 each individual SOPInstance will be in a separate file,
 named by SOPInstanceID, and organized into subdirectories named
 by SeriesInstanceID. This is intended to make it easier to work with,
-but is not required for dicom study output. For output properties
-with `dicom-type: dicom-study`, one must simply put each SopInstanceId
+but is not required for DICOM study output. For output properties
+with `dicom-type: dicom-study`, one must simply put each SOPInstanceId
 in a different file, with any name or subdirectory, into the directory
 with the appropriate property name.
 
@@ -171,13 +171,13 @@ just as they would any other single file type.
 
 
 #### Constraining Properties
-You may choose to constrain your input our output in a few ways,
+You may choose to constrain your input or output in a few ways,
 this may make reading input easier, and may improve performance.
 
 |Property                |Example                        |Study|Series|Image|Description|
 |------------------------|-------------------------------|-----|------|-----|-----------|
 |transfer-syntax-uid     |`['1.2.840.10008.1.2']`        |✓    |✓     |✓    |Related to `(0002,0010)`, the EnvoyAI Platform will convert the DICOM Study to the specified transfer syntax before providing it to your Machine, when found in an output property, your Machine will be expected to only output DICOM data with the specified syntax.|
-|series-related-instances|`1`                            |     |✓     |     |Similar to Dicom Query Attribute `(0020,1209)`, the number of instances expected in the series.|
+|series-related-instances|`1`                            |     |✓     |     |Similar to DICOM Query Attribute `(0020,1209)`, the number of instances expected in the series.|
 |study-related-series    |`[1]`                          |✓    |      |     |Inspired by `(0020,1206)` and `(0020,1209)`, this is a list, with one entry per series, containing the number of instances in that series.|
 |study-related-instances |`1`                            |✓    |      |     |Inspired by `(0020,1206)` and `(0020,1209)`, this is a list, with one entry per series, containing the number of instances in that series.|
 |sop-classes             |`['1.2.840.10008.5.1.4.1.1.1']`|✓    |✓     |✓    |Similar to `(0008,0062)`, a list of all SOP Classes contained in the study.|
@@ -186,7 +186,7 @@ this may make reading input easier, and may improve performance.
 
 #### Descriptive Properties
 You may choose to describe the study in various ways to help describe,
-but these won't be used in any automated or programmatic way.
+but these will not be used in any automated or programmatic way.
 
 |Property                 |Example                       |Study|Series|Image|Description|
 |-------------------------|------------------------------|-----|------|-----|-----------|
