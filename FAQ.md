@@ -14,7 +14,7 @@ Yes, to see a simple example that takes a dicom study as input and returns a dic
 We recommend using Google Drive, or Amazon S3 to publicly host sample images and data. You can then publish a link to that data in your Machine description.
 
 #### How do I quickly adapt an already working dockerfile?
-To see an example that uses a trained network to do image recognition, see the caffe example we adapted for our platform 
+See our caffe example that uses a trained network to do image recognition that has been adapted for our platform. 
 [caffe-cpp_classification](./caffe-cpp_classification/Dockerfile).
 
 For this example we just needed to specify an __ENTRYPOINT__ that would provide the path for the image input, and write the metadata __LABELs__.

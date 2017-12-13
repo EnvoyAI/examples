@@ -2,18 +2,17 @@
 
 You built an algorithm that could save lives. What happens next?
 
-Partner with EnvoyAI to distribute your algorithm.
+Partner with EnvoyAI to distribute your algorithm!
 
 Read this documentation and explore our examples to learn how to integrate your algorithm into the EnvoyAI Platform.
 
 # EnvoyAI Machine API Version 2
 
-We are almost done implementing a new version of the EnvoyAI Machine API. Version 1 Machines will continue to work
+We are nearly complete on a new version of the EnvoyAI Machine API. Version 1 Machines will continue to work
 on the dev portal.  Version 2 Machines are planned to be working on the dev portal very soon. Upgrading to version 2 Machines
-will be as simple as modifying a few Docker LABELs. In order for a Machine to be used with the EnvoyAI Liaison integration
-appliance, a requirement for use in a clinical workflow, it must use Machine API Version 2.
-
-All examples and documentation will now refer to version 2, but if you want to refer back to the version 1 documentation
+will only require minor modification of a few Docker container LABELs.  For live operation in a clinical workflow, the 
+EnvoyAI "Liaison" integration appliance will be required as well as machines supporting API version 2.  All examples and 
+documentation herein will now refer to version 2, but should you need to refer back to the version 1 documentation
 please check the v1 branch of this repository.
 
 
@@ -22,7 +21,7 @@ please check the v1 branch of this repository.
 ### Machine
 Your algorithm can be any combination of trained statistical model, neural net, explicit procedure, decision tree or
 anything else you can imagine.
-In order for an algorithm to be used on the EnvoyAI Platform, it must be packaged into a container along with its runtime 
+In order for an algorithm to be used on the EnvoyAI Platform, it must be packaged into a Docker container along with its runtime 
 requirements, schema information, and other metadata.
 We call this packaged container a _machine_.
 
@@ -31,7 +30,7 @@ The data that your algorithm evaluates is called its _inputs_, the data your alg
 Both input and outputs must have well defined data type definitions called a _schema_.
 The EnvoyAI Platform is based on JSON-Schema but uses different defaults, and has additional
 features to describe files and DICOM studies. Additionally the platform uses a similar schema to define how the inputs 
-and outputs are to be displayed. Either JSON or YAML formatted schemas are accepted.
+and outputs are to be displayed. Either JSON or YAML formatted schemas are currently accepted.
 
 ### Accounts, Organizations, and Sharing
 If you are the first person from your organization to sign up with the EnvoyAI Platform, you can create an account and organization.
