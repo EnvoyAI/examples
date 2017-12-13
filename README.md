@@ -6,15 +6,13 @@ Partner with EnvoyAI to distribute your algorithm!
 
 Read this documentation and explore our examples to learn how to integrate your algorithm into the EnvoyAI Platform.
 
-# EnvoyAI Machine API Version 2
+## EnvoyAI Machine API Version 2
 
-We are nearly complete on a new version of the EnvoyAI Machine API. Version 1 Machines will continue to work
-on the dev portal.  Version 2 Machines are planned to be working on the dev portal very soon. Upgrading to version 2 Machines
-will only require minor modification of a few Docker container LABELs.  For live operation in a clinical workflow, the 
-EnvoyAI "Liaison" integration appliance will be required as well as machines supporting API version 2.  All examples and 
-documentation herein will now refer to version 2, but should you need to refer back to the version 1 documentation
-please check the v1 branch of this repository.
-
+We are now using a new version of the EnvoyAI Machine API. Version 2 has been designed for use with the EnvoyAI Liaison,
+our integration appliance, which will enable algorithms to be used in a clinical workflow. Version 1 Machines will continue to work
+on the dev portal. Upgrading existing version 1 machines to version 2, is as simple as modifying a few Docker LABELs.
+All examples and documentation will now refer to version 2.
+Version 1 documentation will remain available in the v2 branch of this repository.
 
 ## Basics and Terminology
 
@@ -30,7 +28,7 @@ The data that your algorithm evaluates is called its _inputs_, the data your alg
 Both input and outputs must have well defined data type definitions called a _schema_.
 The EnvoyAI Platform is based on JSON-Schema but uses different defaults, and has additional
 features to describe files and DICOM studies. Additionally the platform uses a similar schema to define how the inputs 
-and outputs are to be displayed. Either JSON or YAML formatted schemas are currently accepted.
+and outputs are to be displayed. Either JSON or YAML formatted schemas are accepted.
 
 ### Accounts, Organizations, and Sharing
 If you are the first person from your organization to sign up with the EnvoyAI Platform, you can create an account and organization.
