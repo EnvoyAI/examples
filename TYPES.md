@@ -175,7 +175,7 @@ this may make reading input easier, and may improve performance.
 
 |Property                |Example                        |Study|Series|Image|Description|
 |------------------------|-------------------------------|-----|------|-----|-----------|
-|transfer-syntax-uid     |`['1.2.840.10008.1.2']`        |✓    |✓     |✓    |Related to `(0002,0010)`, the EnvoyAI Platform will convert the DICOM Study to the specified transfer syntax before providing it to your Machine, when found in an output property, your Machine will be expected to only output DICOM data with the specified syntax.|
+|transfer-syntax-uid     |`'1.2.840.10008.1.2'`          |✓    |✓     |✓    |Related to `(0002,0010)`, the EnvoyAI Platform will convert the DICOM Study to the specified transfer syntax before providing it to your Machine, when found in an output property, your Machine will be expected to only output DICOM data with the specified syntax.|
 |series-related-instances|`1`                            |     |✓     |     |Similar to DICOM Query Attribute `(0020,1209)`, the number of instances expected in the series.|
 |study-related-series    |`[1]`                          |✓    |      |     |Inspired by `(0020,1206)` and `(0020,1209)`, this is a list, with one entry per series, containing the number of instances in that series.|
 |study-related-instances |`1`                            |✓    |      |     |Inspired by `(0020,1206)` and `(0020,1209)`, this is a list, with one entry per series, containing the number of instances in that series.|
