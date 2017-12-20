@@ -18,7 +18,7 @@
 |DICOM Image |`byte[]`             |`test-dicom-image: {dicom-type: 'dicom-image'}`    |✓          |         ||
 |DICOM Series|                     |`test-dicom-series: {dicom-type: 'dicom-series'}`  |           |✓        |Directory name will match property name. Each image in the series will be a separate file named by SOPInstanceId with .dcm file extension.|
 |DICOM Study |                     |`test-dicom-study: {dicom-type: 'dicom-study'}`    |           |✓        |Directory name will match property name. Each series in the study will be a separate directory named by SeriesInstanceId. Each image in each series will be a separate file named by SOPInstanceId with .dcm file extension.|
-|Object      |                     |`test-object: {type: 'object', properties:{...}}`  |           |✓        |Directory name will match property name. Each defined properties will appear as a separate file, named by the property name, in the parent directy. Note the `...` can be any number a property definitions including file, object, or array types.|
+|Object      |                     |`test-object: {type: 'object', properties:{...}}`  |           |✓        |Directory name will match property name. Each defined properties will appear as a separate file, named by the property name, in the parent directy. Note the `...` can be any number of property definitions including file, object, or array types.|
 |Array       |                     |`test-array: {type: 'array', items: ...}`          |           |✓        |Directory name will match property name. Each element in the array will be named by its 0-based index. Note the `...` can be any property definition, including file, object, or array types.|
 ## Primitive Values
 #### Reading primitive values
