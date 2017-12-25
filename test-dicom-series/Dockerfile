@@ -1,6 +1,5 @@
 FROM ubuntu:16.04
-RUN apt-get update
-RUN apt-get install -y python python-dev python-distribute python-pip
+RUN apt-get update && apt-get install -y python tree
 ADD . /prog
 WORKDIR /prog
 ENTRYPOINT ["python","cmd.py"]
