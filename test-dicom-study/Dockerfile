@@ -23,7 +23,7 @@ source-display-group:\n\
 results-display-group:\n\
   display-elements:\n\
     - title: Input DICOM\n\
-      id: input-dicom\n\
+      id: output-dicom\n\
       content:\n\
         pointer:\n\
           source: input\n\
