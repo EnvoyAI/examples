@@ -18,7 +18,7 @@
 |DICOM Image |`byte[]`             |`test-dicom-image: {dicom-type: 'dicom-image'}`    |✓          |         ||
 |DICOM Series|                     |`test-dicom-series: {dicom-type: 'dicom-series'}`  |           |✓        |Directory name will match property name. Each image in the series will be a separate file named by SOPInstanceId with .dcm file extension.|
 |DICOM Study |                     |`test-dicom-study: {dicom-type: 'dicom-study'}`    |           |✓        |Directory name will match property name. Each series in the study will be a separate directory named by SeriesInstanceId. Each image in each series will be a separate file named by SOPInstanceId with .dcm file extension.|
-|Object      |                     |`test-object: {type: 'object', properties:{...}}`  |           |✓        |Directory name will match property name. Each defined properties will appear as a separate file, named by the property name, in the parent directy. Note the `...` can be any number a property definitions including file, object, or array types.|
+|Object      |                     |`test-object: {type: 'object', properties:{...}}`  |           |✓        |Directory name will match property name. Each defined properties will appear as a separate file, named by the property name, in the parent directy. Note the `...` can be any number of property definitions including file, object, or array types.|
 |Array       |                     |`test-array: {type: 'array', items: ...}`          |           |✓        |Directory name will match property name. Each element in the array will be named by its 0-based index. Note the `...` can be any property definition, including file, object, or array types.|
 ## Primitive Values
 #### Reading primitive values
@@ -175,7 +175,7 @@ this may make reading input easier, and may improve performance.
 
 |Property                |Example                        |Study|Series|Image|Description|
 |------------------------|-------------------------------|-----|------|-----|-----------|
-|transfer-syntax-uid     |`['1.2.840.10008.1.2']`        |✓    |✓     |✓    |Related to `(0002,0010)`, the EnvoyAI Platform will convert the DICOM Study to the specified transfer syntax before providing it to your Machine, when found in an output property, your Machine will be expected to only output DICOM data with the specified syntax.|
+|transfer-syntax-uid     |`'1.2.840.10008.1.2'`          |✓    |✓     |✓    |Related to `(0002,0010)`, the EnvoyAI Platform will convert the DICOM Study to the specified transfer syntax before providing it to your Machine, when found in an output property, your Machine will be expected to only output DICOM data with the specified syntax.|
 |series-related-instances|`1`                            |     |✓     |     |Similar to DICOM Query Attribute `(0020,1209)`, the number of instances expected in the series.|
 |study-related-series    |`[1]`                          |✓    |      |     |Inspired by `(0020,1206)` and `(0020,1209)`, this is a list, with one entry per series, containing the number of instances in that series.|
 |study-related-instances |`1`                            |✓    |      |     |Inspired by `(0020,1206)` and `(0020,1209)`, this is a list, with one entry per series, containing the number of instances in that series.|
