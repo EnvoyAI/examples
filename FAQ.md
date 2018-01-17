@@ -18,7 +18,7 @@ We recommend using Google Drive, or Amazon S3 to publicly host sample images and
 ## Security
 
 #### How does Envoy AI protect my docker image?
-We recognize the importance of protecting the IP in your docker images. We have conducted threat modeling exercises with an outside consultant. 
+We recognize the importance of protecting the IP in your docker images. We have and will continue to consult with outside security experts. 
 We follow the principle of least privilege in securing docker images, we apply patches, and use 2FA for all EnvoyAI principals.
 
 #### How is my docker image stored?
