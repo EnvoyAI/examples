@@ -79,3 +79,12 @@ An important "gotcha" when using YAML in a Dockerfile LABEL is that, because the
 explicit newline characters using `\n` at the end of each line, and usually a continuation slash so you will see `\n\` at the end of most lines.
 See test/echo's [Dockerfile](./test-echo/Dockerfile) for an example that actually mixes yaml and json for brevity and clarity.
 
+#### Can my Machine access the Internet?
+Yes and no. Yes for testing and demonstration purposes, we have a configuration flag that will allow your docker container to access the internet;
+perhaps to make an api call in your own cloud. However, no we will not be able to help you monitize your Machine or deploy in for clinical use;
+this may be possible in the future, but no promises.
+
+Use the __LABEL__ `com.envoyai.network` to enable network access.
+```Dockerfile
+LABEL com.envoyai.network=true
+```

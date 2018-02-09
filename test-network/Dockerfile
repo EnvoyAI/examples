@@ -1,9 +1,8 @@
-FROM nvidia/cuda:9.0-runtime-ubuntu16.04
-ADD . /prog
-WORKDIR /prog
-ENTRYPOINT ["./deviceQuery","|","grep","Result",">","/envoyai/output/result"]
+FROM ubuntu:16.04
+RUN apt-get update && apt-get install -y iputils-ping
+ENTRYPOINT ["/bin/ping","-c","3","google.com"]
 LABEL com.envoyai.metadata-version=2
-LABEL com.envoyai.nvidia=true
+LABEL com.envoyai.network=true
 LABEL com.envoyai.schema-in="\
 test:\n\
  type: boolean"
@@ -15,14 +14,14 @@ source-display-group:\n\
   display-elements: []\n\
 results-display-group:\n\
   display-elements:\n\
-    - title: Device Query Response\n\
+    - title: Ping Response\n\
       id: out_str\n\
       content:\n\
         pointer:\n\
           source: output\n\
           property: result"
 LABEL com.envoyai.info="\
-name: Cuda Test\n\
+name: Network Test\n\
 title: Test machine for testing purposes only.\n\
 author: Staff\n\
 organization: EnvoyAI"
