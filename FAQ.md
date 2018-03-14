@@ -10,7 +10,8 @@ The best way to learn about how to create a machine on the EnvoyAI Platform is t
 
 #### How do I create a machine that take a Dicom file as input?
 To learn more about DICOM input and other advanced input and output types, please see [TYPES.md](TYPES.md).
-Yes, to see a simple example that takes a dicom study as input and returns a dicom study as output, see the [test/dicom](./test-dicom) example.
+Yes, to see a simple example that takes a dicom study, series or image as input and returns a dicom study, series or image as output,
+see the [test/dicom-study](./test-dicom-study), [test/dicom-series](./test-dicom-series), or [test/dicom-image](./test-dicom-image) example.
 
 #### How do I provide test or sample data for my machine?
 We recommend using Google Drive, or Amazon S3 to publicly host sample images and data. You can then publish a link to that data in your Machine description.
