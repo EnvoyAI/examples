@@ -6,7 +6,7 @@ from dicom.sequence import Sequence
 
 def get_gsps_file_metadata():
     file_meta = Dataset()
-    file_meta.MediaStorageSOPClassUID = "1.2.840.10008.5.1.4.1.1.11.1"
+    file_meta.MediaStorageSOPClassUID = "1.2.840.10008.5.1.4.1.1.11.1" #Grayscale Softcopy Presentation State Storage SOP Class
     file_meta.MediaStorageSOPInstanceUID = dicom.UID.generate_uid()
     file_meta.ImplementationClassUID = "1.2.276.0.7230010.3.0.3.4.1"
     file_meta.ImplementationVersionName = "GSPS_DEMO"
@@ -14,10 +14,10 @@ def get_gsps_file_metadata():
 
 
 def set_gsps_general_study_info( dataset ):
-    dataset.SOPClassUID = "1.2.840.10008.5.1.4.1.1.11.1"
+    dataset.SOPClassUID = "1.2.840.10008.5.1.4.1.1.11.1" #Grayscale Softcopy Presentation State Storage SOP Class
     dataset.SOPInstanceUID = dicom.UID.generate_uid()
     dataset.AccessionNumber = ""
-    dataset.Modality = "PR"
+    dataset.Modality = "PR" # Presentation State
     dataset.Manufacturer = ""
     dataset.SeriesDescription = "GSPS demo"
     dataset.SeriesInstanceUID = dicom.UID.generate_uid()
@@ -112,7 +112,7 @@ def add_text_annotation(dicom, text, layer_name, bounding_box, anchor_point=None
     dicom.GraphicAnnotations = Sequence([ds_graphic_annotation])
 
 
-def add_presentation_lut(dicom):
+def add_presentation_lut(dicom): #LUT - Look Up Table for colors
     ds_presentation_lut = Dataset()
     ds_presentation_lut.LUTDescriptor = [256, 0, 12]
     ds_presentation_lut.data_element("LUTDescriptor").VR = "US"
