@@ -89,3 +89,8 @@ Use the __LABEL__ `com.envoyai.network` to enable network access.
 ```Dockerfile
 LABEL com.envoyai.network=true
 ```
+
+#### Why can't I see GSPS Annotations
+Our testing viewer, does not currently support GSPS. We hope to provide this feature soon. In the mean time you can use
+the free desktop viewer [Weasis](https://sourceforge.net/projects/dcm4che/files/Weasis/). After importing your study,
+make sure to click the green checkbox on the right side of the screen to toggle the annotations on.
