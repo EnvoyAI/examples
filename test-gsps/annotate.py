@@ -5,14 +5,24 @@ from dicom.dataset import Dataset, FileDataset
 from shutil import copyfile
 
 # load annotation text parameter
-annotation_text_file = open("/envoyai/input/text-annotation", "r")
-annotation_text = annotation_text_file.read()
-annotation_text_file.close()
+with open("/envoyai/input/text-annotation", "r") as f:
+    annotation_text = f.read()
 
 # load text alignment parameter
-left_right_file = open("/envoyai/input/label-alignment")
-left_right = left_right_file.read()
-left_right_file.close()
+with open("/envoyai/input/label-alignment") as f:
+    left_right = f.read()
+
+# load circle radius parameter
+with open("/envoyai/input/circle-radius") as f:
+    cir_rad = int(f.read())
+
+# load circle x parameter
+with open("/envoyai/input/circle-pos-x") as f:
+    cir_pos_x = int(f.read())
+
+# load circle y parameter
+with open("/envoyai/input/circle-pos-y") as f:
+    cir_pos_y = int(f.read())
 
 # load the input image
 input_dicom = dicom.read_file("/envoyai/input/input-image")
@@ -33,21 +43,23 @@ gsps.set_referenced_image_info(ds_out, input_dicom.SeriesInstanceUID, input_dico
 # calculate coordinates for annotation and anchor point
 input_rows = input_dicom.Rows
 input_columns = input_dicom.Columns
-anchor_point = [input_columns/2, input_rows/2]
+anchor_point = [input_columns / 2, input_rows / 2]
 
-top_left = [input_columns/10, input_rows/5]
-bottom_right = [input_columns/5, input_rows/5 + 16]
+top_left = [input_columns / 10, input_rows / 5]
+bottom_right = [input_columns / 5, input_rows / 5 + 16]
 if left_right == "Right":
-    top_left = [input_columns - (input_columns/10), input_rows/5]
-    bottom_right = [input_columns/5, input_rows/5 + 16]
+    top_left = [input_columns - (input_columns / 10), input_rows / 5]
+    bottom_right = [input_columns / 5, input_rows / 5 + 16]
 anchor_point = {"AnchorPointAnnotationUnits": "PIXEL", "AnchorPoint": anchor_point, "AnchorPointVisibility": "Y"}
-text_bounding_box = {"BoundingBoxAnnotationUnits": "PIXEL", "BoundingBoxTopLeftHandCorner": top_left, "BoundingBoxBottomRightHandCorner": bottom_right}
-
+text_bounding_box = {"BoundingBoxAnnotationUnits": "PIXEL", "BoundingBoxTopLeftHandCorner": top_left,
+                     "BoundingBoxBottomRightHandCorner": bottom_right}
 
 # add the annotation
 gsps.add_graphic_layer(ds_out, "LAYER1", "for annotation", 1)
 gsps.add_displayed_area_selection(ds_out, input_dicom.Columns, input_dicom.Rows)
-gsps.add_text_annotation(ds_out, annotation_text, "LAYER1", text_bounding_box, anchor_point)
+text = gsps.get_text_annotation(annotation_text, text_bounding_box, anchor_point)
+circle = gsps.get_circle(cir_rad, cir_pos_x, cir_pos_y)
+gsps.add_graphic_annotations(ds_out, "LAYER1", [circle], [text])
 
 # write output
 os.mkdir("/envoyai/output/annotated-series")
