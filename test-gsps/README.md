@@ -34,7 +34,9 @@ Add annotation data:
 ```pythonstub
 gsps.add_graphic_layer(ds_out, "LAYER1", "for annotation", 1)
 gsps.add_displayed_area_selection(ds_out, input_dicom.Columns, input_dicom.Rows)
-gsps.add_text_annotation(ds_out, annotation_text, "LAYER1", text_bounding_box, anchor_point)
+text_annotation = gsps.get_text_annotation(annotation_text, text_bounding_box, anchor_point)
+graphic_annotation = gsps.get_circle(cir_rad, cir_pos_x, cir_pos_y)
+gsps.add_graphic_annotations(ds_out, "LAYER1", [circle], [text])
 ```
 And finally output the instance to a file:
 ```pythonstub
