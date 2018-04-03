@@ -94,3 +94,9 @@ LABEL com.envoyai.network=true
 Our testing viewer, does not currently support GSPS. We hope to provide this feature soon. In the mean time you can use
 the free desktop viewer [Weasis](https://sourceforge.net/projects/dcm4che/files/Weasis/). After importing your study,
 make sure to click the green checkbox on the right side of the screen to toggle the annotations on.
+
+#### How should StudyInstanceUID SeriesInstanceUID and SOPInstanceUID be treated?
+When creating a secondary capture, structured report, gsps annotations, dicom-rt segmentations,
+or dicom-seg segmentations, the newly created dicom instances should all have the same StudyInstanceUID as the original input study
+that the instances are derived from, and the new instances should have the same new SeriesInstancUID and each SOPInstanceUID
+should have a new unique SOPInstanceUID.
