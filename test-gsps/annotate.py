@@ -27,13 +27,16 @@ with open("/envoyai/input/circle-pos-y") as f:
 # load the input image
 input_dicom = dicom.read_file("/envoyai/input/input-image")
 
+# generate series uid
+series_instance_uid = dicom.UID.generate_uid()
+
 # create the bare output dicom
 file_meta = gsps.get_gsps_file_metadata()
 ds_out = FileDataset("image.pre", {}, file_meta=file_meta, preamble=b"\0" * 128)
 
 # set the content description and general study fields
 gsps.set_content_desription(ds_out, "Presentation State for image")
-gsps.set_gsps_general_study_info(ds_out)
+gsps.set_gsps_general_study_info(ds_out,file_meta,series_instance_uid)
 
 # copy patient, study, series data from input image
 gsps.copy_details_from_input_dicom(ds_out, input_dicom)
