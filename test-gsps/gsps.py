@@ -13,14 +13,14 @@ def get_gsps_file_metadata():
     return file_meta
 
 
-def set_gsps_general_study_info(dataset):
-    dataset.SOPClassUID = "1.2.840.10008.5.1.4.1.1.11.1"  # Grayscale Softcopy Presentation State Storage SOP Class
-    dataset.SOPInstanceUID = dicom.UID.generate_uid()
+def set_gsps_general_study_info(dataset,file_meta,series_instance_uid):
+    dataset.SOPClassUID = file_meta.MediaStorageSOPClassUID
+    dataset.SOPInstanceUID = file_meta.MediaStorageSOPInstanceUID
     dataset.AccessionNumber = ""
     dataset.Modality = "PR"  # Presentation State
     dataset.Manufacturer = ""
     dataset.SeriesDescription = "GSPS demo"
-    dataset.SeriesInstanceUID = dicom.UID.generate_uid()
+    dataset.SeriesInstanceUID = series_instance_uid
     dataset.SeriesNumber = 1
     dataset.InstanceNumber = 1
     dataset.ContentLabel = "GSPS_demo"

@@ -14,9 +14,9 @@ Nearly all dicom viewers have basic GSPS support, and are able to toggle on and 
 viewers support new interactions like accepting/rejecting each annotation separately.   
 
 ### How to implement GSPS Annotations
-At a high level, to implement GSPS Annotations, one must create a new series and new instance for each instance
-that needs to be annotated. Feel free to use some of the convenience functions we wrote in [gsps.py](./gsps.py).
-Using that code along with pydicom, its pretty easy to create each instance:
+At a high level, to implement GSPS Annotations, one must usually create a single new series for all of your GSPS
+instances and new instance for each source instance that needs to be annotated. Feel free to use some of the convenience
+functions we wrote in [gsps.py](./gsps.py). Using that code along with pydicom, its pretty easy to create each instance:
 ```pythonstub
 file_meta = gsps.get_gsps_file_metadata()
 ds_out = FileDataset("instance.pre", {}, file_meta=file_meta, preamble=b"\0" * 128)
@@ -24,7 +24,7 @@ ds_out = FileDataset("instance.pre", {}, file_meta=file_meta, preamble=b"\0" * 1
 Set the content description and copy details from the input data:
 ```pythonstub
 gsps.set_content_desription(ds_out, "Presentation State for image")
-gsps.set_gsps_general_study_info(ds_out)
+gsps.set_gsps_general_study_info(ds_out,file_meta,series_instance_uid)
 
 gsps.copy_details_from_input_dicom(ds_out, input_dicom)
 gsps.set_referenced_image_info(ds_out, input_dicom.SeriesInstanceUID, input_dicom.SOPClassUID,
