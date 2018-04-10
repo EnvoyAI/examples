@@ -90,6 +90,7 @@ Use the __LABEL__ `com.envoyai.network` to enable network access.
 LABEL com.envoyai.network=true
 ```
 
+*Note: if you don't allow network access (the default), the docker container will not have a /etc/hosts file, and thus requests to localhost will not work*
 #### Why can't I see GSPS Annotations
 Our testing viewer, does not currently support GSPS. We hope to provide this feature soon. In the mean time you can use
 the free desktop viewer [Weasis](https://sourceforge.net/projects/dcm4che/files/Weasis/). After importing your study,
