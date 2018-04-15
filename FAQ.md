@@ -101,3 +101,96 @@ When creating a secondary capture, structured report, gsps annotations, dicom-rt
 or dicom-seg segmentations, the newly created dicom instances should all have the same StudyInstanceUID as the original input study
 that the instances are derived from, and the new instances should have the same new SeriesInstancUID and each SOPInstanceUID
 should have a new unique SOPInstanceUID.
+
+## Production Clinical Workflow
+
+#### How do I make my Machine ready for a hospital to use it?
+
+
+#### How can my Machine be used, and how will it fit into a hospital workflow?
+There are a number of ways a Machine can be initiated:
+
+1.
+    Developer Portal - The Developer portal can be used to test and share
+    any Machine with any inputs or outputs.
+1.
+    _Liaison_ Integration - EnvoyAI's integration edge appliance, which
+    lives in hospital data centers, can be configured to receive imaging
+    studies from other DICOM endpoints, such as scanners or PACS. _Liaison_
+    can be configured to stand up multiple AE Titles which in turn can be
+    configured to run any number of Machines with studies send to that AE.
+    Once results are computed, they can be delivered to a radiologist in
+    a number of ways; for more information see the [related faq](#what-are-the-different-ways-my-machines-results-can-be-used)
+    or [envoyai.com](http://envoyai.com)
+
+    Currently liaison can only run machines that take a single
+    DICOM study, along with configuration inputs (that may be hardcoded).
+    Future development will allow multiple DICOM study inputs (ie priors
+    or comparisons), and other data inputs from HL7 sources.
+1.
+    Other Integration - EnvoyAI is continually working on additional
+    distribution partnerships. One example of such a partnership is that
+    with [AmbraHealth](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0ahUKEwiD1saewbvaAhWGjlkKHSNJDjoQFgg8MAI&url=https%3A%2F%2Fwww.auntminnie.com%2Findex.aspx%3Fsec%3Dlog%26itemID%3D120142&usg=AOvVaw1Op0I0PRlwuWW1gLySOcV5).
+    Integration details in these cases will vary.
+
+#### What are the different ways my Machine's results can be used?
+There are a few ways Machine's results can be viewed or otherwise used,
+EnvoyAI is continually working on additional features and integration
+partnerships, so these capabilities will expand over time.
+
+1.
+    On the dev portal - Results can be seen by anyone, via a web browser,
+    that you grant access; all data types are supported.
+
+1.
+    On the forthcoming Physician portal - Results for *live* versions of
+    Machines (Machine version no longer in development) will be viewable
+    by Physicians in an easy to use interface. The Physician portal will
+    allow potential users to test and demonstrate Machine's before
+    purchasing and integrating at their hospital.
+
+1.
+    In a hospital, the ways that results can be used will vary based on
+    the availability of other systems, and the configurability of said
+    systems. Liaison's open REST API makes the integration options almost
+    limitless. That aside, here are the common configuration we currently
+    can implement, along with some configurations that we are in the
+    process of developing.
+
+    1.
+        DICOM integration - _Liaison_ can be configured to send DICOM
+        results to one or more DICOM endpoint, usualy PACS. This means DICOM
+        GSPS (Annotation), SR (Structured Report), SC (Secondary Capture)
+        results will all be sent to PACS and viewed either with the bundled
+        PACS viewer or with an advanced viewer contextually launched from the PACS.
+
+        With this integration, non-DICOM types cannot be sent to PACS, and be ignored.
+
+    1.
+        Viewer integration - _Liaison_ provides REST API routes
+        designed to provide viewers Machine results. The full
+        features of the viewer will vary product to product. Currently
+        the only fully integrated viewer is TeraRecon's forthcoming, *NorthStar*.
+        We hope to add other deeply integrated viewers in the future.
+
+        Viewer's have the capability to display more than just DICOM outputs,
+        NorthStar for example can display JPG, PNGs, PDFs, as well as text and
+        measurement data from JSON.
+
+        An example of the more advanced behaviors that an integrated viewer can enable
+        is NorthStar's ability to let the user *Accept* or *Reject* results
+        before they are archived to PACS, so that only correct results get saved.
+
+    1.
+        *PENDING* Reporting integration - _Liaison_ provides REST API routes
+        designed to provide radiology reporting systems with Machine results.
+        This will allow measurements to reach EMRs without needing to be
+        dictated or copied, or perhaps double check physicians if they are
+        missing a critical finding.
+
+    1.
+        *PENDING* Worklist and Notification System integration - _Liaison_
+        provides results via REST API routes that Worklist and Notification Systems
+        can leverage to order a physician's work, or to send notifications
+        when there are critial findings.
+
