@@ -105,7 +105,19 @@ should have a new unique SOPInstanceUID.
 ## Production Clinical Workflow
 
 #### How do I make my Machine ready for a hospital to use it?
+There should little to no development needed to make your Machine ready
+for a hospital. There may be additional standards that you can adopt,
+or features you can add to make your product more compelling, but in general
+if it works on the dev portal it can be used clinically. See the "Liaison Integration"
+section of this [related faq](#how-can-my-machine-be-used-and-how-will-it-fit-into-a-hospital-workflow)
+for more detail.
 
+When you are finished developing a specific version of your Machine and
+you are ready to distribute it, please contact us and we will create a
+'locked down' Read Only repository for that version, so that it can be used
+with the guarantee that the code will not be changed. This will be the version
+we deliver for you to Hospitals, and this will be the version we demonstrate
+on our forthcoming physician portal.
 
 #### How can my Machine be used, and how will it fit into a hospital workflow?
 There are a number of ways a Machine can be initiated:
