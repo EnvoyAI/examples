@@ -13,7 +13,7 @@ def get_gsps_file_metadata():
     return file_meta
 
 
-def set_gsps_general_study_info(dataset,file_meta,series_instance_uid):
+def set_gsps_general_study_info(dataset, file_meta, series_instance_uid):
     dataset.SOPClassUID = file_meta.MediaStorageSOPClassUID
     dataset.SOPInstanceUID = file_meta.MediaStorageSOPInstanceUID
     dataset.AccessionNumber = ""
@@ -132,6 +132,7 @@ def get_text_annotation(text, bounding_box, anchor_point=None):
         ds_text_object.AnchorPoint = anchor_point["AnchorPoint"]
         ds_text_object.AnchorPointVisibility = anchor_point["AnchorPointVisibility"]
     return ds_text_object
+
 
 def get_circle(cir_rad, cir_pos_x, cir_pos_y):
     ds_cir_object = Dataset()

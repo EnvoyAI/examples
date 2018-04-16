@@ -17,6 +17,6 @@ annotated-series:\n\
   dicom-type: dicom-series"
 LABEL com.envoyai.info="\
 name: Annotation Demo\n\
-title: Adds a GSPS annotation file to an image to create a series \n\
+title: Adds a GSPS text and circle annotations to an image to create a series \n\
 author: Staff\n\
 organization: EnvoyAI"
