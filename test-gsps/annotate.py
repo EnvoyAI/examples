@@ -36,7 +36,7 @@ ds_out = FileDataset("image.pre", {}, file_meta=file_meta, preamble=b"\0" * 128)
 
 # set the content description and general study fields
 gsps.set_content_desription(ds_out, "Presentation State for image")
-gsps.set_gsps_general_study_info(ds_out,file_meta,series_instance_uid)
+gsps.set_gsps_general_study_info(ds_out, file_meta, series_instance_uid)
 
 # copy patient, study, series data from input image
 gsps.copy_details_from_input_dicom(ds_out, input_dicom)
@@ -62,9 +62,10 @@ gsps.add_graphic_layer(ds_out, "LAYER1", "for annotation", 1)
 gsps.add_displayed_area_selection(ds_out, input_dicom.Columns, input_dicom.Rows)
 text = gsps.get_text_annotation(annotation_text, text_bounding_box, anchor_point)
 circle = gsps.get_circle(cir_rad, cir_pos_x, cir_pos_y)
-gsps.add_graphic_annotations(ds_out, "LAYER1", [circle], [text])
+circle2 = gsps.get_circle(cir_rad + 20, cir_pos_x, cir_pos_y)
+circle3 = gsps.get_circle(cir_rad, cir_pos_x + 200, cir_pos_y + 100)
+gsps.add_graphic_annotations(ds_out, "LAYER1", [circle, circle2, circle3], [text])
 
 # write output
 os.mkdir("/envoyai/output/annotated-series")
-copyfile("/envoyai/input/input-image", "/envoyai/output/annotated-series/image.dcm")
 ds_out.save_as("/envoyai/output/annotated-series/image.pre")
