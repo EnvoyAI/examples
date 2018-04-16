@@ -26,7 +26,7 @@ We call this packaged container a _machine_.
 ### Schema
 The data that your algorithm evaluates is called its _inputs_, the data your algorithm produces is called its _outputs_.
 Both input and outputs must have well defined data type definitions called a _schema_.
-The EnvoyAI Platform is based on JSON-Schema but uses different defaults, and has additional
+The EnvoyAI Platform uses a system based on JSON-Schema but uses different defaults, and has additional
 features to describe files and DICOM studies. Additionally the platform uses a similar schema to define how the inputs 
 and outputs are to be displayed. Either JSON or YAML formatted schemas are accepted.
 

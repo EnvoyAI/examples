@@ -77,15 +77,7 @@ with open('/envoyai/output/hello', 'w') as file_out:
 ### 4 Display
 To suggest how consumers of your algorithm should display, you use the __LABEL__ `com.envoyai.display`
 
-`com.envoyai.display` must contain two ordered lists of _display-elements_, `source-display-group` generally
-representing the inputs, and `results-display-group` generally representing the outputs, as well as a `result-summary`
-which provides the consumer with a
-
-Each _display-element_ must have a title, id, and content. Title simply suggests how the viewer should label the value,
-the id allows you to reference the display element in feedback, the content tells the viewer what to actually show,
-usually with a _pointer_ object. A _pointer_ object contains a single property, `pointer`, which in turn has a `source` prop
-describing if the value comes from the input or the output of the algorithm, and a `property` prop which will match the name
-of the property from either input or output.
+See [REF.md](#../REF.md/#com.envoyai.display) for more details.
 
 In this case we just have a single input property and single output property to show, and we chose to show the output
 property as the summary.
@@ -114,16 +106,13 @@ result-summary:\n\
       property: hello"
 ```
 ### 5 Feedback
-Each machine may optionally request input from the end user when they are being presented with the results. To describe this input you may use the __LABEL__ `com.envoyai.selector`. Currently
-only the simplest feedback is supported:
+Each machine may optionally request input from the end user when they are
+being presented with the results. To describe this input, use the
+__LABEL__ `com.envoyai.selector`. Currently only relativly simple feedback
+is supported. See [REF.md](#../REF.md/#com.envoyai.selector) for more details.
 
-|Name           |Key                         |LABEL value|Description|
-|---------------|----------------------------|-----------|-----------|
-|Accept / Reject|`accept-reject`             |`selector-type: accept-reject`| will prompt the user to either agree or disagree with the results.
-|Choose One     |`choose-one-display-element`|`selector-type: choose-one-display-element`<br />`selector-config:`<br />&nbsp;&nbsp;`  choose-options:`<br />&nbsp;&nbsp;&nbsp;&nbsp;`- display-element-id-1`<br />&nbsp;&nbsp;&nbsp;&nbsp;`- display-element-id-2`<br />&nbsp;&nbsp;&nbsp;&nbsp;`- display-element-id-3`| will prompt the user to either agree or disagree with the results.
-
-
-This feedback can configured to drive the clinical workflow. In the future, developers will have access to bulk feedback data from participating Customers.
+This feedback can configured to drive the clinical workflow. In the future,
+developers will have access to bulk feedback data from participating Customers.
 ### 6 Metadata
 Use the __LABEL__ `com.envoyai.info` to provide information about your algorithm. 
 
