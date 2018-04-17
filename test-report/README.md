@@ -48,7 +48,13 @@ property.
           pointer:\n\
             source: output\n\
             property: pulmonary-nodule-present\n\
-    measurements:[]"
+    measurements:\n\
+      - code: 364639007|Feature of a mass| : 118565006|Volume| = 396162003|mm3|\n\
+        code-system: snomed-ct\n\
+        value:\n\
+          pointer:\n\
+            source: output\n\
+            property: pulmonary-nodule-volume"
     ```
 ### Hhow to use the Measurements Reporting Integration
 The EnvoyAI Measurement Reporting Integration is just a little more complicated
