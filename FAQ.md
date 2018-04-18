@@ -8,26 +8,24 @@
 #### How do I learn how to create a machine?
 The best way to learn about how to create a machine on the EnvoyAI Platform is to read the [helloworld walk-through](./test-hello/README.md).
 
-#### How do I create a machine that take a Dicom file as input?
+#### How do I create a machine that takes a Dicom file as input?
 To learn more about DICOM input and other advanced input and output types, please see [TYPES.md](TYPES.md).
-Yes, to see a simple example that takes a dicom study, series or image as input and returns a dicom study, series or image as output,
+To see a simple example that takes a dicom study, series or image as input and returns a dicom study, series or image as output,
 see the [test/dicom-study](./test-dicom-study), [test/dicom-series](./test-dicom-series), or [test/dicom-image](./test-dicom-image) example.
 
 #### How do I provide test or sample data for my machine?
-We recommend using Google Drive, or Amazon S3 to publicly host sample images and data. You can then publish a link to that data in your Machine description.
+We recommend using Google Drive, or Amazon S3 to publicly host sample images and data. You can then publish a link to that data in your Machine description. Within the dev portal, you are also able to upload test data directly, which will be stored in Amazon S3, an can be used directly within your machine thereafter.
 
 ## Security
 
 #### How does Envoy AI protect my docker image?
-We recognize the importance of protecting the IP in your docker images. We have and will continue to consult with outside security experts. 
-We follow the principle of least privilege in securing docker images, we apply patches, and use 2FA for all EnvoyAI principals.
+We recognize the importance of protecting the IP in your docker images. We follow the principle of least privilege in securing docker images. We apply patches, and use 2FA for all EnvoyAI principals. Your docker image is stored within Amazon ECR, that only your organization may access through its own personal IAM policy. We have and will continue to consult with outside security experts. 
 
 #### How is my docker image stored?
 We store docker images in Amazon’s Elastic Container Registry (ECR). We administer security on a per-image basis using IAM credentials.
 
 #### Who has access to my image?
-Machines in the developer portal are considered private by default, people will only be aware of or have access to your machines if you
-have granted them that permission explicitly.
+Machines in the developer portal are considered private by default. People will only be aware of or have access to your machines if you have granted them that permission explicitly, otherwise, only your organization will have access.
 
 #### How do you manage on-site installations?
 If you sell your algorithm to a hospital with an on-site deployment, your docker image will run in the hospital’s data center.
@@ -41,15 +39,15 @@ liability to damages claimed by you.
 ## Docker and Machine API
 
 #### How do I quickly adapt an already working dockerfile?
-See our [caffe-cpp_classification](./caffe-cpp_classification/Dockerfile) example. It is an adaption of a caffe image recognition sample.
+See our [test-echo](./test-echo/Dockerfile) machine for a simple example, or the [caffe-cpp_classification](./caffe-cpp_classification/Dockerfile) machine, an adaption of a caffe image recognition sample, for a slighly more complicated example.
 
-For this example we just needed to specify an __ENTRYPOINT__ that would provide the path for the image input, and write the metadata __LABELs__.
-The only other required work was to modify the existing project to write the appropriate output files.
+For these examples, we just needed to specify an __ENTRYPOINT__ that would provide the path for the image input, and write the metadata __LABELs__.
+The only other required work is to modify the existing project to write the appropriate output files.
 See the [Diff](https://github.com/jaketaylorpro/caffe/commit/a90ddca0e384c04d4d0ec0c49e0e7b07c6f0cb07) in our fork of the Caffe repo.
 
 #### How do I view debugging information about my machine when its running on the platform?
 All logs, captured from your executable's stdout and stderr, are viewable in the Machine Administration panel, under the logs tab.
-We are currently working on expanding debugging and error handling capabilities
+We are currently working on expanding debugging and error handling capabilities.
 
 #### How do I get started with Docker?
 To download and install Docker please visit [www.docker.com](https://www.docker.com/get-docker)
@@ -76,14 +74,11 @@ Not quite yet, please contact us if this is a strict requirement for your Machin
 #### YAML or JSON
 Each of the metadata fields (`com.envoyai.schema-in`,`com.envoyai.schema-out`,`com.envoyai.display`,`com.envoyai.selector`,`com.envoyai.info`)
 can be specified with JSON, or with YAML (a superset of JSON that allows us to drop a lot of the cumbersome symbols).
-An important "gotcha" when using YAML in a Dockerfile LABEL is that, because the way Docker caputures strings, each LABEL must have
-explicit newline characters using `\n` at the end of each line, and usually a continuation slash so you will see `\n\` at the end of most lines.
+An important "gotcha" when using YAML in a Dockerfile LABEL is that, because the way Docker captures strings, each LABEL must have explicit newline characters using `\n` at the end of each line, and usually a continuation slash so you will see `\n\` at the end of most lines.
 See test/echo's [Dockerfile](./test-echo/Dockerfile) for an example that actually mixes yaml and json for brevity and clarity.
 
 #### Can my Machine access the Internet?
-Yes and no. Yes for testing and demonstration purposes, we have a configuration flag that will allow your docker container to access the internet;
-perhaps to make an api call in your own cloud. However, no we will not be able to help you monitize your Machine or deploy in for clinical use;
-this may be possible in the future, but no promises.
+Yes and no. Yes for testing and demonstration purposes - we have a configuration flag that will allow your docker container to access the internet, perhaps to make an API call in your own cloud. However, will not be able to help you monetize your Machine or deploy in for clinical use; this may be possible in the future, but no promises.
 
 Use the __LABEL__ `com.envoyai.network` to enable network access.
 ```Dockerfile
@@ -92,8 +87,8 @@ LABEL com.envoyai.network=true
 
 *Note: if you don't allow network access (the default), the docker container will not have a /etc/hosts file, and thus requests to localhost will not work*
 #### Why can't I see GSPS Annotations
-Our testing viewer, does not currently support GSPS. We hope to provide this feature soon. In the mean time you can use
-the free desktop viewer [Weasis](https://sourceforge.net/projects/dcm4che/files/Weasis/). After importing your study,
+Our testing viewer does not currently support GSPS. We hope to provide this feature soon. In the meantime you can use
+the free desktop viewer, [Weasis](https://sourceforge.net/projects/dcm4che/files/Weasis/). After importing your study,
 make sure to click the green checkbox on the right side of the screen to toggle the annotations on.
 
 #### How should StudyInstanceUID SeriesInstanceUID and SOPInstanceUID be treated?
@@ -105,19 +100,9 @@ should have a new unique SOPInstanceUID.
 ## Production Clinical Workflow
 
 #### How do I make my Machine ready for a hospital to use it?
-There should little to no development needed to make your Machine ready
-for a hospital. There may be additional standards that you can adopt,
-or features you can add to make your product more compelling, but in general
-if it works on the dev portal it can be used clinically. See the "Liaison Integration"
-section of this [related faq](#how-can-my-machine-be-used-and-how-will-it-fit-into-a-hospital-workflow)
-for more detail.
+There should little to no development needed to make your Machine readyfor a hospital. There may be additional standards that you can adopt, or features you can add to make your product more compelling, but in general, if it works on the dev portal, it can be used clinically. See the "Liaison Integration" section of this [related faq](#how-can-my-machine-be-used-and-how-will-it-fit-into-a-hospital-workflow) for more detail.
 
-When you are finished developing a specific version of your Machine and
-you are ready to distribute it, please contact us and we will create a
-'locked down' Read Only repository for that version, so that it can be used
-with the guarantee that the code will not be changed. This will be the version
-we deliver for you to Hospitals, and this will be the version we demonstrate
-on our forthcoming physician portal.
+When you are finished developing a specific version of your Machine and you are ready to distribute it, please contact us and we will create a 'locked down' Read Only repository for that version, so that it can be used with the guarantee that the code will not be changed. This will be the version we deliver for you to hospitals, and this will be the version we demonstrate on our forthcoming physician portal.
 
 #### How can my Machine be used, and how will it fit into a hospital workflow?
 There are a number of ways a Machine can be initiated:
@@ -133,7 +118,7 @@ There are a number of ways a Machine can be initiated:
     configured to run any number of Machines with studies send to that AE.
     Once results are computed, they can be delivered to a radiologist in
     a number of ways; for more information see the [related faq](#what-are-the-different-ways-my-machines-results-can-be-used)
-    or [envoyai.com](http://envoyai.com)
+    or [envoyai.com](http://envoyai.com).
 
     Currently liaison can only run machines that take a single
     DICOM study, along with configuration inputs (that may be hardcoded).
@@ -171,12 +156,12 @@ partnerships, so these capabilities will expand over time.
 
     1.
         DICOM integration - _Liaison_ can be configured to send DICOM
-        results to one or more DICOM endpoint, usualy PACS. This means DICOM
+        results to one or more DICOM endpoint, usually PACS. This means DICOM
         GSPS (Annotation), SR (Structured Report), SC (Secondary Capture)
         results will all be sent to PACS and viewed either with the bundled
         PACS viewer or with an advanced viewer contextually launched from the PACS.
 
-        With this integration, non-DICOM types cannot be sent to PACS, and be ignored.
+        With this integration, non-DICOM types cannot be sent to PACS, and will be ignored.
 
     1.
         Viewer integration - _Liaison_ provides REST API routes
