@@ -2,7 +2,6 @@ FROM ubuntu:16.04
 RUN apt-get update && apt-get install -y python-dicom
 ADD . /prog
 WORKDIR /prog
-RUN chmod a+x annotate.py gsps.py
 ENTRYPOINT ["python", "cmd.py"]
 LABEL com.envoyai.metadata-version=2
 LABEL com.envoyai.schema-in="\
@@ -38,7 +37,7 @@ findings:\n\
         source: output\n\
         property: pulmonary-nodule-present\n\
 measurements:\n\
-  - code: 364639007|Feature of a mass| : 118565006|Volume| = 396162003|mm3|\n\
+  - code: '364639007|Feature of a mass| : 118565006|Volume| = 396162003|mm3|'\n\
     code-system: snomed-ct\n\
     value:\n\
       pointer:\n\
