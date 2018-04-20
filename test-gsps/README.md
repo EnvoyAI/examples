@@ -3,7 +3,7 @@
 ### Why use Grayscale Softcopy Presentation State
 Currently, the best way to output: annotations, heatmaps, and regions of interest is by using 
 *Grayscale Softcopy Presentation State* (GSPS). GSPS is a way to encode visual information about a dicom image
-without actually drawing ontop of the existing image data. Rather than outputting a secondary capture series, which
+without actually drawing on top of the existing image data. Rather than outputting a secondary capture series, which
 would be a copy of the input data but with circles drawn around regions of interest, a GSPS series can be the output,
 which would store the dicom instances it references along with the simple geometry information. 
 

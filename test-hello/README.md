@@ -47,7 +47,7 @@ hello:\n\
  type: string\n\
  title: hello"
 ```
-Such an input schema as above declares that there will be exactly one input to the algorithm of the datatype 'string'.
+Such an input schema as above declares that there will be exactly one input to the algorithm of the data  type 'string'.
 Also, it be titled 'hello' and appear first on the testing website.
 
 Don't forget to escape quotes and newlines with a backslash.
@@ -108,7 +108,7 @@ result-summary:\n\
 ### 5 Feedback
 Each machine may optionally request input from the end user when they are
 being presented with the results. To describe this input, use the
-__LABEL__ `com.envoyai.selector`. Currently only relativly simple feedback
+__LABEL__ `com.envoyai.selector`. Currently only relatively simple feedback
 is supported. See [REF.md](#../REF.md/#com.envoyai.selector) for more details.
 
 This feedback can configured to drive the clinical workflow. In the future,

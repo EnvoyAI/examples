@@ -6,11 +6,11 @@ The EnvoyAI Reporting Integration will eventually be an extremely powerful
 tool in the hands of developers and radiologist. Developers will be able
 to write Machines that output the presence of *Findings* or output quantitative
 *Measurements*. EnvoyAI will be able to send the Findings and Measurements
-to the radiology reporting system, which will beable to enhanse the radiology
+to the radiology reporting system, which will be able to enhance the radiology
 workflow in a number of ways:
 
 * Automatically Copying Measurements into a report.
-* Automatically checking to make sure a clincal finding was reported,
+* Automatically checking to make sure a clinical finding was reported,
 and warning the radiologist if it is missing.
 
 ### How to use the Findings Reporting Interface
@@ -56,7 +56,7 @@ property.
             source: output\n\
             property: pulmonary-nodule-volume"
     ```
-### Hhow to use the Measurements Reporting Integration
+### How to use the Measurements Reporting Integration
 The EnvoyAI Measurement Reporting Integration is just a little more complicated
 then the Findings Interface.
 * Declare a float property (`{type: 'number'}`) to represent your measurement.
