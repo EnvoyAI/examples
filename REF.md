@@ -17,10 +17,10 @@ Here is a list of properties that may be provided, along with examples from an i
 |Name                |Key               |Example                                                                                              |Description|
 |--------------------|------------------|-----------------------------------------------------------------------------------------------------|-----------|
 |Name *              |name              |"AlgoEye &trade;"                                                                                    |The Name of your Machine|
-|Title               |title             |"Neural Net powered detector of incedental findings."                                                |Title (treated as a sub-title) of your Machine|
+|Title               |title             |"Neural Net powered detector of incidental findings."                                                |Title (treated as a sub-title) of your Machine|
 |Author              |author            |"Dr. John Doe PHD" OR "AlgoHoldings Staff"                                                           |Individual(s) credited with authorship|
 |Organization        |organization      |AlgoHoldings &copy;                                                                                  |Company or Organization with ownership|
-|Input Details       |input-details     |"Chest CR" OR "Screening Chest CT with 3mm slices"                                                   |Description of the input of an algorithm, this usually needed, beyond the contraints set in schema-in, to properly demonstrate the Machine.|
+|Input Details       |input-details     |"Chest CR" OR "Screening Chest CT with 3mm slices"                                                   |Description of the input of an algorithm, this usually needed, beyond the constraints set in schema-in, to properly demonstrate the Machine.|
 |Output Details      |output-details    |"Secondary Capture with RGB Overlay" OR "incidental findings and measurements"                       |Description of the output of an algorithm, this helps interested parties to understand the outputs and how they might be used.|
 |Link to Manual      |link-to-manual    |"https://algoholdings.ai/docs/algoeye.pdf"                                                           |URL to the user manual.|
 |Link to Samples     |link-to-samples   |"https://s3.amazonaws.com/algo-eye-samples/sample1.zip"                                              |URL to sample input and or output data.|
@@ -35,9 +35,9 @@ Here is a list of properties that may be provided, along with examples from an i
 |Data Source         |data-source       |"University of Imagination Hospital Chest CR repository"                                             |Source of the training data, if used.|
 |Ground Truth        |ground-truth      |"Chest CR annotated by board certified radiologists"                                                 |Description of the method by which training data, if used, was labeled.|
 |Training Algorithm  |training-algorithm|"Neural Net" or "Statistical Regressions after feature extraction with heuristics based segmentation"|Description of the algorithms used.|
-|Performance         |performance       |"99.98% Accuracy"                                                                                    |Accuracy and or precision, and any other relavent measurements of performance.|
+|Performance         |performance       |"99.98% Accuracy"                                                                                    |Accuracy and or precision, and any other relevant measurements of performance.|
 \* Only Name is required.<br />
-*Note: the datatype of all values is `string`*
+*Note: the data type of all values is `string`*
 ```Dockerfile
 LABEL com.envoyai.info="\
 name: Echo Machine\n\

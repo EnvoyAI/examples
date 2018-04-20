@@ -43,7 +43,7 @@ The best way to learn about how to create a machine on the EnvoyAI Platform is t
 
 To learn more about input and output types, please see the [types reference](TYPES.md).
 
-To see a reference for all supported Docker LABLEs, please see [REF.md](REF.md).
+To see a reference for all supported Docker LABELs, please see [REF.md](REF.md).
 
 It is also helpful to read through the [FAQ](FAQ.md)
 
