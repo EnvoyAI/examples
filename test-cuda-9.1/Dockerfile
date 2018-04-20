@@ -22,7 +22,7 @@ results-display-group:\n\
           source: output\n\
           property: result"
 LABEL com.envoyai.info="\
-name: Cuda Test\n\
+name: Cuda Test 9.1\n\
 title: Test machine for testing purposes only.\n\
 author: Staff\n\
 organization: EnvoyAI"
