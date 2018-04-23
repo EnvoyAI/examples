@@ -106,10 +106,13 @@ the free desktop viewer, [Weasis](https://sourceforge.net/projects/dcm4che/files
 make sure to click the green checkbox on the right side of the screen to toggle the annotations on.
 
 #### How should StudyInstanceUID SeriesInstanceUID and SOPInstanceUID be treated?
-When creating a secondary capture, structured report, gsps annotations, dicom-rt segmentations,
+When creating a secondary capture, structured report, GSPS annotations, dicom-rt segmentations,
 or dicom-seg segmentations, the newly created dicom instances should all have the same StudyInstanceUID as the original input study
 that the instances are derived from, and the new instances should have the same new SeriesInstanceUID and each SOPInstanceUID
 should have a new unique SOPInstanceUID.
+
+*Note: GSPS annotations that are related and should be viewed or
+toggled on/off together, should be in a single file.*
 
 ## Production Clinical Workflow
 
