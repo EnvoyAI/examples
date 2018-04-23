@@ -111,6 +111,12 @@ or dicom-seg segmentations, the newly created dicom instances should all have th
 that the instances are derived from, and the new instances should have the same new SeriesInstanceUID and each SOPInstanceUID
 should have a new unique SOPInstanceUID.
 
+*Note: No need to register UIDs and pay a fee, the EnvoyAI Platform
+does not require that.*
+
+*Note: When generating new UIDs, tools such as pydicom, DCMTK or DCM4CHE
+have built in methods to to generate compliant UIDs.*
+
 *Note: GSPS annotations that are related and should be viewed or
 toggled on/off together, should be in a single file.*
 
