@@ -8,6 +8,30 @@ Docker LABEL interface version - version 1 is deprecated, so value must be versi
 ```Dockerfile
 LABEL com.envoyai.metadata-version=2
 ```
+### com.envoyai.schema-in
+Formal description of the inputs to the Machine. The EnvoyAI Platform uses
+a system based on JSON-Schema but uses different defaults, and has additional
+features to describe files and DICOM studies. Either JSON or YAML formatted
+schemas are accepted.
+
+```Dockerfile
+LABEL com.envoyai.schema-in="\
+dicom-study-in:\n\
+  dicom-type: dicom-study"
+```
+See the [hello world walkthrough](#/test-hello/README.md/#2-schemas) for more info.
+### com.envoyai.schema-out
+Formal description of the outputs of the Machine. The EnvoyAI Platform uses
+a system based on JSON-Schema but uses different defaults, and has additional
+features to describe files and DICOM studies. Either JSON or YAML formatted
+schemas are accepted.
+
+```Dockerfile
+LABEL com.envoyai.schema-out="\
+dicom-study-out:\n\
+  dicom-type: dicom-study"
+```
+See the [hello world walkthrough](#/test-hello/README.md/#2-schemas) for more info.
 ### com.envoyai.info
 Information about the machine, author, and organization. This information is currently
 only visible on the developer portal, but after some modification to the available properties
@@ -45,31 +69,7 @@ title: Test machine for demonstration or testing purposes only\n\
 author: Staff\n\
 organization: EnvoyAI"
 ```
-### com.envoyai.schema-in
-Formal description of the inputs to the Machine. The EnvoyAI Platform uses
-a system based on JSON-Schema but uses different defaults, and has additional
-features to describe files and DICOM studies. Either JSON or YAML formatted
-schemas are accepted.
-
-```Dockerfile
-LABEL com.envoyai.schema-in="\
-dicom-study-in:\n\
-  dicom-type: dicom-study"
-```
-See the [hello world walkthrough](#/test-hello/README.md/#2-schemas) for more info.
-### com.envoyai.schema-out
-Formal description of the outputs of the Machine. The EnvoyAI Platform uses
-a system based on JSON-Schema but uses different defaults, and has additional
-features to describe files and DICOM studies. Either JSON or YAML formatted
-schemas are accepted.
-
-```Dockerfile
-LABEL com.envoyai.schema-out="\
-dicom-study-out:\n\
-  dicom-type: dicom-study"
-```
-See the [hello world walkthrough](#/test-hello/README.md/#2-schemas) for more info.
-## Optional LABELs
+## Optional Runtime Parameter LABELs
 ### com.envoyai.nvidia
 default is `false`. If present and `true`, then the Docker execution
 environment will be nvidia-docker, allowing access to NVidia GPU.
@@ -77,7 +77,7 @@ environment will be nvidia-docker, allowing access to NVidia GPU.
 LABEL com.envoyai.nvidia=true
 ```
 See [test-cuda](#/test-cuda) for a simplified example.<br />
-See [related faq](https://github.com/EnvoyAI/examples/blob/master/FAQ.md#does-envoyai-support-cuda) for more information.
+See [related faq](./FAQ.md#does-envoyai-support-cuda) for more information.
 ### com.envoyai.network
 default is `false`. If present and `true`, then the Docker execution
 environment will have access to the internet.
@@ -85,7 +85,23 @@ environment will have access to the internet.
 LABEL com.envoyai.network=true
 ```
 This does have implications for use in production use, see
-[related faq](#/FAQ.md/#can-my-machine-access-the-internet) for more information.
+[related faq](./FAQ.md/#can-my-machine-access-the-internet) for more information.
+### com.envoyai.timeout
+The number of minutes the Docker should be awaited before exiting. Default is `60`.
+### com.envoyai.dicom-tags
+Any dicom tags in addition to the minimum set of fields for a given SOP.
+each tag should be referenced by it's _keyword_ and separated on a new line.
+```Dockerfile
+LABEL com.envoyai.network="\
+PatientSex\
+PatientAge"
+```
+We have found [dicom.innolitics.com](https://dicom.innolitics.com/) to be
+a good dicom tag (and _keyword_) reference.
+For more information about deidentifacation and reidentifacation of dicom
+see [PHI.md](./FAQ.md).
+
+## Optional Informational Parameter LABELs
 ### com.envoyai.display
 This should have a value if the Machine's results can be viewed using a
 radiology viewer. If missing, a default value will be created.

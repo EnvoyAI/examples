@@ -15,27 +15,35 @@ and warning the radiologist if it is missing.
 
 ### How to use the Findings Reporting Interface
 The EnvoyAI Findings Reporting Interface is designed to be easy to use.
-* Declare a boolean property(s) in your `com.envoyai.schema-out`, this will
-represent if the finding exists in the given input.
-* Set a value to the property(s) with the Machine's executable (by writing the string "true" or "false" to a
-file with the properties name in /envoyai/output).
+* Declare a property(s) in your `com.envoyai.schema-out`, depending on the
+datatype this can communicate different meanings:
+
+    |type   |meaning|
+    |-------|-------|
+    |boolean|indicates the presence (when `true`) or absence (when `false`)of a finding|
+    |string |indicates the presence and identifies a more specific code or expression|
+
+* Set a value to the property(s) with the Machine's executable by writing
+a string ("true" or "false", if its a boolean field, or a code expression
+if its a string field) to file with the properties name in /envoyai/output).
 * Create a `com.envoyai.report` LABEL in your dockerfile
 * Set the value of the LABEL to a JSON or YAML object with a `findings`
 property.
-* For each findings property you have declared, add an object that consists of three parts:
+* For each findings property you have declared, add an object that consists
+of three parts:
     * A `code` string, representing a code in the referenced coding system
     which represents the finding you wish to communicate.
     * A `code-system` string, representing a coding system (for example snomed-ct)
-    * A `pointer` object, referencing the findings boolean property.
+    * A `value` pointer object, referencing the findings boolean property.
     ```Dockerfile
     LABEL com.envoyai.report="\
     findings:\n\
       - code: 36118008\n\
         code-system: snomed-ct\n\
-        present:\n\
+        value:\n\
           pointer:\n\
             source: output\n\
-            property: pneumothorax-present\n\
+            property: pneumothorax\n\
       - code: 233604007\n\
         code-system: snomed-ct\n\
         present:\n\
@@ -48,23 +56,4 @@ property.
           pointer:\n\
             source: output\n\
             property: pulmonary-nodule-present\n\
-    measurements:\n\
-      - code: 364639007|Feature of a mass| : 118565006|Volume| = 396162003|mm3|\n\
-        code-system: snomed-ct\n\
-        value:\n\
-          pointer:\n\
-            source: output\n\
-            property: pulmonary-nodule-volume"
-    ```
-### How to use the Measurements Reporting Integration
-The EnvoyAI Measurement Reporting Integration is just a little more complicated
-then the Findings Interface.
-* Declare a float property (`{type: 'number'}`) to represent your measurement.
-* For each measurement property you have declared, add an object that consists
-of the same three parts: `code`, `code-system`, and `pointer`
-    * Note that `code` must now include a more specific expression to include
-    what is being measured, the measurement type, and the unit. Thankfully
-    snomed-ct has this flexibility so we can use the code expression:
-    ```snomed-ct
-    364639007|Feature of a mass| : 118565006|Volume| = 396162003|mm3|
     ```
