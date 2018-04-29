@@ -155,3 +155,33 @@ selector-config:\n\
     - guess-2\n\
   default-option: guess-0"
 ```
+### com.envoyai.report
+This should have a value if a Machine's results include findings, measurements,
+or impressions that belong in the radiology report. Each relevant property
+can be associated with the report by including a pointer to the property in
+the `findings` list. Here is a simple extract from [test-report](./test-report/Dockerfile):
+```Dockerfile
+LABEL com.envoyai.report="\
+findings:\n\
+  - code: '36118008'\n\
+    code-system: snomed-ct\n\
+    value:\n\
+      pointer:\n\
+        source: output\n\
+        property: pneumothorax\n\
+  - code: 'RID5350'\n\
+    code-system: radlex\n\
+    value:\n\
+      pointer:\n\
+        source: output\n\
+        property: pneumonia-present"
+```
+Each data type that the finding pointer points to will indicate a different
+meaning as described in the table below:
+
+|type         |meaning|example|
+|---------------|-------|-------|
+|boolean        |indicates the presence (when `true`) or absence (when `false`)of the finding identified by the `code`|Pneumonia present or not present|
+|string         |indicates the presence of the condition specified by the `code`, and optionally identifies a more specific code or expression|Open or closed pneumothorax|
+|number         |represents the value of the measurement identified by the `code`|Tumor volume|
+|array\<object\>|indicates that there are many things of the same type, containing multiple properties each. Each sub-property code will be related by the code of the parent|List of lung nodules and each nodule's attributes|
