@@ -16,13 +16,9 @@ and warning the radiologist if it is missing.
 ### How to use the Findings Reporting Interface
 The EnvoyAI Findings Reporting Interface is designed to be easy to use.
 * Declare a property(s) in your `com.envoyai.schema-out`, depending on the
-datatype this can communicate different meanings:
-
-    |type   |meaning|
-    |-------|-------|
-    |boolean|indicates the presence (when `true`) or absence (when `false`)of a finding|
-    |string |indicates the presence and identifies a more specific code or expression|
-
+datatype this can communicate different meanings. In this example we will
+just work with `boolean` properties, but for how other datatypes work within
+this framework please see [REF.md](../REF.md/#/com.envoyai.report).
 * Set a value to the property(s) with the Machine's executable by writing
 a string ("true" or "false", if its a boolean field, or a code expression
 if its a string field) to file with the properties name in /envoyai/output).
@@ -38,22 +34,16 @@ of three parts:
     ```Dockerfile
     LABEL com.envoyai.report="\
     findings:\n\
-      - code: 36118008\n\
+      - code: '36118008'\n\
         code-system: snomed-ct\n\
         value:\n\
           pointer:\n\
             source: output\n\
             property: pneumothorax\n\
-      - code: 233604007\n\
-        code-system: snomed-ct\n\
-        present:\n\
+      - code: 'RID5350'\n\
+        code-system: radlex\n\
+        value:\n\
           pointer:\n\
             source: output\n\
-            property: pneumonia-present\n\
-      - code: 445249002\n\
-        code-system: snomed-ct\n\
-        present:\n\
-          pointer:\n\
-            source: output\n\
-            property: pulmonary-nodule-present\n\
+            property: pneumonia-present"
     ```
