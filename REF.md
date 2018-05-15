@@ -36,6 +36,7 @@ Here is a list of properties that may be provided, along with examples from an i
 |Ground Truth        |ground-truth      |"Chest CR annotated by board certified radiologists"                                                 |Description of the method by which training data, if used, was labeled.|
 |Training Algorithm  |training-algorithm|"Neural Net" or "Statistical Regressions after feature extraction with heuristics based segmentation"|Description of the algorithms used.|
 |Performance         |performance       |"99.98% Accuracy"                                                                                    |Accuracy and or precision, and any other relevant measurements of performance.|
+
 \* Only Name is required.<br />
 *Note: the data type of all values is `string`*
 ```Dockerfile
