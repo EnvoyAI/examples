@@ -149,9 +149,19 @@ def get_circle(cir_rad, cir_pos_x, cir_pos_y):
     return ds_cir_object
 
 
-def add_graphic_annotations(dicom, layer_name, graphic_objects, text_objects):
+def get_graphic_annotation(sop_class, sop_instance_uid, layer_name, graphic_objects, text_objects):
     ds_graphic_annotation = Dataset()
+    referenced_sequence_dataset = Dataset()
+    referenced_sequence_dataset.ReferencedSOPClassUID = sop_class
+    referenced_sequence_dataset.ReferencedSOPInstanceUID = sop_instance_uid
+    ds_graphic_annotation.ReferencedImageSequence = Sequence([referenced_sequence_dataset])
     ds_graphic_annotation.GraphicLayer = layer_name
-    ds_graphic_annotation.GraphicObjects = Sequence(graphic_objects)
-    ds_graphic_annotation.TextObjects = Sequence(text_objects)
-    dicom.GraphicAnnotations = Sequence([ds_graphic_annotation])
+    if graphic_objects is not None and len(graphic_objects)>0:
+        ds_graphic_annotation.GraphicObjects = Sequence(graphic_objects)
+    if text_objects is not None and len(text_objects) > 0:
+        ds_graphic_annotation.TextObjects = Sequence(text_objects)
+    return ds_graphic_annotation
+
+
+def add_graphic_annotations(dicom, graphic_annotations):
+    dicom.GraphicAnnotations = Sequence(graphic_annotations)
