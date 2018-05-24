@@ -26,11 +26,6 @@ RUN set -e \
  && xvfb-run wineserver -w \
  && xvfb-run sh ./winetricks -q d3dx9 corefonts vcrun2015
 
-# copy the dlss so that debug builds work
-RUN cp $WINESYSTEM32/msvcp140.dll $WINESYSTEM32/msvcp140d.dll \
- && cp $WINESYSTEM32/vcruntime140.dll $WINESYSTEM32/vcruntime140d.dll \
- && cp $WINESYSTEM32/ucrtbase.dll $WINESYSTEM32/ucrtbased.dll
-
 # copy windows command line exe
 ADD HelloWindows/Debug /prog
 ADD runWine.sh /prog/runWine.sh
