@@ -14,22 +14,28 @@ RUN wget -nc https://dl.winehq.org/wine-builds/Release.key \
 ENV DISPLAY=":0.0"
 ENV WINEARCH="win32"
 ENV WINEPREFIX="/root/.wine32"
+ENV WINESYSTEM32="/root/.wine32/drive_c/windows/system32"
+ENV WINEDLLOVERRIDES="mscoree,mshtml="
 
-RUN xvfb :0 -screen 0 1024x768x16 \
- & mkdir -p $WINEPREFIX \
+RUN set -e \
+ && mkdir -p $WINEPREFIX \
  && cd $WINEPREFIX \
  && wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks \
  && chmod +x winetricks \
- && wine wineboot --init \
- && sh ./winetricks d3dx9 corefonts vcrun2015
+ && xvfb-run wine wineboot --init \
+ && xvfb-run wineserver -w \
+ && xvfb-run sh ./winetricks -q d3dx9 corefonts vcrun2015
+
+# copy the dlss so that debug builds work
+RUN cp $WINESYSTEM32/msvcp140.dll $WINESYSTEM32/msvcp140d.dll \
+ && cp $WINESYSTEM32/vcruntime140.dll $WINESYSTEM32/vcruntime140d.dll \
+ && cp $WINESYSTEM32/ucrtbase.dll $WINESYSTEM32/ucrtbased.dll
 
 # copy windows command line exe
 ADD HelloWindows/Debug /prog
 ADD runWine.sh /prog/runWine.sh
 # run it
 WORKDIR /prog
-#ENTRYPOINT ["/bin/bash","-c","wine \"HelloWindows.exe /nogui\""]
-#ENTRYPOINT ["wine","HelloWindows.exe"]
 ENTRYPOINT ["/bin/bash","runWine.sh"]
 # envoyai metadata
 LABEL com.envoyai.metadata-version=2
