@@ -1,9 +1,7 @@
-FROM ubuntu:16.04
-RUN apt-get update
-RUN apt-get install -y python python-dev python-distribute python-pip
-ADD . /prog
+FROM suchja/wine:dev
+ADD HelloWindows/Debug/HelloWindows.exe /prog/HelloWindows.exe
 WORKDIR /prog
-ENTRYPOINT ["python","cmd.py"]
+ENTRYPOINT ["wine","HelloWindows.exe"]
 LABEL com.envoyai.metadata-version=2
 LABEL com.envoyai.schema-in="\
 name:\n\
