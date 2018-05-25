@@ -24,10 +24,10 @@ RUN set -e \
  && chmod +x winetricks \
  && xvfb-run wine wineboot --init \
  && xvfb-run wineserver -w \
- && xvfb-run sh ./winetricks -q d3dx9 corefonts vcrun2015
+ && xvfb-run sh ./winetricks -q d3dx9 corefonts vcrun2015 vcrun2010
 
 # copy windows command line exe
-ADD HelloWindows/Debug /prog
+ADD HelloWindows/Release /prog
 ADD runWine.sh /prog/runWine.sh
 # run it
 WORKDIR /prog
