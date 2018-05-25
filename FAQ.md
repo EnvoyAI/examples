@@ -120,6 +120,12 @@ have built in methods to to generate compliant UIDs.*
 *Note: GSPS annotations that are related and should be viewed or
 toggled on/off together, should be in a single file.*
 
+#### Does EnvoyAI Support Windows in addition to Linux containers?
+The EnvoyAI platform only supports Linux containers *but* many windows
+executables can be run inside of Linux containers using Wine (A very robust
+Windows API call translation layer). Please see [test-wine](./test-wine)
+for an example and documentation.
+
 ## Production Clinical Workflow
 
 #### How do I make my Machine ready for a hospital to use it?
