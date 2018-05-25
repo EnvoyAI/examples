@@ -7,7 +7,7 @@ a solution to run Windows applications on Linux Operating Systems. To learn more
 visit [winehq.org](https://www.winehq.org/)
 
 ### Still skeptical?
-Wine is even capable of running AAA Windows only video, Intensive professional applications, and has support for all
+Wine is even capable of running AAA Windows only video games, Intensive professional applications, and has support for all
 Visual Studio C++ Redistributables.
 
 ### How to
