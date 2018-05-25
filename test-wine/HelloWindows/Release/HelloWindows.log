@@ -1,0 +1,6 @@
+﻿  stdafx.cpp
+  HelloWindows.cpp
+  Generating code
+  All 198 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  HelloWindows.vcxproj -> C:\Git\envoyai\examples\test-wine\HelloWindows\Release\HelloWindows.exe
