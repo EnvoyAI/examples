@@ -50,7 +50,9 @@ It is also helpful to read through the [FAQ](FAQ.md)
 To see an example that uses a trained network to do image recognition, see the caffe example we adapted for our platform 
 [caffe-cpp_classification](./caffe-cpp_classification/).
 
-To see an example that takes a single dicom image as input and uses pydicom and numpy to manipulate dicom image data, look at: [test/dicom-image](./test-dicom-image)
+To see an example that takes a single dicom image as input and uses pydicom and numpy to manipulate dicom image data, look at: [dicom-image](./test-dicom-image)
+
+To see an example that uses a Windows executable, check out: [test-wine](./test-wine)
 
 To see an example that takes 
 ## Get Started
