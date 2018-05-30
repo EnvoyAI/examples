@@ -126,6 +126,12 @@ executables can be run inside of Linux containers using Wine (A very robust
 Windows API call translation layer). Please see [test-wine](./test-wine)
 for an example and documentation.
 
+#### Exactly what hardware and software will be running our containers?
+The EnvoyAI platform currently uses a g3.4xlarge with Ubuntu 16.04, running
+Docker 17.06, using the AUFS storage driver. We will also be running physical
+on-site servers with similar specs to the g3.4xlarge (~20cpu, ~128gb,  ram running CentOS 7, running
+Docker 17, using devicemapper.
+
 ## Production Clinical Workflow
 
 #### How do I make my Machine ready for a hospital to use it?
