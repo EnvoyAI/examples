@@ -8,6 +8,30 @@ Docker LABEL interface version - version 1 is deprecated, so value must be versi
 ```Dockerfile
 LABEL com.envoyai.metadata-version=2
 ```
+### com.envoyai.schema-in
+Formal description of the inputs to the Machine. The EnvoyAI Platform uses
+a system based on JSON-Schema but uses different defaults, and has additional
+features to describe files and DICOM studies. Either JSON or YAML formatted
+schemas are accepted.
+
+```Dockerfile
+LABEL com.envoyai.schema-in="\
+dicom-study-in:\n\
+  dicom-type: dicom-study"
+```
+See the [hello world walkthrough](#/test-hello/README.md/#2-schemas) for more info.
+### com.envoyai.schema-out
+Formal description of the outputs of the Machine. The EnvoyAI Platform uses
+a system based on JSON-Schema but uses different defaults, and has additional
+features to describe files and DICOM studies. Either JSON or YAML formatted
+schemas are accepted.
+
+```Dockerfile
+LABEL com.envoyai.schema-out="\
+dicom-study-out:\n\
+  dicom-type: dicom-study"
+```
+See the [hello world walkthrough](#/test-hello/README.md/#2-schemas) for more info.
 ### com.envoyai.info
 Information about the machine, author, and organization. This information is currently
 only visible on the developer portal, but after some modification to the available properties
@@ -46,31 +70,7 @@ title: Test machine for demonstration or testing purposes only\n\
 author: Staff\n\
 organization: EnvoyAI"
 ```
-### com.envoyai.schema-in
-Formal description of the inputs to the Machine. The EnvoyAI Platform uses
-a system based on JSON-Schema but uses different defaults, and has additional
-features to describe files and DICOM studies. Either JSON or YAML formatted
-schemas are accepted.
-
-```Dockerfile
-LABEL com.envoyai.schema-in="\
-dicom-study-in:\n\
-  dicom-type: dicom-study"
-```
-See the [hello world walkthrough](#/test-hello/README.md/#2-schemas) for more info.
-### com.envoyai.schema-out
-Formal description of the outputs of the Machine. The EnvoyAI Platform uses
-a system based on JSON-Schema but uses different defaults, and has additional
-features to describe files and DICOM studies. Either JSON or YAML formatted
-schemas are accepted.
-
-```Dockerfile
-LABEL com.envoyai.schema-out="\
-dicom-study-out:\n\
-  dicom-type: dicom-study"
-```
-See the [hello world walkthrough](#/test-hello/README.md/#2-schemas) for more info.
-## Optional LABELs
+## Optional Runtime Parameter LABELs
 ### com.envoyai.nvidia
 default is `false`. If present and `true`, then the Docker execution
 environment will be nvidia-docker, allowing access to NVidia GPU.
@@ -78,7 +78,7 @@ environment will be nvidia-docker, allowing access to NVidia GPU.
 LABEL com.envoyai.nvidia=true
 ```
 See [test-cuda](#/test-cuda) for a simplified example.<br />
-See [related faq](https://github.com/EnvoyAI/examples/blob/master/FAQ.md#does-envoyai-support-cuda) for more information.
+See [related faq](./FAQ.md#does-envoyai-support-cuda) for more information.
 ### com.envoyai.network
 default is `false`. If present and `true`, then the Docker execution
 environment will have access to the internet.
@@ -86,7 +86,23 @@ environment will have access to the internet.
 LABEL com.envoyai.network=true
 ```
 This does have implications for use in production use, see
-[related faq](#/FAQ.md/#can-my-machine-access-the-internet) for more information.
+[related faq](./FAQ.md/#can-my-machine-access-the-internet) for more information.
+### com.envoyai.timeout
+The number of minutes the Docker should be awaited before exiting. Default is `60`.
+### com.envoyai.dicom-tags
+Any dicom tags in addition to the minimum set of fields for a given SOP.
+each tag should be referenced by it's _keyword_ and separated on a new line.
+```Dockerfile
+LABEL com.envoyai.network="\
+PatientSex\
+PatientAge"
+```
+We have found [dicom.innolitics.com](https://dicom.innolitics.com/) to be
+a good dicom tag (and _keyword_) reference.
+For more information about deidentifacation and reidentifacation of dicom
+see [PHI.md](./FAQ.md).
+
+## Optional Informational Parameter LABELs
 ### com.envoyai.display
 This should have a value if the Machine's results can be viewed using a
 radiology viewer. If missing, a default value will be created.
@@ -140,3 +156,33 @@ selector-config:\n\
     - guess-2\n\
   default-option: guess-0"
 ```
+### com.envoyai.report
+This should have a value if a Machine's results include findings, measurements,
+or impressions that belong in the radiology report. Each relevant property
+can be associated with the report by including a pointer to the property in
+the `findings` list. Here is a simple extract from [test-report](./test-report/Dockerfile):
+```Dockerfile
+LABEL com.envoyai.report="\
+findings:\n\
+  - code: '36118008'\n\
+    code-system: snomed-ct\n\
+    value:\n\
+      pointer:\n\
+        source: output\n\
+        property: pneumothorax\n\
+  - code: 'RID5350'\n\
+    code-system: radlex\n\
+    value:\n\
+      pointer:\n\
+        source: output\n\
+        property: pneumonia-present"
+```
+Each data type that the finding pointer points to will indicate a different
+meaning as described in the table below:
+
+|type         |meaning|example|
+|---------------|-------|-------|
+|boolean        |indicates the presence (when `true`) or absence (when `false`)of the finding identified by the `code`|Pneumonia present or not present|
+|string         |indicates the presence of the condition specified by the `code`, and optionally identifies a more specific code or expression|Open or closed pneumothorax|
+|number         |represents the value of the measurement identified by the `code`|Tumor volume|
+|array\<object\>|indicates that there are many things of the same type, containing multiple properties each. Each sub-property code will be related by the code of the parent|List of lung nodules and each nodule's attributes|
