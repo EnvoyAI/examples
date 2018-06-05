@@ -45,20 +45,27 @@ These tags will be reapplied to any new series created by a Machine if they were
 ### Default Tags for MRI DICOM Instances
 These tags will be present on any MR instances passed to your Machine.
 
+_TODO_
+
 |DICOM Tag Keywords|
 |------------|
-|PatientName|
-|PatientID|
-|PatientSex|
 |...|
 
 ### Default Tags for CT DICOM Instances
 These tags will be present on any CT instances passed to your Machine.
 
+_TODO_
+
 |DICOM Tag Keywords|
 |------------|
-|PatientName|
-|PatientID|
-|PatientSex|
+|...|
+
+### Default Tags for CR DICOM Instances
+These tags will be present on any CR instances passed to your Machine.
+
+_TODO_
+
+|DICOM Tag Keywords|
+|------------|
 |...|
 
