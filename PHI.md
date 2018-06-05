@@ -6,15 +6,20 @@ are easily usable by any consumers, the EnvoyAI Liaison has a carefully designed
 deidentification and reidentification system.
 
 ## De-Identification
-EnvoyAI strips most tags from DICOM instances. We anonymize and include a minimal 
-subset of fields that are specific to the modality of the study. Those tags are 
-listed below.  Machine developers can specify additional tags that are required 
-for their algorithms by attaching special labels to their docker images.
+EnvoyAI's deidentification model is based on the __"Basic Application Level Confidentiality Profile"__
+outlined in Part 15, section E2 of the DICOM standard. We perform deidentification
+by building copies of the submitted studies using lists of known safe tags
+that we compile for each modality. This protects us from accidentally including
+PHI in private tags.  The original studies are never sent outside of the
+hospital or practice data center.
 
-A note on dates: EnvoyAI anonymizes dates by time-shifting them. A random number 
-of days is determined for each inference submission and all of the dates in that 
-submission are shifted by that number of days. This obscures the dates, but 
-preserves the time ranges in your input.
+We handle dates according to the __"Retain Longitudinal Temporal Information with Modified Dates Option"__
+described in section E3. It should also be noted that we allow our development
+partners to request exceptions for specific fields that their applications
+require. To date, those exceptions have have included gender, equipment
+manufacturer, and model name. These exceptions apply only when submitting
+data to those specific applications and should be considered when selecting
+applications for use.
 
 ## Re-Identification
 
