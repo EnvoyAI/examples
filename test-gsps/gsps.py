@@ -57,7 +57,8 @@ def copy_details_from_input_dicom(dicom, input_dicom):
                      'ReferringPhysicianName',
                      'AccessionNumber']
     for de in data_elements:
-        dicom.add(input_dicom.data_element(de))
+        if input_dicom.__contains__(de):
+            dicom.add(input_dicom.data_element(de))
 
 
 def add_graphic_annotation(dicom, group_number, layer, type, origin, rows, columns, data):
