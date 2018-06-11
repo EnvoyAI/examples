@@ -89,6 +89,9 @@ This does have implications for use in production use, see
 [related faq](./FAQ.md/#can-my-machine-access-the-internet) for more information.
 ### com.envoyai.timeout
 The number of minutes the Docker should be awaited before exiting. Default is `60`.
+```Dockerfile
+LABEL com.envoyai.timeout="15"
+```
 ### com.envoyai.dicom-tags
 Any dicom tags in addition to the minimum set of fields for a given SOP.
 each tag should be referenced by it's _keyword_ and separated on a new line.
