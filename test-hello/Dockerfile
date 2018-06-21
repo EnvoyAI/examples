@@ -15,4 +15,5 @@ LABEL com.envoyai.info="\
 name: Hello World\n\
 title: Test machine for demonstration or testing purposes only.\n\
 author: Staff\n\
-organization: EnvoyAI"
+organization: EnvoyAI\n\
+source-code: https://github.com/EnvoyAI/examples/tree/master/test-hello"
