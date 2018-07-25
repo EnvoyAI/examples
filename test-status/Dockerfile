@@ -15,7 +15,7 @@ LABEL com.envoyai.schema-out="\
 hello:\n\
   type: string"
 LABEL com.envoyai.info="\
-name: Hello World\n\
+name: Test Status\n\
 title: Test machine for demonstration or testing purposes only.\n\
 author: Staff\n\
 organization: EnvoyAI"
