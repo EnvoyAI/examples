@@ -96,7 +96,7 @@ LABEL com.envoyai.timeout="15"
 Any dicom tags in addition to the minimum set of fields for a given SOP.
 each tag should be referenced by it's _keyword_ and separated on a new line.
 ```Dockerfile
-LABEL com.envoyai.network="\
+LABEL com.envoyai.dicom-tags="\
 PatientSex\
 PatientAge"
 ```
