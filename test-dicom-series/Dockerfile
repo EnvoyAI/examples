@@ -21,11 +21,11 @@ source-display-group:\n\
           property: dicom-series-in\n\
 results-display-group:\n\
   display-elements:\n\
-    - title: Input DICOM\n\
+    - title: Output DICOM\n\
       id: output-dicom\n\
       content:\n\
         pointer:\n\
-          source: input\n\
+          source: output\n\
           property: dicom-series-out"
 LABEL com.envoyai.info="\
 name: Test Dicom Series Machine\n\

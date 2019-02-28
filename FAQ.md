@@ -51,7 +51,6 @@ See our [test-echo](./test-echo/Dockerfile) machine for a simple example, or the
 
 For these examples, we just needed to specify an __ENTRYPOINT__ that would provide the path for the image input, and write the metadata __LABELs__.
 The only other required work is to modify the existing project to write the appropriate output files.
-See the [Diff](https://github.com/jaketaylorpro/caffe/commit/a90ddca0e384c04d4d0ec0c49e0e7b07c6f0cb07) in our fork of the Caffe repo.
 
 #### How do I view debugging information about my machine when its running on the platform?
 All logs, captured from your executable's stdout and stderr, are viewable in the Machine Administration panel, under the logs tab.
@@ -161,9 +160,7 @@ There are a number of ways a Machine can be initiated:
     or comparisons), and other data inputs from HL7 sources.
 1.
     Other Integration - EnvoyAI is continually working on additional
-    distribution partnerships. One example of such a partnership is that
-    with [AmbraHealth](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0ahUKEwiD1saewbvaAhWGjlkKHSNJDjoQFgg8MAI&url=https%3A%2F%2Fwww.auntminnie.com%2Findex.aspx%3Fsec%3Dlog%26itemID%3D120142&usg=AOvVaw1Op0I0PRlwuWW1gLySOcV5).
-    Integration details in these cases will vary.
+    distribution partnerships.
 
 #### What are the different ways my Machine's results can be used?
 There are a few ways Machine's results can be viewed or otherwise used,
